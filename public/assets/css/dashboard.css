@@ -1,0 +1,13 @@
+.dashboard label{
+    font-weight: none !important;
+    /* font-size: 20px !important; */
+}
+.dashboard p, .dashboard option,.dashboard select, .dashboard button{
+    font-size: var(--font-default) !important;
+}
+#chart{
+    font-size: var(--font-default) !important;
+}
+.head-card-content{
+    font-size: var(--font-default) !important;
+}

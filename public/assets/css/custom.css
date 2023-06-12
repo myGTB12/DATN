@@ -1,0 +1,25 @@
+.card-child {
+    display: flex;
+    box-shadow: 0 0 1px rgb(0 0 0 / 13%), 0 1px 3px rgb(0 0 0 / 20%);
+    margin-bottom: 1rem;
+    position: relative;
+    flex-direction: row;
+    min-width: 0;
+    word-wrap: break-word;
+    background-clip: border-box;
+    border: 0 solid rgba(0,0,0,.125);
+    border-radius: 0.25rem;
+}
+
+.card-child .avatar-upload:first-child{
+    margin-left: 0px !important;
+}
+
+.card-child .avatar-upload:last-child{
+    margin-right: 0px !important;
+}
+
+.card-child .avatar-upload {
+    margin: 0px 7px;
+    background-color: #fff;
+}

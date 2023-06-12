@@ -1,0 +1,16 @@
+.vis-panel.vis-right {
+    display: none;
+}
+.vis-panel.vis-left, .vis-panel.vis-center
+{
+    border-bottom: solid #bfbfbf ;
+}
+.vis-panel.vis-top {
+    border-top: solid 1px;
+}
+.vis-timeline {
+    border: none;
+}
+.vis-panel.vis-background.vis-vertical {
+    border-right: solid 1px #bfbfbf;
+}
