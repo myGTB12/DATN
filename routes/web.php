@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\AdminController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\StationOwner\StationController;
 use App\Http\Controllers\StationOwner\VehicleController;
@@ -26,7 +27,7 @@ Route::group(["prefix" => "/"], function () {
 Route::group(["prefix" => "admin"], function () {
     Route::group(["prefix" => "station"], function () {
         Route::get("/stations", [StationController::class, "index"]);
-        Route::get("/stationOwners", [StationController::class, "index"]);
+        Route::get("/stationOwners", [AdminController::class, "getListStationOwner"])->name("users.list");
         Route::post("/create", [StationController::class, "create"]);
         Route::post("/edit", [StationController::class, "edit"]);
         Route::post("/show", [StationController::class, "show"]);

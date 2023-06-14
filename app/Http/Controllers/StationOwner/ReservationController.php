@@ -5,6 +5,7 @@ namespace App\Http\Controllers\StationOwner;
 use Illuminate\Http\Request;
 use App\Form\CustomValidator;
 use App\Services\ReservationService;
+use App\Helpers\Helper;
 
 class ReservationController extends Controller
 {
@@ -29,7 +30,7 @@ class ReservationController extends Controller
 
     public function create(Request $request)
     {
-        if (!$this->validateOwner($request->id)) {
+        if (!Helper::validateRole($request->id, 'station_owner')) {
             back()->with(['error' => __('messages.station_owners_fail')]);
         }
         $this->form->validate($request, "CreateReservationForm");
@@ -38,7 +39,7 @@ class ReservationController extends Controller
 
     public function edit(Request $request)
     {
-        if (!$this->validateOwner($request->id)) {
+        if (!Helper::validateRole($request->id, 'station_owner')) {
             back()->with(['error' => __('messages.station_owners_fail')]);
         }
 
@@ -48,7 +49,7 @@ class ReservationController extends Controller
 
     public function show($reservation_id, $id)
     {
-        if (!$this->validateOwner($id)) {
+        if (!Helper::validateRole($id, 'station_owner')) {
             back()->with(['error' => __('messages.station_owners_fail')]);
         }
 
@@ -57,19 +58,10 @@ class ReservationController extends Controller
 
     public function cancel($id, $request)
     {
-        if (!$this->validateOwner($request->id)) {
+        if (!Helper::validateRole($request->id, 'station_owner')) {
             back()->with(['error' => __('messages.station_owners_fail')]);
         }
 
         $reservation = $this->reservationService->cancelReservation($id);
-    }
-
-    private function validateOwner($id)
-    {
-        if (!session()->get('admin') && auth()->guard('admin')->user()->id !== $id) {
-            return false;
-        }
-
-        return true;
     }
 }

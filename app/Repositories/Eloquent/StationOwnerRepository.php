@@ -27,4 +27,8 @@ class StationOwnerRepository extends BaseRepository
         }
         return;
     }
+
+    public function getListStationOwner(){
+        return $this->model->all();
+    }
 }

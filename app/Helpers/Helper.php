@@ -105,4 +105,13 @@ class Helper
             $iv
         );
     }
+
+    public static function validateRole($id, string $role)
+    {
+        if (!session()->get($role) && auth()->guard($role)->user()->id !== $id) {
+            return false;
+        }
+
+        return true;
+    }
 }

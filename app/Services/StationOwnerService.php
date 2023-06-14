@@ -6,11 +6,21 @@ use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
-use App\Repositories\Eloquent\AdminRepository;
+use App\Repositories\Eloquent\StationOwnerRepository;
 
 class StationOwnerService
 {
-    public function loginAccount()
+    protected StationOwnerRepository $stationOwnerRepository;
+
+    public function __construct(StationOwnerRepository $stationOwnerRepository)
     {
+        $this->stationOwnerRepository = $stationOwnerRepository;
+    }
+
+    public function getListStationOwner()
+    {
+        $stationOwners = $this->stationOwnerRepository->getListStationOwner();
+
+        return $stationOwners;
     }
 }

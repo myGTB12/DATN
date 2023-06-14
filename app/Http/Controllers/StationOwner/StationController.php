@@ -30,7 +30,7 @@ class StationController extends Controller
 
     public function create(Request $request)
     {
-        if (!$this->validateOwner($request->id)) {
+        if (!Helper::validateRole($request->id, 'admin')) {
             back()->with(['error' => __('messages.station_owners_fail')]);
         }
         $this->form->validate($request, "CreateStationForm");
@@ -39,7 +39,7 @@ class StationController extends Controller
 
     public function edit(Request $request)
     {
-        if (!$this->validateOwner($request->id)) {
+        if (!Helper::validateRole($request->id, 'admin')) {
             back()->with(['error' => __('messages.station_owners_fail')]);
         }
 
@@ -49,7 +49,7 @@ class StationController extends Controller
 
     public function show($station_id, $id)
     {
-        if (!$this->validateOwner($id)) {
+        if (!Helper::validateRole($id, 'admin')) {
             back()->with(['error' => __('messages.station_owners_fail')]);
         }
 
@@ -58,19 +58,10 @@ class StationController extends Controller
 
     public function delete($id, $request)
     {
-        if (!$this->validateOwner($request->id)) {
+        if (!Helper::validateRole($request->id, 'admin')) {
             back()->with(['error' => __('messages.station_owners_fail')]);
         }
 
         $station = $this->stationService->deleteStation($id);
-    }
-
-    private function validateOwner($id)
-    {
-        if (!session()->get('admin') && auth()->guard('admin')->user()->id !== $id) {
-            return false;
-        }
-
-        return true;
     }
 }
