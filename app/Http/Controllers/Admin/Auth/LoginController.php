@@ -1,23 +1,22 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+namespace App\Http\Controllers\Admin\Auth;
 
 use Illuminate\Http\Request;
-use App\Form\CustomValidator;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Auth;
-use App\Services\StationOwnerService;
+use App\Services\LoginService;
+use App\Form\CustomValidator;
 
-class StationOwnerLoginController extends Controller
+class LoginController extends Controller
 {
-    protected $stationOwnerService;
+    protected $login;
     protected $form;
 
     public function __construct(
-        StationOwnerService $stationOwnerService,
+        LoginService $login,
         CustomValidator $form,
     ) {
-        $this->stationOwnerService = $stationOwnerService;
+        $this->login = $login;
         $this->form = $form;
     }
 
@@ -25,14 +24,14 @@ class StationOwnerLoginController extends Controller
     {
         if ($request->isMethod("post")) {
             // Validate inputs
-            $this->form->validate($request, "StationOwnerLoginForm");
+            $this->form->validate($request, "AdminLoginForm");
 
-            $response = $this->stationOwnerService->loginAccount($request);
+            $response = $this->login->loginAccount($request);
             if ($response === true) {
                 //Check user verify
-                auth()->guard('station_owner')->user();
-                session()->push('station_owner', true);
-                return redirect()->route('stations.index');
+                auth()->guard('admin')->user();
+                session()->push('admin', true);
+                return redirect()->route("users.list");
             }
 
             return redirect()
@@ -40,7 +39,7 @@ class StationOwnerLoginController extends Controller
                 ->withInput()
                 ->with("error", $response);
         }
-        return view("auth.login");
+        return view('content.authentications.auth-login');
     }
 
     public function logout(Request $request)

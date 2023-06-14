@@ -1,30 +1,27 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\StationOwner;
 
 use Illuminate\Http\Request;
 use App\Form\CustomValidator;
-use App\Services\ReservationService;
+use App\Services\VehicleService;
 
-class ReservationController extends Controller
+class VehicleController extends Controller
 {
-    protected $reservationService;
+    protected $vehicleService;
     protected $form;
 
     public function __construct(
-        ReservationService $reservationService,
+        VehicleService $vehicleService,
         CustomValidator $form,
     ) {
-        $this->reservationService = $reservationService;
+        $this->vehicleService = $vehicleService;
         $this->form = $form;
     }
 
     public function index()
     {
-        if (!session()->get('station_owner')) {
-            return back()->with(['error' => __('messages.station_owners_fail')]);
-        }
-        $reservations = $this->reservationService->getListReservations();
+        $vehicles = $this->vehicleService->getListVehicles();
     }
 
     public function create(Request $request)
@@ -32,8 +29,8 @@ class ReservationController extends Controller
         if (!$this->validateOwner($request->id)) {
             back()->with(['error' => __('messages.station_owners_fail')]);
         }
-        $this->form->validate($request, "CreateReservationForm");
-        $reservation = $this->reservationService->createReservation($request);
+        $this->form->validate($request, "CreateVehicleForm");
+        $station = $this->vehicleService->createVehicle($request);
     }
 
     public function edit(Request $request)
@@ -42,26 +39,26 @@ class ReservationController extends Controller
             back()->with(['error' => __('messages.station_owners_fail')]);
         }
 
-        $this->form->validate($request, "CreateReservationForm");
-        $reservation = $this->reservationService->editReservation($request);
+        $this->form->validate($request, "CreateVehicleForm");
+        $station = $this->vehicleService->editVehicle($request);
     }
 
-    public function show($reservation_id, $id)
+    public function show($station_id, $id)
     {
         if (!$this->validateOwner($id)) {
             back()->with(['error' => __('messages.station_owners_fail')]);
         }
 
-        $reservation = $this->reservationService->showReservation($reservation_id);
+        $station = $this->vehicleService->showVehicle($station_id);
     }
 
-    public function cancel($id, $request)
+    public function delete($id, $request)
     {
         if (!$this->validateOwner($request->id)) {
             back()->with(['error' => __('messages.station_owners_fail')]);
         }
 
-        $reservation = $this->reservationService->cancelReservation($id);
+        $station = $this->vehicleService->deleteVehicle($id);
     }
 
     private function validateOwner($id)
