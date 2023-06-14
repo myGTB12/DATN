@@ -20,10 +20,11 @@ class AdminController extends Controller
         // $this->form = $form;
     }
 
-    public function getListStationOwner() {
-        if(session()->get('admin')){
-            $this->stationOwnerService->getListStationOwner();
-            return view('content.cards.cards-basic');
+    public function getListStationOwner()
+    {
+        if (session()->get('admin')) {
+            $stationOwners = $this->stationOwnerService->getListStationOwner();
+            return view('content.tables.tables-basic', compact('stationOwners'));
         } else {
             return back()->with(['error' => __('messages.not_admin')]);
         }
