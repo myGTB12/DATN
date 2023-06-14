@@ -1,9 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\StationController;
-use App\Http\Controllers\VehicleController;
-use App\Http\Controllers\ReservationController;
+use App\Http\Controllers\StationOwner\StationController;
+use App\Http\Controllers\StationOwner\VehicleController;
+use App\Http\Controllers\StationOwner\ReservationController;
+use App\Http\Controllers\Admin\Auth\LoginController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,15 +17,6 @@ use App\Http\Controllers\ReservationController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::get('/test', function () {
-    return view('content.authentications.auth-login-basic');
-});
-
-
 Route::group(["prefix" => "/"], function () {
     Route::match(["get", "post"], "/login", [LoginController::class, "login"])
         ->name("login");
@@ -34,6 +26,7 @@ Route::group(["prefix" => "/"], function () {
 Route::group(["prefix" => "admin"], function () {
     Route::group(["prefix" => "station"], function () {
         Route::get("/stations", [StationController::class, "index"]);
+        Route::get("/stationOwners", [StationController::class, "index"]);
         Route::post("/create", [StationController::class, "create"]);
         Route::post("/edit", [StationController::class, "edit"]);
         Route::post("/show", [StationController::class, "show"]);

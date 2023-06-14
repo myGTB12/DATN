@@ -25,10 +25,11 @@
           <h4 class="mb-2">Welcome to {{config('variables.templateName')}}! 👋</h4>
           <p class="mb-4">Please sign-in to your account and start the adventure</p>
 
-          <form id="formAuthentication" class="mb-3" action="{{url('/')}}" method="GET">
+          <form id="formAuthentication" class="mb-3" action="{{route('login')}}" method="POST">
+            @csrf
             <div class="mb-3">
               <label for="email" class="form-label">Email or Username</label>
-              <input type="text" class="form-control" id="email" name="email-username" placeholder="Enter your email or username" autofocus>
+              <input type="email" class="form-control" id="email" name="email" placeholder="Enter your email or username" autofocus>
             </div>
             <div class="mb-3 form-password-toggle">
               <div class="d-flex justify-content-between">
@@ -69,3 +70,38 @@
 </div>
 </div>
 @endsection
+@section('js')
+<script>
+  $(function () {
+      $('#formAuthentication').validate({
+        rules: {
+            email:{
+              required: true,
+            },
+            password: {
+                required: true,
+            }
+        },
+        messages: {
+            email: {
+                required: "{{ __('messages.user_id_required') }}",
+                email: "{{ __('messages.email_format') }}"
+            },
+            password: {
+              required: "{{ __('messages.password_required') }}",
+            }
+        },
+        errorElement: 'span',
+        errorPlacement: function (error, element) {
+            error.addClass('invalid-feedback');
+            element.closest('.form-group').append(error);
+        },
+        highlight: function (element, errorClass, validClass) {
+            $(element).addClass('is-invalid');
+        },
+        unhighlight: function (element, errorClass, validClass) {
+            $(element).removeClass('is-invalid');
+        }
+      });
+    });
+  </script>
