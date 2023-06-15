@@ -39,18 +39,8 @@
       @include('layouts.sections.menu.submenu', ['menu' => json_decode('[
       {
       "url": "/pages/account-settings-account",
-      "name": "Account",
+      "name": "Manage Station Owner",
       "slug": "pages-account-settings-account"
-      },
-      {
-      "url": "/pages/account-settings-notifications",
-      "name": "Notifications",
-      "slug": "pages-account-settings-notifications"
-      },
-      {
-      "url": "/pages/account-settings-connections",
-      "name": "Connections",
-      "slug": "pages-account-settings-connections"
       }
       ]')])
     </li>

@@ -24,10 +24,14 @@ Route::group(["prefix" => "/"], function () {
     Route::get("/logout", [LoginController::class, "logout"])->name("logout");
 });
 
-Route::group(["prefix" => "admin"], function () {
+Route::group([
+    "prefix" => "admin",
+    // "middleware" => "auth",
+    ], function () {
     Route::group(["prefix" => "station"], function () {
         Route::get("/stations", [StationController::class, "index"]);
         Route::get("/stationOwners", [AdminController::class, "getListStationOwner"])->name("users.list");
+        Route::match(['get', 'post'], "/stationOwners/edit/{id}", [AdminController::class, "editStationOwner"])->name("users.edit");
         Route::post("/create", [StationController::class, "create"]);
         Route::post("/edit", [StationController::class, "edit"]);
         Route::post("/show", [StationController::class, "show"]);

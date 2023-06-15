@@ -12,6 +12,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        $this->call(TblAdminsSeeder::class);
+        // $this->call(TblAdminsSeeder::class);
+        $this->call(SeedDataStationOwner::class);
     }
 }
