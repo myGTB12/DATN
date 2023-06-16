@@ -24,7 +24,7 @@ class SeedDataStationOwner extends Seeder
                 'name' => fake()->name(),
                 'email' => fake()->unique()->safeEmail(),
                 "phone" => fake()->phoneNumber(),
-                "password" => "password",
+                'password' => Hash::make('password'),
                 "email_verified_at" => now(),
             ]);
         }
