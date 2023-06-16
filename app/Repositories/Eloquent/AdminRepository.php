@@ -22,7 +22,7 @@ class AdminRepository extends BaseRepository
             ->where("email", ($request->email))
             ->whereNotNull("email_verified_at")
             ->first();
-        if (Hash::check($request->password, $model->password)) {
+        if ($model && Hash::check($request->password, $model->password)) {
             return $model;
         }
         return;

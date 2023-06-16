@@ -5,21 +5,25 @@ namespace App\Http\Controllers\Admin;
 use App\Helpers\Helper;
 use App\Models\StationOwner;
 use Illuminate\Http\Request;
-use App\Form\EditStationOwnerForm;
 use App\Http\Controllers\Controller;
 use App\Services\StationOwnerService;
+use App\Form\CustomValidator;
+use App\Services\StationService;
 
 class AdminController extends Controller
 {
     protected $stationOwnerService;
+    protected $stationService;
     protected $form;
 
     public function __construct(
         StationOwnerService $stationOwnerService,
-        // CustomValidator $form,
+        StationService $stationService,
+        CustomValidator $form,
     ) {
         $this->stationOwnerService = $stationOwnerService;
-        // $this->form = $form;
+        $this->stationService = $stationService;
+        $this->form = $form;
     }
 
     public function getListStationOwner()
@@ -33,10 +37,11 @@ class AdminController extends Controller
         }
     }
 
-    public function editStationOwner($id, EditStationOwnerForm $editStationOwnerRequest){
-        if($editStationOwnerRequest->isMethod("post")){
+    public function editStationOwner($id, Request $request){
+        if($request->isMethod("post")){
+            $this->form->validate($request, "EditStationOwnerForm");
             if (session()->get('admin')) {
-                $this->stationOwnerService->editStationOwner($id, $editStationOwnerRequest);
+                $this->stationOwnerService->editStationOwner($id, $request);
                 return $this->getListStationOwner();
             } else {
                 return back()->with(['error' => __('messages.not_admin')]);
@@ -44,6 +49,12 @@ class AdminController extends Controller
         }
 
         $stationOwner = StationOwner::findOrFail($id);
-        return view('content.form-layout.form-layouts-vertical', compact('stationOwner'));
+        $stations = $stationOwner->stations;
+        $vehicles = $this->stationService->getVehiclesOfOwner($stations);
+        $data = [
+            'number_of_stations' => count($stations),
+            'number_vehicles' => count($vehicles),
+        ];
+        return view('content.form-layout.form-layouts-vertical', compact('data', 'stationOwner'));
     }
 }

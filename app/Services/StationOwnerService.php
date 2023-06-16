@@ -28,4 +28,20 @@ class StationOwnerService
     public function editStationOwner($id, EditStationOwnerForm $editStationOwnerRequest){
         $this->stationOwnerRepository->editStationOwner($id, $editStationOwnerRequest);
     }
+
+    public function loginAccount(Request $request)
+    {
+        // Check info login
+        $admin = $this->stationOwnerRepository->checkOwner($request);
+        if (!$admin) {
+            return __("messages.login_fail");
+        }
+
+        Auth::guard('station_owner')->attempt([
+            'email' => $request->email,
+            'password' => $request->password,
+        ]);
+
+        return true;
+    }
 }

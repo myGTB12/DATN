@@ -36,4 +36,6 @@ class VehicleModel extends Model
     {
         return $this->hasMany(VehicleDetail::class);
     }
+
+    public $timestamps = true;
 }

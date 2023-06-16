@@ -49,6 +49,15 @@ class StationService
         $station = $this->stationRepository->deleteStation($station_id);
     }
 
+    public function getVehiclesOfOwner($stations){
+        $results = [];
+        foreach($stations as $station){
+            $vehicle = $station->vehicles;
+            array_push($results, $vehicle);
+        }
+        return $results;
+    }
+
     private function validateStation($id)
     {
         $station = Station::findOrFail($id);

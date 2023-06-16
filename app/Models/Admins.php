@@ -58,4 +58,6 @@ class Admins extends Authenticatable
     {
         return $this->hasMany(StationOwner::class, "admin_id", "id");
     }
+
+    public $timestamps = true;
 }

@@ -16,17 +16,18 @@ class Vehicle extends Model
     protected $fillable = [
         "station_id",
         "status",
-        "register_id",
         "vehicle_inspection_exp_date",
     ];
 
     public function vehicleDetail(): HasOne
     {
-        return $this->hasOne(VehicleDetail::class);
+        return $this->hasOne(VehicleDetail::class, 'vehicle_id', 'id');
     }
 
     public function stations()
     {
-        return $this->hasOne(Station::class);
+        return $this->hasOne(Station::class, 'id', 'station_id');
     }
+
+    public $timestamps = true;
 }

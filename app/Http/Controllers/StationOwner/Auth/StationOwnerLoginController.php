@@ -40,7 +40,7 @@ class StationOwnerLoginController extends Controller
                 ->withInput()
                 ->with("error", $response);
         }
-        return view("auth.login");
+        return view("content.authentications.station-owner-auth-login");
     }
 
     public function logout(Request $request)

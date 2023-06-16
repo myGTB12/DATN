@@ -25,7 +25,7 @@
           <h4 class="mb-2">Welcome to {{config('variables.templateName')}}! 👋</h4>
           <p class="mb-4">Please sign-in to your account and start the adventure</p>
 
-          <form id="formAuthentication" class="mb-3" action="{{route('login')}}" method="POST">
+          <form id="formAuthentication" class="mb-3" action="{{route('users.login')}}" method="POST">
             @csrf
             <div class="mb-3">
               <label for="email" class="form-label">Email or Username</label>
@@ -55,13 +55,6 @@
               <button class="btn btn-primary d-grid w-100" type="submit">Sign in</button>
             </div>
           </form>
-
-          <p class="text-center">
-            <span>You are station owner?</span>
-            <a href="{{route('users.login')}}">
-              <span>Sign in here</span>
-            </a>
-          </p>
         </div>
       </div>
     </div>

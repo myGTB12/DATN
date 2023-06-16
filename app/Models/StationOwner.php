@@ -24,6 +24,7 @@ class StationOwner extends Authenticatable
         "status",
         "admin_id",
         "name",
+        "company_name",
         "email",
         "phone",
         "password",
@@ -61,4 +62,6 @@ class StationOwner extends Authenticatable
     {
         return $this->stations->count() < config('custom_config.max_station');
     }
+
+    public $timestamps = true;
 }

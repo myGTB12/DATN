@@ -6,6 +6,7 @@ use App\Http\Controllers\StationOwner\StationController;
 use App\Http\Controllers\StationOwner\VehicleController;
 use App\Http\Controllers\StationOwner\ReservationController;
 use App\Http\Controllers\Admin\Auth\LoginController;
+use App\Http\Controllers\StationOwner\Auth\StationOwnerLoginController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,6 +29,8 @@ Route::group([
     "prefix" => "admin",
     // "middleware" => "auth",
     ], function () {
+    Route::match(['get', 'post'], "/login", [StationOwnerLoginController::class, "login"])->name("users.login");
+
     Route::group(["prefix" => "station"], function () {
         Route::get("/stations", [StationController::class, "index"]);
         Route::get("/stationOwners", [AdminController::class, "getListStationOwner"])->name("users.list");
