@@ -7,6 +7,7 @@ use App\Models\StationOwner;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Foundation\Testing\WithFaker;
+use Illuminate\Support\Facades\Hash;
 
 class SeedDataStationOwner extends Seeder
 {
