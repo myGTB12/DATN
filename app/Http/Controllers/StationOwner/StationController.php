@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Form\CustomValidator;
 use App\Models\Station;
 use App\Services\StationService;
+use App\Http\Controllers\Controller;
 
 class StationController extends Controller
 {
@@ -26,6 +27,7 @@ class StationController extends Controller
             return back()->with(['error' => __('messages.station_owners_fail')]);
         }
         $stations = $this->stationService->getListStations();
+        return view('content.cards.cards-basic');
     }
 
     public function create(Request $request)

@@ -21,8 +21,7 @@ class StationRepository extends BaseRepository
     public function getListStations()
     {
         $owner_id = auth()->guard('station_owner')->user()->id;
-        $stations = $this->model->where('owner_id', $owner_id)->all();
-
+        $stations = $this->model->where('owner_id', $owner_id)->pluck('id')->all();
         return $stations;
     }
 

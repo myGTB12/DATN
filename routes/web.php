@@ -32,7 +32,7 @@ Route::group([
     Route::match(['get', 'post'], "/login", [StationOwnerLoginController::class, "login"])->name("users.login");
 
     Route::group(["prefix" => "station"], function () {
-        Route::get("/stations", [StationController::class, "index"]);
+        Route::get("/stations", [StationController::class, "index"])->name('stations.index');
         Route::get("/stationOwners", [AdminController::class, "getListStationOwner"])->name("users.list");
         Route::match(['get', 'post'], "/stationOwners/edit/{id}", [AdminController::class, "editStationOwner"])->name("users.edit");
         Route::post("/create", [StationController::class, "create"]);
