@@ -46,9 +46,13 @@ class StationController extends Controller
         if (!Helper::validateRole($request->id, 'station_owner')) {
             back()->with(['error' => __('messages.station_owners_fail')]);
         }
+        $station = Station::findOrFail($id);
+        if ($request->isMethod("post")) {
+            $this->form->validate($request, "CreateStationForm");
+            $station = $this->stationService->editStation($request);
+        }
 
-        $this->form->validate($request, "CreateStationForm");
-        $station = $this->stationService->editStation($request);
+        return view("contnet.form-elements.form-edit-station", compact("station"));
     }
 
     public function show($station_id, $id)
