@@ -7,6 +7,7 @@ use App\Form\CustomValidator;
 use App\Models\Station;
 use App\Services\StationService;
 use App\Http\Controllers\Controller;
+use App\Helpers\Helper;
 
 class StationController extends Controller
 {
@@ -26,8 +27,9 @@ class StationController extends Controller
         if (!session()->get('station_owner')) {
             return back()->with(['error' => __('messages.station_owners_fail')]);
         }
+        $station_owner = auth()->guard('station_owner')->user();
         $stations = $this->stationService->getListStations();
-        return view('content.cards.cards-basic');
+        return view('content.dashboard.dashboards-analytics', compact('station_owner', 'stations'));
     }
 
     public function create(Request $request)
@@ -39,9 +41,9 @@ class StationController extends Controller
         $station = $this->stationService->createStation($request);
     }
 
-    public function edit(Request $request)
+    public function edit(Request $request, $id)
     {
-        if (!Helper::validateRole($request->id, 'admin')) {
+        if (!Helper::validateRole($request->id, 'station_owner')) {
             back()->with(['error' => __('messages.station_owners_fail')]);
         }
 

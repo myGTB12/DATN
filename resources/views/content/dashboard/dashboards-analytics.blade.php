@@ -21,10 +21,10 @@
       <div class="d-flex align-items-end row">
         <div class="col-sm-7">
           <div class="card-body">
-            <h5 class="card-title text-primary">Congratulations John! 🎉</h5>
-            <p class="mb-4">You have done <span class="fw-bold">72%</span> more sales today. Check your new badge in your profile.</p>
+            <h5 class="card-title text-primary">Welcome {{$station_owner->name}}! 🎉</h5>
+            <p class="mb-4">Manage your station and verify rent contract here</p>
 
-            <a href="javascript:;" class="btn btn-sm btn-outline-primary">View Badges</a>
+            <a href="javascript:;" class="btn btn-sm btn-outline-primary">Check contract here!</a>
           </div>
         </div>
         <div class="col-sm-5 text-center text-sm-left">
@@ -86,55 +86,63 @@
     </div>
   </div>
   <!-- Total Revenue -->
+  @foreach($stations as $station)
   <div class="col-12 col-lg-8 order-2 order-md-3 order-lg-2 mb-4">
     <div class="card">
       <div class="row row-bordered g-0">
         <div class="col-md-8">
-          <h5 class="card-header m-0 me-2 pb-3">Total Revenue</h5>
-          <div id="totalRevenueChart" class="px-2"></div>
+          <h5 class="card-header m-0 me-2 pb-3">Station name: {{$station->name}}</h5>
         </div>
-        <div class="col-md-4">
-          <div class="card-body">
-            <div class="text-center">
-              <div class="dropdown">
-                <button class="btn btn-sm btn-outline-primary dropdown-toggle" type="button" id="growthReportId" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  2022
-                </button>
-                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="growthReportId">
-                  <a class="dropdown-item" href="javascript:void(0);">2021</a>
-                  <a class="dropdown-item" href="javascript:void(0);">2020</a>
-                  <a class="dropdown-item" href="javascript:void(0);">2019</a>
+        <div class="col-md-6">
+          <div class="card mb-4">
+            <a class="card-header" href="{{route('station.edit')}}">{{$station->name}}</a>
+            <div class="card-body">
+              <div class="mb-3">
+                <label for="exampleFormControlReadOnlyInput1" class="form-label">Address</label>
+                <input class="form-control" type="text" id="exampleFormControlReadOnlyInput1" placeholder="{{$station->address}}" readonly />
+              </div>
+              <div class="mb-3">
+                <label for="exampleFormControlReadOnlyInput1" class="form-label">Status</label>
+                @if($station->status == 1)
+                <div class="col">
+                  <button type="button" class="btn btn-success" data-bs-toggle="tooltip" data-bs-offset="0,4" data-bs-placement="right" data-bs-html="true" title="<i class='bx bx-trending-up bx-xs' ></i> <span>Tooltip on right</span>">
+                    Active
+                  </button>
                 </div>
+                @else
+                <div class="col">
+                  <button type="button" class="btn btn-secondary" data-bs-toggle="tooltip" data-bs-offset="0,4" data-bs-placement="right" data-bs-html="true" title="<i class='bx bx-trending-up bx-xs' ></i> <span>Tooltip on right</span>">
+                    Inactive
+                  </button>
+                </div>
+                @endif
               </div>
-            </div>
-          </div>
-          <div id="growthChart"></div>
-          <div class="text-center fw-semibold pt-3 mb-2">62% Company Growth</div>
-
-          <div class="d-flex px-xxl-4 px-lg-2 p-4 gap-xxl-3 gap-lg-1 gap-3 justify-content-between">
-            <div class="d-flex">
-              <div class="me-2">
-                <span class="badge bg-label-primary p-2"><i class="bx bx-dollar text-primary"></i></span>
+              <div class="mb-3">
+                <label for="exampleFormControlReadOnlyInput1" class="form-label">Contact number</label>
+                <input class="form-control" type="text" id="exampleFormControlReadOnlyInput1" placeholder="{{$station->phone}}" readonly />
               </div>
-              <div class="d-flex flex-column">
-                <small>2022</small>
-                <h6 class="mb-0">$32.5k</h6>
+              @if(!$station->always_open)
+              <div class="mb-3">
+                <label for="exampleFormControlReadOnlyInput1" class="form-label">Opening time:</label>
+                <input class="form-control" type="text" id="exampleFormControlReadOnlyInput1" placeholder="{{$station->start_business_time}}" readonly />
               </div>
-            </div>
-            <div class="d-flex">
-              <div class="me-2">
-                <span class="badge bg-label-info p-2"><i class="bx bx-wallet text-info"></i></span>
+              <div class="mb-3">
+                <label for="exampleFormControlReadOnlyInput1" class="form-label">Close time</label>
+                <input class="form-control" type="text" id="exampleFormControlReadOnlyInput1" placeholder="{{$station->start_business_time}}" readonly />
               </div>
-              <div class="d-flex flex-column">
-                <small>2021</small>
-                <h6 class="mb-0">$41.2k</h6>
+              @else
+              <div class="mb-3">
+                <label for="exampleFormControlReadOnlyInput1" class="form-label">Alwasy open:</label>
+                <input class="form-control" type="text" id="exampleFormControlReadOnlyInput1" placeholder="True" readonly />
               </div>
+              @endif
             </div>
           </div>
         </div>
       </div>
     </div>
   </div>
+  @endforeach
   <!--/ Total Revenue -->
   <div class="col-12 col-md-8 col-lg-4 order-3 order-md-2">
     <div class="row">
@@ -184,8 +192,8 @@
           </div>
         </div>
       </div>
-      <!-- </div>
-    <div class="row"> -->
+    </div>
+    <!-- <div class="row">
       <div class="col-12 mb-4">
         <div class="card">
           <div class="card-body">
@@ -205,12 +213,12 @@
           </div>
         </div>
       </div>
-    </div>
+    </div> -->
   </div>
 </div>
-<div class="row">
-  <!-- Order Statistics -->
-  <div class="col-md-6 col-lg-4 col-xl-4 order-0 mb-4">
+<!-- <div class="row"> -->
+<!-- Order Statistics -->
+<!-- <div class="col-md-6 col-lg-4 col-xl-4 order-0 mb-4">
     <div class="card h-100">
       <div class="card-header d-flex align-items-center justify-content-between pb-0">
         <div class="card-title mb-0">
@@ -296,11 +304,11 @@
         </ul>
       </div>
     </div>
-  </div>
-  <!--/ Order Statistics -->
+  </div> -->
+<!--/ Order Statistics -->
 
-  <!-- Expense Overview -->
-  <div class="col-md-6 col-lg-4 order-1 mb-4">
+<!-- Expense Overview -->
+<!-- <div class="col-md-6 col-lg-4 order-1 mb-4">
     <div class="card h-100">
       <div class="card-header">
         <ul class="nav nav-pills" role="tablist">
@@ -347,11 +355,11 @@
         </div>
       </div>
     </div>
-  </div>
-  <!--/ Expense Overview -->
+  </div> -->
+<!--/ Expense Overview -->
 
-  <!-- Transactions -->
-  <div class="col-md-6 col-lg-4 order-2 mb-4">
+<!-- Transactions -->
+<!-- <div class="col-md-6 col-lg-4 order-2 mb-4">
     <div class="card h-100">
       <div class="card-header d-flex align-items-center justify-content-between">
         <h5 class="card-title m-0 me-2">Transactions</h5>
@@ -455,7 +463,7 @@
         </ul>
       </div>
     </div>
-  </div>
-  <!--/ Transactions -->
+  </div> -->
+<!--/ Transactions -->
 </div>
 @endsection

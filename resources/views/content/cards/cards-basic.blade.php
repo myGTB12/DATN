@@ -1,6 +1,6 @@
 @extends('layouts/contentNavbarLayout')
 
-@section('title', 'Cards basic   - UI elements')
+@section('title', 'Cards basic - UI elements')
 
 @section('vendor-script')
 <script src="{{asset('assets/vendor/libs/masonry/masonry.js')}}"></script>
@@ -10,7 +10,7 @@
 <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">UI Elements /</span> Cards Basic</h4>
 
 <!-- Examples -->
-<div class="row mb-5">
+<!-- <div class="row mb-5">
   <div class="col-md-6 col-lg-4 mb-3">
     <div class="card h-100">
       <img class="card-img-top" src="{{asset('assets/img/elements/2.jpg')}}" alt="Card image cap" />
@@ -49,13 +49,13 @@
       </div>
     </div>
   </div>
-</div>
+</div> -->
 <!-- Examples -->
 
 <!-- Content types -->
-<h5 class="pb-1 mb-4">Content types</h5>
+<!-- <h5 class="pb-1 mb-4">Content types</h5> -->
 
-<div class="row mb-5">
+<!-- <div class="row mb-5">
   <div class="col-md-6 col-lg-4">
     <h6 class="mt-2 text-muted">Body</h6>
     <div class="card mb-4">
@@ -121,10 +121,10 @@
       </div>
     </div>
   </div>
-</div>
+</div> -->
 
-<h6 class="pb-1 mb-4 text-muted">Header and footer</h6>
-<div class="row mb-5">
+<!-- <h6 class="pb-1 mb-4 text-muted">Header and footer</h6> -->
+<!-- <div class="row mb-5">
   <div class="col-md-6 col-lg-4 mb-3">
     <div class="card">
       <div class="card-header">
@@ -172,11 +172,11 @@
       </div>
     </div>
   </div>
-</div>
+</div> -->
 <!--/ Content types -->
 
 <!-- Text alignment -->
-<h5 class="pb-1 mb-4">Text alignment</h5>
+<!-- <h5 class="pb-1 mb-4">Text alignment</h5>
 <div class="row mb-5">
   <div class="col-md-6 col-lg-4">
     <div class="card mb-3">
@@ -205,11 +205,11 @@
       </div>
     </div>
   </div>
-</div>
+</div> -->
 <!--/ Text alignment -->
 
 <!-- Images -->
-<h5 class="pb-1 mb-4">Images caps & overlay</h5>
+<!-- <h5 class="pb-1 mb-4">Images caps & overlay</h5>
 <div class="row mb-5">
   <div class="col-md-6 col-xl-4">
     <div class="card mb-3">
@@ -254,11 +254,11 @@
       </div>
     </div>
   </div>
-</div>
+</div> -->
 <!--/ Images -->
 
 <!-- Horizontal -->
-<h5 class="pb-1 mb-4">Horizontal</h5>
+<!-- <h5 class="pb-1 mb-4">Horizontal</h5>
 <div class="row mb-5">
   <div class="col-md">
     <div class="card mb-3">
@@ -300,11 +300,11 @@
       </div>
     </div>
   </div>
-</div>
+</div> -->
 <!--/ Horizontal -->
 
 <!-- Style variation -->
-<h5 class="pb-1 mb-4">Style variation</h5>
+<!-- <h5 class="pb-1 mb-4">Style variation</h5>
 <div class="row">
   <div class="col-md-6 col-xl-4">
     <div class="card bg-primary text-white mb-3">
@@ -372,9 +372,9 @@
       </div>
     </div>
   </div>
-</div>
+</div> -->
 <!-- Outline -->
-<div class="row">
+<!-- <div class="row">
   <div class="col-md-6 col-xl-4">
     <div class="card shadow-none bg-transparent border border-primary mb-3">
       <div class="card-body">
@@ -435,15 +435,15 @@
       </div>
     </div>
   </div>
-</div>
+</div> -->
 <!--/ Style variation -->
 
 
 <!-- Card layout -->
-<h5 class="pb-1 my-5">Card layout</h5>
+<!-- <h5 class="pb-1 my-5">Card layout</h5> -->
 
 <!-- Card Groups -->
-<h6 class="pb-1 mb-4 text-muted">Card Groups</h6>
+<!-- <h6 class="pb-1 mb-4 text-muted">Card Groups</h6>
 <div class="card-group mb-5">
   <div class="card">
     <img class="card-img-top" src="{{asset('assets/img/elements/4.jpg')}}" alt="Card image cap" />
@@ -483,7 +483,7 @@
       <small class="text-muted">Last updated 3 mins ago</small>
     </div>
   </div>
-</div>
+</div> -->
 
 <!-- Grid Card -->
 <h6 class="pb-1 mb-4 text-muted">Grid Card</h6>
@@ -545,7 +545,7 @@
 </div>
 
 <!-- Masonry -->
-<h6 class="pb-1 mb-4 text-muted">Masonry</h6>
+<!-- <h6 class="pb-1 mb-4 text-muted">Masonry</h6>
 <div class="row" data-masonry='{"percentPosition": true }'>
   <div class="col-sm-6 col-lg-4 mb-4">
     <div class="card">
@@ -625,6 +625,6 @@
       </div>
     </div>
   </div>
-</div>
+</div> -->
 <!--/ Card layout -->
 @endsection
