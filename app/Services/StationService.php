@@ -33,7 +33,7 @@ class StationService
     {
         $station = $this->validateStation($request->id);
         if ($station) {
-            $station = $this->stationRepository->createStation($request);
+            $station = $this->stationRepository->editStation($request);
             return $station;
         }
         return;

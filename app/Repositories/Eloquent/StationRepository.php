@@ -48,12 +48,10 @@ class StationRepository extends BaseRepository
 
     public function editStation(Request $request)
     {
-        $station = $this->validateStation($request->id);
         try {
-            $station = $station::update([
+            $station = $this->getModel()::where('id', $request->id)->update([
                 "name" => $request->name,
                 "status" => $request->status,
-                "owner_id" => $request->owner_id,
                 "address" => $request->address,
                 "mail_address" => $request->mail_address,
                 "phone" => $request->phone,
@@ -65,7 +63,6 @@ class StationRepository extends BaseRepository
         } catch (Exception $e) {
             back()->with(['error' => __('messages.update_data_failed')]);
         }
-        return $station;
     }
 
     public function showStation($station_id)
@@ -77,11 +74,5 @@ class StationRepository extends BaseRepository
     {
         $station = $this->model->findOrFail($station_id);
         $station->delete();
-    }
-
-    private function validateStation($id)
-    {
-        $station = Station::findOrFail($id);
-        return $station;
     }
 }
