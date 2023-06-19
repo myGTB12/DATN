@@ -48,6 +48,12 @@ class StationRepository extends BaseRepository
 
     public function editStation(Request $request)
     {
+        if(!$request->always_open) {
+            $request->merge(['always_open' => 0]);
+        }
+        if(!$request->status) {
+            $request->merge(['status' => 0]);
+        }
         try {
             $station = $this->getModel()::where('id', $request->id)->update([
                 "name" => $request->name,
@@ -61,6 +67,7 @@ class StationRepository extends BaseRepository
                 "always_open" => $request->always_open,
             ]);
         } catch (Exception $e) {
+            dd($e);
             back()->with(['error' => __('messages.update_data_failed')]);
         }
     }
