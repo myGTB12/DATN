@@ -51,7 +51,7 @@ class StationController extends Controller
             $this->form->validate($request, "CreateStationForm");
             $station = $this->stationService->editStation($request);
         }
-        dd(432);
+
         return view("contnet.form-elements.form-edit-station", compact("station"));
     }
 
