@@ -7,11 +7,13 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use App\Http\Traits\HasUuid;
 
 class Vehicle extends Model
 {
     use HasFactory;
     use SoftDeletes;
+    use HasUuid;
 
     protected $fillable = [
         "station_id",
