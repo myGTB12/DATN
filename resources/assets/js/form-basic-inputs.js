@@ -21,4 +21,27 @@
         }); 
     }
   });
+
+  const alwaysOpenCheckbox = document.getElementById('alwayOpenCheckBox');
+  const openingTimeInput = document.querySelector('input[name="start_business_time"]');
+  const closingTimeInput = document.querySelector('input[name="end_business_time"]');
+
+  // Function to show/hide the inputs based on the checkbox state
+  function toggleOpeningAndClosingTimeInputs() {
+    if (openingTimeInput && closingTimeInput) {
+      if (alwaysOpenCheckbox.checked) {
+        openingTimeInput.parentElement.parentElement.style.display = 'none';
+        closingTimeInput.parentElement.parentElement.style.display = 'none';
+      } else {
+        openingTimeInput.parentElement.parentElement.style.display = 'block';
+        closingTimeInput.parentElement.parentElement.style.display = 'block';
+      }
+    }
+  }
+
+  // Set initial state
+  toggleOpeningAndClosingTimeInputs();
+
+  // Add event listener to the checkbox
+  alwaysOpenCheckbox.addEventListener('change', toggleOpeningAndClosingTimeInputs);
 })();

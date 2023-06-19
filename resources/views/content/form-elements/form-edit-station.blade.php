@@ -37,7 +37,10 @@
                     <label class="form-check-label" for="flexSwitchCheckDefault">Status</label>
                     <input class="form-check-input" type="checkbox" name="status" value="1" id="statusCheckBox">
                 </div>
-                @if(!$station->always_open)
+                <div class="form-check form-switch mb-2">
+                    <label class="form-check-label" for="flexSwitchCheckDefault">Always open</label>
+                    <input id="alwayOpenCheckBox" class="form-check-input" type="checkbox" name="always_open" value="1">
+                </div>
                 <div class="mb-3">
                     <label for="exampleFormControlReadOnlyInput1" class="form-label">Opening time</label>
                     <div class="col-md-10">
@@ -50,15 +53,6 @@
                         <input class="form-control" name="end_business_time" type="time" value="{{$station->end_business_time}}" id="html5-time-input" />
                     </div>
                 </div>
-                @else
-                <div class="form-check form-switch mb-2">
-                    <label class="form-check-label" for="flexSwitchCheckDefault">Always open</label>
-                    <input class="form-check-input" type="checkbox" name="always_open" value="1"
-                    @if($station->always_open) checked
-                    @else unchecked 
-                    @endif>
-                </div>
-                @endif
                 <button type="submit" class="btn btn-primary">Save</button>
                 <button type="button" id="cancelEditButton" class="btn btn-warning">Cancel</button>
             </div>
