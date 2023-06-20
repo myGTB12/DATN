@@ -95,7 +95,8 @@
         </div>
         <div class="col-md-6">
           <div class="card mb-4">
-            <a class="card-header" href="{{route('station.edit', $station->id)}}">{{$station->name}}</a>
+            <!-- <a class="card-header" href="{{route('station.edit', $station->id)}}">{{$station->name}}</a> -->
+            <a class="card-header" href="{{route('vehicle.index', ['station_id' => $station->id])}}">{{$station->name}}</a>
             <div class="card-body">
               <div class="mb-3">
                 <label for="exampleFormControlReadOnlyInput1" class="form-label">Address</label>

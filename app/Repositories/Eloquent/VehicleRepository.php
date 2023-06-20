@@ -19,8 +19,8 @@ class VehicleRepository extends BaseRepository
 
     public function getListVehiclesAtStation()
     {
-        $vehicles = $this->model->stations;
-
+        $vehicles = $this->getModel()->stations;
+        dd($vehicles);
         return $vehicles;
     }
 

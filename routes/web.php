@@ -37,8 +37,15 @@ Route::group([
         Route::get("/stations", [StationController::class, "index"])->name('stations.index');
         Route::post("/create", [StationController::class, "create"]);
         Route::match(['get', 'post'], "/edit/{id}", [StationController::class, "edit"])->name('station.edit');
-        Route::post("/show", [StationController::class, "show"]);
         Route::post("/delete", [StationController::class, "delete"]);
+
+        Route::group(["prefix" => "{station_id}/vehicle"], function () {
+            Route::get("/index", [VehicleController::class, "index"])->name('vehicle.index');
+            Route::post("/create", [VehicleController::class, "create"]);
+            Route::post("/edit", [VehicleController::class, "edit"]);
+            Route::post("/show", [VehicleController::class, "show"]);
+            Route::post("/delete", [VehicleController::class, "delete"]);
+        });
     });
 
     Route::group(["prefix" => "reservation"], function () {
@@ -47,13 +54,5 @@ Route::group([
         Route::post("/edit", [ReservationController::class, "edit"]);
         Route::post("/show", [ReservationController::class, "show"]);
         Route::post("/delete", [ReservationController::class, "delete"]);
-    });
-
-    Route::group(["prefix" => "vehicle"], function () {
-        Route::get("/vehicles", [VehicleController::class, "index"]);
-        Route::post("/create", [VehicleController::class, "create"]);
-        Route::post("/edit", [VehicleController::class, "edit"]);
-        Route::post("/show", [VehicleController::class, "show"]);
-        Route::post("/delete", [VehicleController::class, "delete"]);
     });
 });
