@@ -4,10 +4,12 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use App\Http\Traits\HasUuid;
 
 class StationOwner extends Authenticatable
 {
     use HasFactory;
+    use HasUuid;
 
     protected $table = "station_owners";
 

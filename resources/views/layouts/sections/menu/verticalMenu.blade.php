@@ -32,7 +32,7 @@
       <a href="/" class="menu-link menu-toggle">
         <i class="menu-icon tf-icons bx bx-cube-alt"></i>
 
-        <div>"Misc"</div>
+        <div>Management</div>
       </a>
 
       {{-- submenu --}}

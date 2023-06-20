@@ -43,16 +43,19 @@ class StationController extends Controller
 
     public function edit(Request $request, $id)
     {
+        $station_owner = auth()->guard('station_owner')->user();
         if (!Helper::validateRole($request->id, 'station_owner')) {
             back()->with(['error' => __('messages.station_owners_fail')]);
         }
         $station = Station::findOrFail($id);
         if ($request->isMethod("post")) {
             $this->form->validate($request, "CreateStationForm");
-            $station = $this->stationService->editStation($request);
+            $this->stationService->editStation($request);
+            $stations = $this->stationService->getListStations();
+            return redirect()->route('stations.index', ['station_owner' => $station_owner, 'stations' => $stations]);
         }
 
-        return view("contnet.form-elements.form-edit-station", compact("station"));
+        return view("content.form-elements.form-edit-station", compact("station"));
     }
 
     public function show($station_id, $id)

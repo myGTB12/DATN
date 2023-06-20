@@ -5,48 +5,81 @@ namespace App\Services;
 use App\Models\Vehicle;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Repositories\Eloquent\StationRepository;
 use App\Repositories\Eloquent\VehicleRepository;
 
 class VehicleService
 {
     protected VehicleRepository $vehicleRepository;
+    protected StationRepository $stationRepository;
 
-    public function __construct(VehicleRepository $vehicleRepository)
+    public function __construct(
+        VehicleRepository $vehicleRepository,
+        StationRepository $stationRepository
+    )
     {
         $this->vehicleRepository = $vehicleRepository;
+        $this->stationRepository = $stationRepository;
     }
 
-    public function getListVehicles()
+    public function getListVehicles($id)
     {
-        $stations = $this->vehicleRepository->getListVehiclesAtStation();
+        $station = $this->stationRepository->find($id);
+        $vehicleDetails = $station->vehicles->pluck('vehicleDetail')->all();
+        // $vehicleDetails = $this->getVehicleDetails($vehicles);
 
-        return $stations;
+        return $vehicleDetails;
     }
 
     public function createVehicle($request)
     {
-        $station = $this->vehicleRepository->createVehicle($request);
-        return $station;
+        // try {
+        //     $vehicle = $this->model->create([
+        //         "name" => $request->name,
+        //         "status" => $request->status,
+        //         "owner_id" => $request->owner_id,
+        //         "address" => $request->address,
+        //         "mail_address" => $request->mail_address,
+        //         "phone" => $request->phone,
+        //         "start_business_time" => $request->start_business_time,
+        //         "end_business_time" => $request->end_business_time,
+        //         "maintenance_time" => $request->maintenance_time,
+        //         "always_open" => $request->always_open,
+        //     ]);
+        // } catch (Exception $e) {
+        //     back()->with(['error' => __('messages.create_data_failed')]);
+        // }
+        // return $vehicle;
     }
 
     public function editVehicle(Request $request)
     {
-        $station = $this->validateVehicle($request->id);
-        if ($station) {
-            $station = $this->vehicleRepository->createVehicle($request);
-            return $station;
+        $vehicle = $this->validateVehicle($request->id);
+        try {
+            $vehicle = $vehicle::update([
+                "name" => $request->name,
+                "status" => $request->status,
+                "owner_id" => $request->owner_id,
+                "address" => $request->address,
+                "mail_address" => $request->mail_address,
+                "phone" => $request->phone,
+                "start_business_time" => $request->start_business_time,
+                "end_business_time" => $request->end_business_time,
+                "maintenance_time" => $request->maintenance_time,
+                "always_open" => $request->always_open,
+            ]);
+        } catch (Exception $e) {
+            back()->with(['error' => __('messages.update_data_failed')]);
         }
-        return;
+        return $vehicle;
     }
 
-    public function showVehicle($station_id)
+    public function showVehicle($vehicle_id)
     {
-        return $this->vehicleRepository->showVehicle($station_id);
     }
 
-    public function deleteVehicle($station_id)
+    public function deleteVehicle($vehicle_id)
     {
-        $station = $this->vehicleRepository->deleteVehicle($station_id);
     }
 
     private function validateVehicle($id)

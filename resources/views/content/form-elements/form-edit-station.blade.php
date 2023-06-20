@@ -8,60 +8,55 @@
 
 @section('content')
 <h4 class="fw-bold py-3 mb-4">
-    <span class="text-muted fw-light">Forms /</span> Basic Inputs
+    <span class="text-muted fw-light">Edit station :</span> {{$station->name}}
 </h4>
 
 <div class="row">
-    <div class="col-md-6">
+    <form class="mb-3" action="{{route('station.edit', $station->id)}}" method="POST">
+        @csrf
         <div class="card mb-4">
-            <h5 class="card-header">Form Controls</h5>
+            <h5 class="card-header">Station Information</h5>
             <div class="card-body">
                 <div class="mb-3">
                     <label for="exampleFormControlInput1" class="form-label">Email address</label>
-                    <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com" />
+                    <input type="email" name="mail_address" class="form-control" id="exampleFormControlInput1" value="{{$station->mail_address}}" />
                 </div>
                 <div class="mb-3">
-                    <label for="exampleFormControlReadOnlyInput1" class="form-label">Read only</label>
-                    <input class="form-control" type="text" id="exampleFormControlReadOnlyInput1" placeholder="Readonly input here..." readonly />
+                    <label for="exampleFormControlInput1" class="form-label">Station's name</label>
+                    <input type="text" name="name" class="form-control" id="exampleFormControlInput1" value="{{$station->name}}" />
                 </div>
                 <div class="mb-3">
-                    <label for="exampleFormControlReadOnlyInputPlain1" class="form-label">Read plain</label>
-                    <input type="text" readonly class="form-control-plaintext" id="exampleFormControlReadOnlyInputPlain1" value="email@example.com" />
+                    <label for="exampleFormControlInput1" class="form-label">Address</label>
+                    <input type="text" name="address" class="form-control" id="exampleFormControlInput1" value="{{$station->address}}" />
                 </div>
                 <div class="mb-3">
-                    <label for="exampleFormControlSelect1" class="form-label">Example select</label>
-                    <select class="form-select" id="exampleFormControlSelect1" aria-label="Default select example">
-                        <option selected>Open this select menu</option>
-                        <option value="1">One</option>
-                        <option value="2">Two</option>
-                        <option value="3">Three</option>
-                    </select>
+                    <label for="exampleFormControlInput1" class="form-label">Phone</label>
+                    <input type="text" name="phone" class="form-control" id="exampleFormControlInput1" value="{{$station->phone}}" />
+                </div>
+                <div class="form-check form-switch mb-2">
+                    <label class="form-check-label" for="flexSwitchCheckDefault">Status</label>
+                    <input class="form-check-input" type="checkbox" name="status" value="1" id="statusCheckBox" @if($station->status) checked @endif>
+                </div>
+                <div class="form-check form-switch mb-2">
+                    <label class="form-check-label" for="flexSwitchCheckDefault">Always open</label>
+                    <input id="alwayOpenCheckBox" class="form-check-input" type="checkbox" value="1" name="always_open" @if($station->always_open) checked @endif>
                 </div>
                 <div class="mb-3">
-                    <label for="exampleDataList" class="form-label">Datalist example</label>
-                    <input class="form-control" list="datalistOptions" id="exampleDataList" placeholder="Type to search...">
-                    <datalist id="datalistOptions">
-                        <option value="San Francisco">
-                        <option value="New York">
-                        <option value="Seattle">
-                        <option value="Los Angeles">
-                        <option value="Chicago">
-                    </datalist>
+                    <label for="exampleFormControlReadOnlyInput1" class="form-label">Opening time</label>
+                    <div class="col-md-10">
+                        <input class="form-control" name="start_business_time" type="time" value="{{$station->start_business_time}}" id="html5-time-input" />
+                    </div>
                 </div>
                 <div class="mb-3">
-                    <label for="exampleFormControlSelect2" class="form-label">Example multiple select</label>
-                    <select multiple class="form-select" id="exampleFormControlSelect2" aria-label="Multiple select example">
-                        <option selected>Open this select menu</option>
-                        <option value="1">One</option>
-                        <option value="2">Two</option>
-                        <option value="3">Three</option>
-                    </select>
+                    <label for="exampleFormControlReadOnlyInput1" class="form-label">Close time</label>
+                    <div class="col-md-10">
+                        <input class="form-control" name="end_business_time" type="time" value="{{$station->end_business_time}}" id="html5-time-input" />
+                    </div>
                 </div>
-                <div>
-                    <label for="exampleFormControlTextarea1" class="form-label">Example textarea</label>
-                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-                </div>
+                <button type="submit" class="btn btn-primary">Save</button>
+                <button type="button" id="cancelEditButton" class="btn btn-warning">Cancel</button>
             </div>
         </div>
-    </div>
+    </form>
 </div>
+@endsection

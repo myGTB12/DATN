@@ -5,6 +5,7 @@ namespace App\Http\Controllers\StationOwner;
 use Illuminate\Http\Request;
 use App\Form\CustomValidator;
 use App\Services\VehicleService;
+use App\Http\Controllers\Controller;
 
 class VehicleController extends Controller
 {
@@ -19,9 +20,11 @@ class VehicleController extends Controller
         $this->form = $form;
     }
 
-    public function index()
+    public function index($id)
     {
-        $vehicles = $this->vehicleService->getListVehicles();
+        $vehicleDetails = $this->vehicleService->getListVehicles($id);
+
+        return view('content.user-interface.ui-carousel', compact('vehicleDetails'));
     }
 
     public function create(Request $request)
