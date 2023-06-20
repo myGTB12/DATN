@@ -16,6 +16,6 @@ class DatabaseSeeder extends Seeder
         // $this->call(SeedDataStationOwner::class);
         // $this->call(SeedDataStation::class);
         // $this->call(SeedDataVehicles::class);
-        $this->call(SeedDataVehicleDetail::class);
+        // $this->call(SeedDataVehicleDetail::class);
     }
 }

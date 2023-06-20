@@ -2,24 +2,28 @@
 
 namespace App\Services;
 
+use Exception;
 use App\Models\Vehicle;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Repositories\Eloquent\StationRepository;
 use App\Repositories\Eloquent\VehicleRepository;
+use App\Repositories\Eloquent\VehicleDetailRepository;
 
 class VehicleService
 {
     protected VehicleRepository $vehicleRepository;
+    protected VehicleDetailRepository $vehicleDetailRepository;
     protected StationRepository $stationRepository;
 
     public function __construct(
         VehicleRepository $vehicleRepository,
-        StationRepository $stationRepository
-    )
-    {
+        StationRepository $stationRepository,
+        VehicleDetailRepository $vehicleDetailRepository,
+    ) {
         $this->vehicleRepository = $vehicleRepository;
         $this->stationRepository = $stationRepository;
+        $this->vehicleDetailRepository = $vehicleDetailRepository;
     }
 
     public function getListVehicles($id)
@@ -74,8 +78,11 @@ class VehicleService
         return $vehicle;
     }
 
-    public function showVehicle($vehicle_id)
+    public function getVehicleDetail($id)
     {
+        $vehicleDetail = $this->vehicleDetailRepository->find($id);
+
+        return $vehicleDetail;
     }
 
     public function deleteVehicle($vehicle_id)
