@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Form\CustomValidator;
 use App\Services\VehicleService;
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\Controller;
 
 class VehicleController extends Controller
 {
@@ -23,53 +24,36 @@ class VehicleController extends Controller
     public function index($id)
     {
         $vehicleDetails = $this->vehicleService->getListVehicles($id);
+        $length = count($vehicleDetails);
+        $midpoint = ceil($length / 2);
 
-        return view('content.user-interface.ui-carousel', compact('vehicleDetails'));
+        $array1 = array_slice($vehicleDetails, 0, $midpoint);
+        $array2 = array_slice($vehicleDetails, $midpoint);
+
+        return view('content.user-interface.ui-carousel', compact('array1', 'array2'));
     }
 
     public function create(Request $request)
     {
-        if (!$this->validateOwner($request->id)) {
-            back()->with(['error' => __('messages.station_owners_fail')]);
-        }
         $this->form->validate($request, "CreateVehicleForm");
         $station = $this->vehicleService->createVehicle($request);
     }
 
     public function edit(Request $request)
     {
-        if (!$this->validateOwner($request->id)) {
-            back()->with(['error' => __('messages.station_owners_fail')]);
-        }
-
         $this->form->validate($request, "CreateVehicleForm");
         $station = $this->vehicleService->editVehicle($request);
     }
 
     public function show($station_id, $id)
     {
-        if (!$this->validateOwner($id)) {
-            back()->with(['error' => __('messages.station_owners_fail')]);
-        }
+        $vehicleDetail = $this->vehicleService->getVehicleDetail($id);
 
-        $station = $this->vehicleService->showVehicle($station_id);
+        return view('content.form-elements.form-edit-vehicle', compact('vehicleDetail'));
     }
 
     public function delete($id, $request)
     {
-        if (!$this->validateOwner($request->id)) {
-            back()->with(['error' => __('messages.station_owners_fail')]);
-        }
-
         $station = $this->vehicleService->deleteVehicle($id);
-    }
-
-    private function validateOwner($id)
-    {
-        if (!session()->get('admin') && auth()->guard('admin')->user()->id !== $id) {
-            return false;
-        }
-
-        return true;
     }
 }

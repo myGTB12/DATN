@@ -32,6 +32,13 @@ class VehicleDetail extends Model
         "fuel",
         "vehicle_number",
         "color",
+        "brand",
+        "name",
+        "capacity",
+        "length",
+        "width",
+        "height",
+        "booking_status",
         "booking_start",
         "booking_end",
     ];
