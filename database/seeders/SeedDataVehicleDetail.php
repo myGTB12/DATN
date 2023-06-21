@@ -17,7 +17,7 @@ class SeedDataVehicleDetail extends Seeder
     public function run(): void
     {
         $vehicles = Vehicle::all();
-        foreach($vehicles as $vehicle){
+        foreach ($vehicles as $vehicle) {
             VehicleDetail::create([
                 "vehicle_id" => $vehicle->id,
                 "img" => fake()->imageUrl(640, 480, 'car'),

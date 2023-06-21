@@ -48,10 +48,10 @@ class StationRepository extends BaseRepository
 
     public function editStation(Request $request)
     {
-        if(!$request->always_open) {
+        if (!$request->always_open) {
             $request->merge(['always_open' => 0]);
         }
-        if(!$request->status) {
+        if (!$request->status) {
             $request->merge(['status' => 0]);
         }
         try {

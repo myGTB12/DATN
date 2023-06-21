@@ -43,7 +43,7 @@ class VehicleService
                 "status" => $request->status,
                 "vehicle_inspection_exp_date" => $request->vehicle_inspection_exp_date,
             ]);
-            if($vehicle){
+            if ($vehicle) {
                 $vehicleDetail = $this->vehicleDetailRepository->create([
                     "vehicle_id" => $vehicle->id,
                     "img" => $request->img,
@@ -62,7 +62,7 @@ class VehicleService
         } catch (Exception $e) {
             back()->with(['error' => __('messages.create_data_failed')]);
         }
-        
+
         return ['vehicle' => $vehicle, 'vehicle_details' => $vehicleDetail];
     }
 
@@ -95,7 +95,8 @@ class VehicleService
         return $vehicleDetail;
     }
 
-    public function getVehicleByDetail($vehicle_detail_id){
+    public function getVehicleByDetail($vehicle_detail_id)
+    {
         $vehicle_id = $this->vehicleDetailRepository->find($vehicle_detail_id)->vehicle_id;
 
         return $this->vehicleRepository->find($vehicle_id);
@@ -103,11 +104,11 @@ class VehicleService
 
     public function deleteVehicle($vehicle_id, $vehicle_detail_id)
     {
-        try{
+        try {
             $this->vehicleRepository->delete($vehicle_id);
             $this->vehicleDetailRepository->delete($vehicle_detail_id);
             return true;
-        } catch(Exception $e){
+        } catch (Exception $e) {
             return false;
         }
     }

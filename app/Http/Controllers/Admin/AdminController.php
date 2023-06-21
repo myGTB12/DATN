@@ -37,8 +37,9 @@ class AdminController extends Controller
         }
     }
 
-    public function editStationOwner($id, Request $request){
-        if($request->isMethod("post")){
+    public function editStationOwner($id, Request $request)
+    {
+        if ($request->isMethod("post")) {
             $this->form->validate($request, "EditStationOwnerForm");
             if (session()->get('admin')) {
                 $this->stationOwnerService->editStationOwner($id, $request);

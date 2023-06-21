@@ -15,7 +15,7 @@ class SeedDataStation extends Seeder
     public function run(): void
     {
         $stationOwners = StationOwner::all();
-        foreach($stationOwners as $stationOwner){
+        foreach ($stationOwners as $stationOwner) {
             Station::create([
                 "name" => fake()->name(),
                 "status" => random_int(0, 1),

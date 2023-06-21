@@ -15,8 +15,8 @@ class SeedDataVehicles extends Seeder
     public function run(): void
     {
         $stations = Station::all();
-        foreach($stations as $station){
-            for($i = 0; $i < 10; $i++){
+        foreach ($stations as $station) {
+            for ($i = 0; $i < 10; $i++) {
                 Vehicle::create([
                     "station_id" => $station->id,
                     "status" => random_int(0, 1),

@@ -18,7 +18,7 @@ class SeedDataStationOwner extends Seeder
     public function run(): void
     {
         $admin = Admins::first();
-        for($i = 0; $i < 10; $i++){
+        for ($i = 0; $i < 10; $i++) {
             StationOwner::create([
                 "status" => 1,
                 "admin_id" => $admin->id,

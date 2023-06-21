@@ -25,7 +25,8 @@ class StationOwnerService
         return $stationOwners;
     }
 
-    public function editStationOwner($id, EditStationOwnerForm $editStationOwnerRequest){
+    public function editStationOwner($id, EditStationOwnerForm $editStationOwnerRequest)
+    {
         $this->stationOwnerRepository->editStationOwner($id, $editStationOwnerRequest);
     }
 

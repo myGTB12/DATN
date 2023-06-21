@@ -29,15 +29,17 @@ class StationOwnerRepository extends BaseRepository
         return;
     }
 
-    public function getListStationOwner(){
+    public function getListStationOwner()
+    {
         return $this->model->all();
     }
 
-    public function editStationOwner($id, EditStationOwnerForm $editStationOwnerRequest){
+    public function editStationOwner($id, EditStationOwnerForm $editStationOwnerRequest)
+    {
         $stationOwner = $this->model->findOrFail($id);
-        try{
+        try {
             $stationOwner->update($editStationOwnerRequest->all());
-        } catch(Exception){
+        } catch (Exception) {
             return back()->with(['error' => __("messages.update_data_failed")]);
         }
     }

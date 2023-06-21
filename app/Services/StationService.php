@@ -49,9 +49,10 @@ class StationService
         $station = $this->stationRepository->deleteStation($station_id);
     }
 
-    public function getVehiclesOfOwner($stations){
+    public function getVehiclesOfOwner($stations)
+    {
         $results = [];
-        foreach($stations as $station){
+        foreach ($stations as $station) {
             $vehicle = $station->vehicles;
             array_push($results, $vehicle);
         }

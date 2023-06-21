@@ -34,8 +34,8 @@ class VehicleController extends Controller
 
     public function create(Request $request, $station_id)
     {
-        if($request->isMethod("post")){
-            $station = $this->vehicleService->createVehicle($request);
+        if ($request->isMethod("post")) {
+            $station = $this->vehicleService->createVehicle($request, $station_id);
         }
         return view('content.form-elements.form-create-vehicle', compact('station_id'));
     }
@@ -57,7 +57,7 @@ class VehicleController extends Controller
     public function delete($station_id, $vehicle_id, Request $request)
     {
         $result = $this->vehicleService->deleteVehicle($vehicle_id, $request->vehicleDetail);
-        if($result){
+        if ($result) {
             return redirect()->route('vehicle.index', $station_id);
         }
 
