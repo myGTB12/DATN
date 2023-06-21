@@ -35,25 +35,35 @@ class VehicleService
         return $vehicleDetails;
     }
 
-    public function createVehicle($request)
+    public function createVehicle($request, $station_id)
     {
-        // try {
-        //     $vehicle = $this->model->create([
-        //         "name" => $request->name,
-        //         "status" => $request->status,
-        //         "owner_id" => $request->owner_id,
-        //         "address" => $request->address,
-        //         "mail_address" => $request->mail_address,
-        //         "phone" => $request->phone,
-        //         "start_business_time" => $request->start_business_time,
-        //         "end_business_time" => $request->end_business_time,
-        //         "maintenance_time" => $request->maintenance_time,
-        //         "always_open" => $request->always_open,
-        //     ]);
-        // } catch (Exception $e) {
-        //     back()->with(['error' => __('messages.create_data_failed')]);
-        // }
-        // return $vehicle;
+        try {
+            $vehicle = $this->vehicleRepository->create([
+                "station_id" => $station_id,
+                "status" => $request->status,
+                "vehicle_inspection_exp_date" => $request->vehicle_inspection_exp_date,
+            ]);
+            if($vehicle){
+                $vehicleDetail = $this->vehicleDetailRepository->create([
+                    "vehicle_id" => $vehicle->id,
+                    "img" => $request->img,
+                    "img2" => $request->img2,
+                    "img3" => $request->img3,
+                    "img4" => $request->img4,
+                    "fuel" => $request->fuel,
+                    "vehicle_number" => $request->vehicle_number,
+                    "color" => $request->color,
+                    "brand" => $request->brand,
+                    "name" => $request->name,
+                    "capacity" => $request->capacity,
+                    "booking_status" => 0,
+                ]);
+            }
+        } catch (Exception $e) {
+            back()->with(['error' => __('messages.create_data_failed')]);
+        }
+        
+        return ['vehicle' => $vehicle, 'vehicle_details' => $vehicleDetail];
     }
 
     public function editVehicle(Request $request)
@@ -85,8 +95,21 @@ class VehicleService
         return $vehicleDetail;
     }
 
-    public function deleteVehicle($vehicle_id)
+    public function getVehicleByDetail($vehicle_detail_id){
+        $vehicle_id = $this->vehicleDetailRepository->find($vehicle_detail_id)->vehicle_id;
+
+        return $this->vehicleRepository->find($vehicle_id);
+    }
+
+    public function deleteVehicle($vehicle_id, $vehicle_detail_id)
     {
+        try{
+            $this->vehicleRepository->delete($vehicle_id);
+            $this->vehicleDetailRepository->delete($vehicle_detail_id);
+            return true;
+        } catch(Exception $e){
+            return false;
+        }
     }
 
     private function validateVehicle($id)

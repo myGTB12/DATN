@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 use App\Form\CustomValidator;
 use App\Services\VehicleService;
 use App\Http\Controllers\Controller;
-use App\Http\Controllers\Controller;
 
 class VehicleController extends Controller
 {
@@ -33,27 +32,35 @@ class VehicleController extends Controller
         return view('content.user-interface.ui-carousel', compact('array1', 'array2'));
     }
 
-    public function create(Request $request)
+    public function create(Request $request, $station_id)
     {
-        $this->form->validate($request, "CreateVehicleForm");
-        $station = $this->vehicleService->createVehicle($request);
+        if($request->isMethod("post")){
+            $station = $this->vehicleService->createVehicle($request);
+        }
+        return view('content.form-elements.form-create-vehicle', compact('station_id'));
     }
 
     public function edit(Request $request)
     {
-        $this->form->validate($request, "CreateVehicleForm");
+        // $this->form->validate($request, "CreateVehicleForm");
         $station = $this->vehicleService->editVehicle($request);
     }
 
     public function show($station_id, $id)
     {
         $vehicleDetail = $this->vehicleService->getVehicleDetail($id);
+        $vehicle = $this->vehicleService->getVehicleByDetail($id);
 
-        return view('content.form-elements.form-edit-vehicle', compact('vehicleDetail'));
+        return view('content.form-elements.form-edit-vehicle', compact('vehicleDetail', 'vehicle', 'station_id'));
     }
 
-    public function delete($id, $request)
+    public function delete($station_id, $vehicle_id, Request $request)
     {
-        $station = $this->vehicleService->deleteVehicle($id);
+        $result = $this->vehicleService->deleteVehicle($vehicle_id, $request->vehicleDetail);
+        if($result){
+            return redirect()->route('vehicle.index', $station_id);
+        }
+
+        return view('contnent.pages.pages-misc-error');
     }
 }

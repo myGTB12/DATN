@@ -8,7 +8,6 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Http\Traits\HasUuid;
 use App\Models\Vehicle;
-use App\Models\VehicleModel;
 
 class VehicleDetail extends Model
 {
@@ -28,7 +27,6 @@ class VehicleDetail extends Model
         "img2",
         "img3",
         "img4",
-        "vehicle_model_id",
         "fuel",
         "vehicle_number",
         "color",
@@ -47,10 +45,5 @@ class VehicleDetail extends Model
     public function vehicle(): BelongsTo
     {
         return $this->belongsTo(Vehicle::class);
-    }
-
-    public function vehicleModel(): BelongsTo
-    {
-        return $this->belongsTo(VehicleModel::class);
     }
 }

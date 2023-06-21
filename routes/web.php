@@ -41,10 +41,10 @@ Route::group([
 
         Route::group(["prefix" => "{station_id}/vehicle"], function () {
             Route::get("/index", [VehicleController::class, "index"])->name('vehicle.index');
-            Route::post("/create", [VehicleController::class, "create"]);
-            Route::post("/edit", [VehicleController::class, "edit"])->name('vehicle.edit');
+            Route::match(['get', 'post'], "/create", [VehicleController::class, "create"])->name('vehicle.create');
+            Route::post("/edit/{id}", [VehicleController::class, "edit"])->name('vehicle.edit');
             Route::get("/show/{id}", [VehicleController::class, "show"])->name('vehicle.show');
-            Route::post("/delete", [VehicleController::class, "delete"]);
+            Route::post("/delete/{id}", [VehicleController::class, "delete"])->name('vehicle.delete');
         });
     });
 

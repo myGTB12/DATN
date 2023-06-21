@@ -4,7 +4,12 @@
 
 @section('content')
 <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">UI elements /</span> Carousel</h4>
-
+@php
+  $stationId = request()->route('station_id');
+@endphp
+<a class="btn btn-success me-1" data-bs-toggle="collapse" href="{{route('vehicle.create', $stationId)}}" role="button" aria-expanded="false" aria-controls="collapseExample">
+  Add new car
+</a>
 <div class="row">
   <!-- Bootstrap carousel -->
   <div class="col-md">
@@ -38,9 +43,6 @@
         <span class="carousel-control-next-icon" aria-hidden="true"></span>
         <span class="visually-hidden">Next</span>
       </a>
-      @php
-      $stationId = request()->route('station_id');
-      @endphp
       <!-- <div class="product-listing-content">
         <h5><a href="">a </a></h5>
         <p class="list-price" style="display: inline-block">Price Per Day: b RS </p>
