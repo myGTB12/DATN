@@ -35,12 +35,11 @@ class VehicleService
         return $vehicleDetails;
     }
 
-    public function createVehicle($request, $station_id)
+    public function createVehicle($station_id, $request)
     {
         try {
             $vehicle = $this->vehicleRepository->create([
                 "station_id" => $station_id,
-                "status" => $request->status,
                 "vehicle_inspection_exp_date" => $request->vehicle_inspection_exp_date,
             ]);
             if ($vehicle) {
@@ -56,36 +55,44 @@ class VehicleService
                     "brand" => $request->brand,
                     "name" => $request->name,
                     "capacity" => $request->capacity,
-                    "booking_status" => 0,
                 ]);
             }
+            
+            return ['vehicle' => $vehicle, 'vehicle_details' => $vehicleDetail];
         } catch (Exception $e) {
             back()->with(['error' => __('messages.create_data_failed')]);
         }
-
-        return ['vehicle' => $vehicle, 'vehicle_details' => $vehicleDetail];
     }
 
-    public function editVehicle(Request $request)
+    public function editVehicle(Request $request, $id)
     {
-        $vehicle = $this->validateVehicle($request->id);
         try {
-            $vehicle = $vehicle::update([
-                "name" => $request->name,
-                "status" => $request->status,
-                "owner_id" => $request->owner_id,
-                "address" => $request->address,
-                "mail_address" => $request->mail_address,
-                "phone" => $request->phone,
-                "start_business_time" => $request->start_business_time,
-                "end_business_time" => $request->end_business_time,
-                "maintenance_time" => $request->maintenance_time,
-                "always_open" => $request->always_open,
+            $vehicle_id = $this->vehicleDetailRepository->find($id)->vehicle_id;
+
+            $vehicle = $this->vehicleRepository->update($vehicle_id, [
+                "vehicle_inspection_exp_date" => $request->vehicle_inspection_exp_date,
+                // "status" => $request->status,
             ]);
+
+            $vehicleDetail = $this->vehicleDetailRepository->update($id, [
+                "img" => $request->img,
+                "img2" => $request->img2,
+                "img3" => $request->img3,
+                "img4" => $request->img4,
+                "fuel" => $request->fuel,
+                "vehicle_number" => $request->vehicle,
+                "color" => $request->color,
+                "brand" => $request->brand,
+                "name" => $request->name,
+                "capacity" => $request->capacity,
+                "booking_start" => $request->booking_start,
+                "booking_end" => $request->booking_end,
+            ]);
+
+            return ['vehicle' => $vehicle, 'vehicleDetails' => $vehicleDetail];
         } catch (Exception $e) {
             back()->with(['error' => __('messages.update_data_failed')]);
         }
-        return $vehicle;
     }
 
     public function getVehicleDetail($id)

@@ -17,7 +17,7 @@ return new class extends Migration
         Schema::create('vehicles', function (Blueprint $table) {
             $table->uuid('id')->default(DB::raw('(UUID())'))->primary();
             $table->uuid('station_id')->nullable();
-            $table->tinyInteger('status')->default(1);
+            $table->tinyInteger('status')->default(0);
             $table->date('vehicle_inspection_exp_date')->nullable();
             $table->timestamps();
         });

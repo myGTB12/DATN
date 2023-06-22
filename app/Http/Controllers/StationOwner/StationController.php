@@ -29,6 +29,7 @@ class StationController extends Controller
         }
         $station_owner = auth()->guard('station_owner')->user();
         $stations = $this->stationService->getListStations();
+        
         return view('content.dashboard.dashboards-analytics', compact('station_owner', 'stations'));
     }
 

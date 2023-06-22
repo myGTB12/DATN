@@ -7,6 +7,7 @@ use App\Http\Controllers\StationOwner\VehicleController;
 use App\Http\Controllers\StationOwner\ReservationController;
 use App\Http\Controllers\Admin\Auth\LoginController;
 use App\Http\Controllers\StationOwner\Auth\StationOwnerLoginController;
+use App\Http\Controllers\User\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,6 +21,7 @@ use App\Http\Controllers\StationOwner\Auth\StationOwnerLoginController;
 */
 
 Route::group(["prefix" => "/"], function () {
+    Route::get('/', [UserController::class, "home"]);
     Route::match(["get", "post"], "/login", [LoginController::class, "login"])
         ->name("login");
     Route::get("/logout", [LoginController::class, "logout"])->name("logout");
@@ -29,7 +31,7 @@ Route::group([
     "prefix" => "admin",
     // "middleware" => "auth",
 ], function () {
-    Route::match(['get', 'post'], "/login", [StationOwnerLoginController::class, "login"])->name("users.login");
+    Route::match(['get', 'post'], "/login", [StationOwnerLoginController::class, "login"])->name("station.login");
     Route::match(['get', 'post'], "/stationOwners/edit/{id}", [AdminController::class, "editStationOwner"])->name("users.edit");
     Route::get("/stationOwners", [AdminController::class, "getListStationOwner"])->name("users.list");
 
@@ -56,3 +58,7 @@ Route::group([
         Route::post("/delete", [ReservationController::class, "delete"]);
     });
 });
+
+// Route::group(["prefix" => "user"], function () {
+//     Route::match(['get', 'post'], "/login", [StationOwnerLoginController::class, "login"])->name("users.login");
+// });

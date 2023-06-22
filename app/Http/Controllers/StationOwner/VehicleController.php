@@ -20,9 +20,9 @@ class VehicleController extends Controller
         $this->form = $form;
     }
 
-    public function index($id)
+    public function index($station_id)
     {
-        $vehicleDetails = $this->vehicleService->getListVehicles($id);
+        $vehicleDetails = $this->vehicleService->getListVehicles($station_id);
         $length = count($vehicleDetails);
         $midpoint = ceil($length / 2);
 
@@ -34,16 +34,21 @@ class VehicleController extends Controller
 
     public function create(Request $request, $station_id)
     {
-        if ($request->isMethod("post")) {
-            $station = $this->vehicleService->createVehicle($request, $station_id);
+        if($request->isMethod("post")){
+            $station = $this->vehicleService->createVehicle($station_id, $request);
+
+            return $this->index($station_id);
         }
         return view('content.form-elements.form-create-vehicle', compact('station_id'));
     }
 
-    public function edit(Request $request)
+    public function edit(Request $request, $station_id, $id)
     {
         // $this->form->validate($request, "CreateVehicleForm");
-        $station = $this->vehicleService->editVehicle($request);
+        $result = $this->vehicleService->editVehicle($request, $id);
+        if($result){
+            return redirect()->route('vehicle.index', $station_id);
+        }
     }
 
     public function show($station_id, $id)

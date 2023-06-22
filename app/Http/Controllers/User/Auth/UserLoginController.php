@@ -1,23 +1,20 @@
 <?php
 
-namespace App\Http\Controllers\StationOwner\Auth;
+namespace App\Http\Controllers\User\Auth;
 
-use Illuminate\Http\Request;
-use App\Form\CustomValidator;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Auth;
-use App\Services\StationOwnerService;
+use Illuminate\Http\Request;
 
-class StationOwnerLoginController extends Controller
+class UserLoginController extends Controller
 {
-    protected $stationOwnerService;
+    protected $userService;
     protected $form;
 
     public function __construct(
-        StationOwnerService $stationOwnerService,
+        UserService $userService,
         CustomValidator $form,
     ) {
-        $this->stationOwnerService = $stationOwnerService;
+        $this->userService = $userService;
         $this->form = $form;
     }
 
@@ -27,12 +24,11 @@ class StationOwnerLoginController extends Controller
             // Validate inputs
             $this->form->validate($request, "StationOwnerLoginForm");
 
-            $response = $this->stationOwnerService->loginAccount($request);
+            $response = $this->userService->loginAccount($request);
             if ($response === true) {
                 //Check user verify
-                auth()->guard('station_owner')->user();
-                session()->push('station_owner', true);
-                
+                auth()->guard('user')->user();
+                session()->push('user', true);
                 return redirect()->route('stations.index');
             }
 
@@ -41,7 +37,7 @@ class StationOwnerLoginController extends Controller
                 ->withInput()
                 ->with("error", $response);
         }
-
+        
         return view("content.authentications.station-owner-auth-login");
     }
 

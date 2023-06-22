@@ -18,7 +18,6 @@ return new class extends Migration
             $table->decimal('length', 10, 2)->nullable();
             $table->decimal('width', 10, 2)->nullable();
             $table->decimal('height', 10, 2)->nullable();
-            $table->tinyInteger('booking_status')->default(1);
         });
     }
 

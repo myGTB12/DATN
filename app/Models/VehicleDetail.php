@@ -36,7 +36,6 @@ class VehicleDetail extends Model
         "length",
         "width",
         "height",
-        "booking_status",
         "booking_start",
         "booking_end",
     ];

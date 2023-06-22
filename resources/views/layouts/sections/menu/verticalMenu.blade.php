@@ -23,7 +23,7 @@
 
     {{-- active menu method --}}
     @php
-    $activeClass = null;
+    $activeClass = App\Models\User::class;
     $currentRouteName = Route::currentRouteName();
     @endphp
 
@@ -41,6 +41,11 @@
       "url": "/pages/account-settings-account",
       "name": "Manage Station Owner",
       "slug": "pages-account-settings-account"
+      },
+      {
+        "name": "Manage Station",
+        "slug": "pages-account-settings-account",
+        "url": "/"
       }
       ]')])
     </li>

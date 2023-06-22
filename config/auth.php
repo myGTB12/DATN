@@ -48,6 +48,10 @@ return [
         'station_owner' => [
             'driver' => 'session',
             'provider' => 'station_owners',
+        ],
+        'user' => [
+            'driver' => 'session',
+            'provider' => 'users',
         ]
     ],
 

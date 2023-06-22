@@ -58,7 +58,7 @@
 
           <p class="text-center">
             <span>You are station owner?</span>
-            <a href="{{route('users.login')}}">
+            <a href="{{route('station.login')}}">
               <span>Sign in here</span>
             </a>
           </p>
