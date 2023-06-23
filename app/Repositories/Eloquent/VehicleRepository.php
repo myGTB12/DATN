@@ -20,13 +20,8 @@ class VehicleRepository extends BaseRepository
     public function getListVehiclesAtStation()
     {
         $vehicles = $this->getModel()->stations;
-        dd($vehicles);
-        return $vehicles;
-    }
 
-    public function getAllVehicles()
-    {
-        $vehicles = Vehicle::all();
+        return $vehicles;
     }
 
     public function createVehicle($request)

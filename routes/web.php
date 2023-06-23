@@ -58,7 +58,3 @@ Route::group([
         Route::post("/delete", [ReservationController::class, "delete"]);
     });
 });
-
-// Route::group(["prefix" => "user"], function () {
-//     Route::match(['get', 'post'], "/login", [StationOwnerLoginController::class, "login"])->name("users.login");
-// });

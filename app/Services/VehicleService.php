@@ -114,15 +114,18 @@ class VehicleService
         try {
             $this->vehicleRepository->delete($vehicle_id);
             $this->vehicleDetailRepository->delete($vehicle_detail_id);
+
             return true;
         } catch (Exception $e) {
             return false;
         }
     }
 
-    private function validateVehicle($id)
+    public function getAvailableVehicle()
     {
-        $station = Vehicle::findOrFail($id);
-        return $station;
+        $vehicles = $this->vehicleRepository->findBy(['status' => 0], false);
+        $vehicleDetails = $vehicles->pluck('vehicleDetail')->all();
+
+        return $vehicleDetails;
     }
 }
