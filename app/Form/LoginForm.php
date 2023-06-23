@@ -5,7 +5,7 @@ namespace App\Form;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 
-class StationOwnerLoginForm
+class LoginForm
 {
     /**
      * validate

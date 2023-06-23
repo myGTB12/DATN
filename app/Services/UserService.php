@@ -3,8 +3,10 @@
 namespace App\Services;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use App\Repositories\Eloquent\UserRepository;
 
-class StationOwnerService
+class UserService
 {
     protected UserRepository $userRepository;
 

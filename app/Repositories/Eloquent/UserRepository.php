@@ -5,7 +5,7 @@ namespace App\Repositories\Eloquent;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 
-class AdminRepository extends BaseRepository
+class UserRepository extends BaseRepository
 {
     /**
      * getModel

@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers\User\Auth;
 
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Form\CustomValidator;
+use App\Services\UserService;
+use App\Http\Controllers\Controller;
 
 class UserLoginController extends Controller
 {
@@ -22,13 +24,14 @@ class UserLoginController extends Controller
     {
         if ($request->isMethod("post")) {
             // Validate inputs
-            $this->form->validate($request, "StationOwnerLoginForm");
+            $this->form->validate($request, "LoginForm");
 
             $response = $this->userService->loginAccount($request);
             if ($response === true) {
                 //Check user verify
                 auth()->guard('user')->user();
                 session()->push('user', true);
+                
                 return redirect()->route('stations.index');
             }
 

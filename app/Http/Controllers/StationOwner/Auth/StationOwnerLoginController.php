@@ -25,7 +25,7 @@ class StationOwnerLoginController extends Controller
     {
         if ($request->isMethod("post")) {
             // Validate inputs
-            $this->form->validate($request, "StationOwnerLoginForm");
+            $this->form->validate($request, "LoginForm");
 
             $response = $this->stationOwnerService->loginAccount($request);
             if ($response === true) {

@@ -24,7 +24,7 @@ class LoginController extends Controller
     {
         if ($request->isMethod("post")) {
             // Validate inputs
-            $this->form->validate($request, "AdminLoginForm");
+            $this->form->validate($request, "LoginForm");
 
             $response = $this->login->loginAccount($request);
             if ($response === true) {
