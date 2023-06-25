@@ -4,7 +4,7 @@
   <div class="app-brand demo">
     <a href="{{url('/')}}" class="app-brand-link">
       <span class="app-brand-logo demo">
-        @include('_partials.macros',["width"=>25,"withbg"=>'#696cff'])
+        @include('_partials.macros',["width"=>50,"withbg"=>'#696cff'])
       </span>
       <span class="app-brand-text demo menu-text fw-bold ms-2">{{config('variables.templateName')}}</span>
     </a>
@@ -30,46 +30,24 @@
     {{-- main menu --}}
     <li class="menu-item {{$activeClass}}">
       <a href="/" class="menu-link menu-toggle">
-        <i class="menu-icon tf-icons bx bx-cube-alt"></i>
+        <i class="menu-icon tf-icons bx bx-buildings"></i>
 
-        <div>Search by station</div>
+        <div>Search By Station</div>
       </a>
 
       {{-- submenu --}}
-      @include('layouts.sections.menu.submenu', ['menu' => json_decode('[
-      {
-      "url": "/pages/account-settings-account",
-      "name": "Manage Station Owner",
-      "slug": "pages-account-settings-account"
-      },
-      {
-        "name": "Manage Station",
-        "slug": "pages-account-settings-account",
-        "url": "/"
-      }
-      ]')])
+      @include('layouts.sections.menu.submenu.home-submenu-station')
     </li>
 
     <li class="menu-item {{$activeClass}}">
       <a href="/" class="menu-link menu-toggle">
-        <i class="menu-icon tf-icons bx bx-cube-alt"></i>
+        <i class="menu-icon tf-icons bx bx-car"></i>
 
         <div>Search by car</div>
       </a>
 
       {{-- submenu --}}
-      @include('layouts.sections.menu.submenu', ['menu' => json_decode('[
-      {
-      "url": "/pages/account-settings-account",
-      "name": "Manage Station Owner",
-      "slug": "pages-account-settings-account"
-      },
-      {
-        "name": "Manage Station",
-        "slug": "pages-account-settings-account",
-        "url": "/"
-      }
-      ]')])
+      @include('layouts.sections.menu.submenu.home-submenu-car')
     </li>
   </ul>
 
