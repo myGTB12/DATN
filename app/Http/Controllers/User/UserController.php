@@ -23,6 +23,8 @@ class UserController extends Controller
     public function home(){
         $vehicles = $this->vehicleService->getAvailableVehicle();
 
-        return view('content.user-interface.ui-home', ['vehicles' => $vehicles]);
+        $cities = __('address.city');
+
+        return view('content.user-interface.ui-home', ['vehicles' => $vehicles, 'cities' => $cities]);
     }
 }

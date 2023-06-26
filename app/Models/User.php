@@ -21,7 +21,17 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
-    protected $fillable = ["first_name", "email", "password", "phone",];
+    protected $fillable = [
+        "user_name",
+        "first_name",
+        "last_name",
+        "email",
+        "password",
+        "phone",
+        "strict",
+        "city",
+        "address"
+    ];
 
     /**
      * The attributes that should be cast.

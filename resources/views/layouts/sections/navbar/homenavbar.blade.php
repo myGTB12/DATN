@@ -1,3 +1,10 @@
+@php
+$user = auth()->guard('user')->user();
+@endphp
+
+@if($user)
+@include('layouts/sections/navbar/navbar')
+@else
 <nav class="navbar navbar-example navbar-expand-lg bg-light">
     <div class="container-fluid">
       <a class="navbar-brand">Rental Car</a>
@@ -21,7 +28,7 @@
       </div>
     </div>
 </nav>
-
+@endif
 <!-- Modal sign in -->
 <div class="modal fade" id="modalSignin" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
@@ -63,29 +70,37 @@
         <h5 class="modal-title" id="modalCenterTitle">Sign-up</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
     </div>
+    <form action="{{route('user.register')}}" method="POST">
+            @csrf
     <div class="modal-body">
         <div class="row">
         <div class="col mb-3">
             <label for="nameWithTitle" class="form-label">User name</label>
-            <input type="text" name="name" id="nameWithTitle" class="form-control" placeholder="Enter Name">
+            <input type="text" name="user_name" id="nameWithTitle" class="form-control" placeholder="Enter Name">
         </div>
         </div>
         <div class="row">
         <div class="col mb-3">
             <label for="nameWithTitle" class="form-label">Email</label>
-            <input type="text" name="email" id="nameWithTitle" class="form-control" placeholder="Enter Name">
+            <input type="text" name="email" id="nameWithTitle" class="form-control" placeholder="xxxx@xxx.xx">
         </div>
         </div>
         <div class="row g-2">
         <div class="col mb-0">
             <label for="emailWithTitle" class="form-label">Password</label>
-            <input type="password" name="password" id="emailWithTitle" class="form-control" placeholder="xxxx@xxx.xx">
+            <input type="password" name="password" id="emailWithTitle" class="form-control" placeholder="">
         </div>
         </div>
         <div class="row g-2">
         <div class="col mb-0">
             <label for="emailWithTitle" class="form-label">Confirm Password</label>
-            <input type="password" name="confirm_password" id="emailWithTitle" class="form-control" placeholder="xxxx@xxx.xx">
+            <input type="password" name="confirm_password" id="emailWithTitle" class="form-control" placeholder="">
+        </div>
+        </div>
+        <div class="row g-2">
+        <div class="col mb-0">
+            <label for="emailWithTitle" class="form-label">Phone</label>
+            <input type="text" name="phone" id="emailWithTitle" class="form-control" placeholder="+084 12345678">
         </div>
         </div>
     </div>
@@ -93,6 +108,7 @@
         <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Close</button>
         <button type="submit" class="btn btn-primary">Sign up</button>
     </div>
+    </form>
     </div>
 </div>
 </div>

@@ -17,7 +17,12 @@ class SeedDataUser extends Seeder
     {
         User::create([
             'email' => "user@user.com",
-            'first_name' => 'user1',
+            'first_name' => 'tung',
+            'last_name' => 'nguyen',
+            'user_name' => 'user@user.com',
+            'city' => 'Ha Noi',
+            'strict' => 'Cau Giay',
+            'address' => fake()->address(),
             'email_verified_at' => Carbon::now(),
             'password' => Hash::make('password'),
         ]);

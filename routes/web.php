@@ -22,8 +22,11 @@ use App\Http\Controllers\User\UserController;
 */
 
 Route::group(["prefix" => "/"], function () {
-    Route::get('/', [UserController::class, "home"]);
+    Route::get('/', [UserController::class, "home"])->name('home');
     Route::post('/login', [UserLoginController::class, "login"])->name('user.login');
+    Route::get('/logout', [UserLoginController::class, 'logout'])->name('user.logout');
+    Route::match(['get', 'post'], "/profile/{user_id}", [UserLoginController::class, 'profile'])->name('user.profile');
+    Route::post("/register", [UserLoginController::class, 'register'])->name('user.register');
 });
 
 Route::group([

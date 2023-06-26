@@ -31,8 +31,8 @@ class UserLoginController extends Controller
                 //Check user verify
                 auth()->guard('user')->user();
                 session()->push('user', true);
-                
-                return redirect()->route('stations.index');
+
+                return redirect()->route('home');
             }
 
             return redirect()
@@ -48,6 +48,36 @@ class UserLoginController extends Controller
     {
         auth()->logout();
         $request->session()->flush();
-        return redirect()->route("login");
+
+        return redirect()->route("home");
+    }
+
+    public function register(Request $request){
+        $result = $this->userService->createUser($request);
+        if($result) {
+            return redirect()->route('home');
+        }
+
+        return redirect()
+            ->back()
+            ->withInput()
+            ->with("error", $result);
+    }
+
+    public function profile($id, Request $request){
+        if($request->isMethod('POST')){
+            $result = $this->userService->updateProfile($id, $request);
+            if($result){
+                return redirect()->route('user.profile', ['user_id' => $id]);
+            }
+
+            return redirect()
+                ->back()
+                ->withInput()
+                ->with("error", $result);
+        }
+
+        $user = auth()->guard('user')->user();
+        return view('content/pages/pages-user-account-settings-account', compact('user'));
     }
 }
