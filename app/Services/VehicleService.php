@@ -128,4 +128,10 @@ class VehicleService
 
         return $vehicleDetails;
     }
+
+    public function searchByCar($request){
+        $vehicles = $this->vehicleDetailRepository->serchByCarDetail($request);
+
+        return $vehicles;
+    }
 }

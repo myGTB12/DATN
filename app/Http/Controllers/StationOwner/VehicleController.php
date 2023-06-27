@@ -6,17 +6,21 @@ use Illuminate\Http\Request;
 use App\Form\CustomValidator;
 use App\Services\VehicleService;
 use App\Http\Controllers\Controller;
+use App\Services\StationService;
 
 class VehicleController extends Controller
 {
     protected $vehicleService;
+    protected $stationService;
     protected $form;
 
     public function __construct(
         VehicleService $vehicleService,
+        StationService $stationService,
         CustomValidator $form,
     ) {
         $this->vehicleService = $vehicleService;
+        $this->stationService = $stationService;
         $this->form = $form;
     }
 
@@ -71,8 +75,14 @@ class VehicleController extends Controller
 
     public function searchByCar(Request $request)
     {
-        dd($request->all());
         $result = $this->vehicleService->searchByCar($request);
+
+        return redirect()->route('home', true);
+    }
+
+    public function searchByStation(Request $request)
+    {
+        $result = $this->stationService->searchByStation($request);
 
         return redirect()->route('home', true);
     }

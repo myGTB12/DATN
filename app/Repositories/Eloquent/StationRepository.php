@@ -82,4 +82,21 @@ class StationRepository extends BaseRepository
         $station = $this->model->findOrFail($station_id);
         $station->delete();
     }
+
+    public function serchByLocation($request){
+        $city = $request->city;
+        $district = $request->name;
+
+        $query = $this->model->select("stations.*")->whereNull("stations.deleted_at");
+
+        if($city){
+            $query = $query->where("stations.brand", "like", "%" . $city . "%");
+        }
+        
+        if($district){
+            $query = $query->where("stations.name", "like", "%" . $district . "%");
+        }
+
+        return $query->orderByDesc("stations.updated_at");
+    }
 }

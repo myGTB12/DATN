@@ -13,8 +13,7 @@
                 <div class="mb-3">
                     <label for="exampleFormControlSelect1" class="form-label">Select brand</label>
                     <select class="form-select" name="brand" id="exampleFormControlSelect1" aria-label="Default select example">
-                        <option selected>Open this select menu</option>
-                        <option value="1">Ha Noi</option>
+                        <option value="1">Mazda</option>
                         <option value="2">Hai Phong</option>
                         <option value="3">Bac Ninh</option>
                     </select>
@@ -22,7 +21,6 @@
                 <div class="mb-3">
                     <label for="exampleFormControlSelect1" class="form-label">Select name</label>
                     <select class="form-select" name="name" id="exampleFormControlSelect1" aria-label="Default select example">
-                        <option selected>Open select city</option>
                         @foreach($cities as $key => $city)
                         <option value="{{$key}}">{{$city}}</option>
                         @endforeach

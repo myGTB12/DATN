@@ -59,6 +59,12 @@ class StationService
         return $results;
     }
 
+    public function searchByStation($request){
+        $stations = $this->stationRepository->serchByLocation($request);
+
+        return $stations;
+    }
+
     private function validateStation($id)
     {
         $station = Station::findOrFail($id);
