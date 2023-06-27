@@ -26,6 +26,8 @@ class Station extends Model
         "status",
         "owner_id",
         "address",
+        "city",
+        "district",
         "mail_address",
         "phone",
         "start_business_time",
