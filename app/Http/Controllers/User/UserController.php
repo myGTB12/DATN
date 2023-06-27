@@ -20,10 +20,13 @@ class UserController extends Controller
         $this->form = $form;
     }
 
-    public function home(){
-        $vehicles = $this->vehicleService->getAvailableVehicle();
+    public function home($isSearch = false){
+        if($isSearch){
 
-        $cities = __('address.city');
+        }
+        
+        $vehicles = $this->vehicleService->getAvailableVehicle();
+        $cities = __('city');
 
         return view('content.user-interface.ui-home', ['vehicles' => $vehicles, 'cities' => $cities]);
     }

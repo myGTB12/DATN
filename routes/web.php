@@ -27,6 +27,8 @@ Route::group(["prefix" => "/"], function () {
     Route::get('/logout', [UserLoginController::class, 'logout'])->name('user.logout');
     Route::match(['get', 'post'], "/profile/{user_id}", [UserLoginController::class, 'profile'])->name('user.profile');
     Route::post("/register", [UserLoginController::class, 'register'])->name('user.register');
+    Route::post("searchByCar", [VehicleController::class, 'searchByCar'])->name('vehicle.searchByCar');
+    Route::post("searchByStation", [VehicleController::class, 'searchByStation'])->name('vehicle.searchByStation');
 });
 
 Route::group([

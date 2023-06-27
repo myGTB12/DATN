@@ -1,7 +1,7 @@
 <?php
 
 return [
-    1   => 'Hà Giang',
+    1   => 'Hà Nội',
     2	=> 'Cao Bằng',
     3	=> 'Lào Cai',
     4	=> 'Sơn La',
@@ -16,7 +16,7 @@ return [
     13	=> 'Vĩnh Phúc',
     14	=> 'Bắc Giang',
     15	=> 'Bắc Ninh',
-    16	=> 'Hà Nội',
+    16	=> 'Hà Giang',
     17	=> 'Quảng Ninh',
     18	=> 'Hải Dương',
     19	=> 'Hải Phòng',

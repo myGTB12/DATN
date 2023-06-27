@@ -68,4 +68,12 @@ class VehicleController extends Controller
 
         return view('contnent.pages.pages-misc-error');
     }
+
+    public function searchByCar(Request $request)
+    {
+        dd($request->all());
+        $result = $this->vehicleService->searchByCar($request);
+
+        return redirect()->route('home', true);
+    }
 }

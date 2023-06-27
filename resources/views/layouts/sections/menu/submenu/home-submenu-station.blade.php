@@ -1,33 +1,29 @@
+@section('page-script')
+    <script src="{{asset('assets/js/form-control-select.js')}}"></script>
+@endsection
 <ul class="menu-sub">
-    {{-- active menu method --}}
-    @php
-    $activeClass = 'active';
-    $active = 'active open';
-    @endphp
-
-    <li class="menu-item {{$activeClass}}">
+    <li class="menu-item active">
         <div class="card mb-4">
+        <form action="{{route('vehicle.searchByStation')}}" method="POST">
+            @csrf
             <div class="card-body">
                 <div class="mb-3">
-                    <label for="exampleFormControlSelect1" class="form-label">Select district</label>
-                    <select class="form-select" id="exampleFormControlSelect1" aria-label="Default select example">
-                        <option selected>Open this select menu</option>
-                        <option value="1">Ha Noi</option>
-                        <option value="2">Hai Phong</option>
-                        <option value="3">Bac Ninh</option>
+                    <label for="exampleFormControlSelect1" class="form-label">Select city</label>
+                    <select class="form-select" id="formControlSelectCity" aria-label="Default select example">
+                        @foreach($cities as $key => $city)
+                        <option value="{{$key}}">{{$city}}</option>
+                        @endforeach
                     </select>
                 </div>
                 <div class="mb-3">
-                    <label for="exampleFormControlSelect1" class="form-label">Select city</label>
-                    <select class="form-select" id="exampleFormControlSelect1" aria-label="Default select example">
-                        <option value="1">Ha Noi</option>
-                        <option value="2">Hai Phong</option>
-                        <option value="3">Bac Ninh</option>
+                    <label for="exampleFormControlSelect1" class="form-label">Select district</label>
+                    <select class="form-select" id="formControlSelectDistrict" aria-label="Default select example">
                     </select>
                 </div>
+                <button type="submit" class="btn btn-primary">Search</button>
             </div>
+        </form>
         </div>
-
         {{-- submenu --}}
         @if (isset($submenu->submenu))
         @include('layouts.sections.menu.submenu',['menu' => $submenu->submenu])
