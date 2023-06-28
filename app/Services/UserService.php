@@ -38,6 +38,7 @@ class UserService
             'email' => $request->email,
             'password' => Hash::make($request->password),
             'phone' => $request->phone,
+            'user_name' => $request->user_name,
             'first_name' => $request->first_name,
             'email_verified_at' => Carbon::now(),
         ]);

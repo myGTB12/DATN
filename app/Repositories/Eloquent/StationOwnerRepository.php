@@ -3,8 +3,8 @@
 namespace App\Repositories\Eloquent;
 
 use App\Models\StationOwner;
-use App\Form\EditStationOwnerForm;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Http\Request;
 
 class StationOwnerRepository extends BaseRepository
 {
@@ -23,7 +23,7 @@ class StationOwnerRepository extends BaseRepository
             ->where("email", ($request->email))
             ->whereNotNull("email_verified_at")
             ->first();
-        if (Hash::check($request->password, $model->password)) {
+        if ($model && Hash::check($request->password, $model->password)) {
             return $model;
         }
         return;
@@ -34,7 +34,7 @@ class StationOwnerRepository extends BaseRepository
         return $this->model->all();
     }
 
-    public function editStationOwner($id, EditStationOwnerForm $editStationOwnerRequest)
+    public function editStationOwner($id, Request $editStationOwnerRequest)
     {
         $stationOwner = $this->model->findOrFail($id);
         try {

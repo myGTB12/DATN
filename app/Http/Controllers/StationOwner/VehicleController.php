@@ -75,15 +75,17 @@ class VehicleController extends Controller
 
     public function searchByCar(Request $request)
     {
-        $result = $this->vehicleService->searchByCar($request);
+        $vehicles = $this->vehicleService->searchByCar($request);
+        $cities = __('city');
 
-        return redirect()->route('home', true);
+        return view('content.user-interface.ui-home', ['vehicles' => $vehicles, 'cities' => $cities]);
     }
 
     public function searchByStation(Request $request)
     {
-        $result = $this->stationService->searchByStation($request);
+        $vehicles = $this->stationService->searchByStation($request);
+        $cities = __('city');
 
-        return redirect()->route('home', true);
+        return view('content.user-interface.ui-home', ['vehicles' => $vehicles, 'cities' => $cities]);
     }
 }

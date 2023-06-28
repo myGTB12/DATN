@@ -131,7 +131,7 @@ class VehicleService
 
     public function searchByCar($request){
         $vehicles = $this->vehicleDetailRepository->serchByCarDetail($request);
-
-        return $vehicles;
+        
+        return $vehicles->toArray();
     }
 }

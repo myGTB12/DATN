@@ -25,15 +25,15 @@ class VehicleDetailRepository extends BaseRepository
         $query = $this->model->select("vehicle_details.*")->whereNull("vehicle_details.deleted_at");
 
         if($brand){
-            $query = $query->where("vehicle_details.brand", "like", "%" . "mazda" . "%");
-        }else if($name){
-            $query = $query->where("vehicle_details.name", "like", "%" . $name . "%");
-        };
-        
-        if($capacity){
-            $query = $query->where("vehicle_details.capacity", $capacity);
+            $query = $query->where("vehicle_details.brand", "like", "%" . $brand . "%");
         }
-
-        return $query->orderByDesc("vehicle_details.updated_at");
+        if($name){
+            $query = $query->orWhere("vehicle_details.name", "like", "%" . $name . "%");
+        };
+        if($capacity){
+            $query = $query->orWhere("vehicle_details.capacity", $capacity);
+        }
+        
+        return $query->orderByDesc("vehicle_details.updated_at")->get();
     }
 }

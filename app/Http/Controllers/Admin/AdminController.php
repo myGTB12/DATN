@@ -56,6 +56,13 @@ class AdminController extends Controller
             'number_of_stations' => count($stations),
             'number_vehicles' => count($vehicles),
         ];
-        return view('content.form-layout.form-layouts-vertical', compact('data', 'stationOwner'));
+        return $this->getListStationOwner();
+    }
+
+    public function deleteStationOwner($id)
+    {
+        $this->stationOwnerService->delete($id);
+
+        return $this->getListStationOwner();
     }
 }

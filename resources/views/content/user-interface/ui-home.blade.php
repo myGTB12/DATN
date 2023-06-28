@@ -1,6 +1,6 @@
 @extends('layouts/homeNavbarLayout')
 
-@section('title', 'Carousel - UI elements')
+@section('title', __('messages.title'))
 
 @section('content')
 
@@ -9,8 +9,6 @@
 <div class="row">
   <!-- Bootstrap carousel -->
   <div class="col-md">
-    <h5 class="my-4">Bootstrap carousel</h5>
-
     <div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
       <ol class="carousel-indicators">
         <li data-bs-target="#carouselExample" data-bs-slide-to="0" class="active"></li>

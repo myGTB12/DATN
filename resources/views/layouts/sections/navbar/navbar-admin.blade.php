@@ -1,10 +1,7 @@
 @php
 $containerNav = $containerNav ?? 'container-fluid';
 $navbarDetached = ($navbarDetached ?? '');
-$user = auth()->guard('user')->user();
-if(!$user){
-  $user = auth()->guard('station_owner')->user();
-}
+$admin = auth()->guard('admin')->user();
 @endphp
 
 <!-- Navbar -->
@@ -65,7 +62,7 @@ if(!$user){
                       </div>
                     </div>
                     <div class="flex-grow-1">
-                      <span class="fw-semibold d-block">{{$user->first_name . ' ' . $user->last_name}}</span>
+                      <span class="fw-semibold d-block">{{$admin->name}}</span>
                       <small class="text-muted">User</small>
                     </div>
                   </div>
@@ -75,7 +72,7 @@ if(!$user){
                 <div class="dropdown-divider"></div>
               </li>
               <li>
-                <a class="dropdown-item" href="{{route('user.profile', $user->id)}}">
+                <a class="dropdown-item">
                   <i class="bx bx-user me-2"></i>
                   <span class="align-middle">My Profile</span>
                 </a>

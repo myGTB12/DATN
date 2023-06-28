@@ -20,11 +20,7 @@ class UserController extends Controller
         $this->form = $form;
     }
 
-    public function home($isSearch = false){
-        if($isSearch){
-
-        }
-        
+    public function home(){        
         $vehicles = $this->vehicleService->getAvailableVehicle();
         $cities = __('city');
 

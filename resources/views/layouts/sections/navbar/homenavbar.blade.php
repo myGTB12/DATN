@@ -14,9 +14,9 @@ $user = auth()->guard('user')->user();
 
       <div class="collapse navbar-collapse" id="navbar-ex-3">
         <div class="navbar-nav me-auto">
-          <a class="nav-item nav-link active" href="javascript:void(0)">Home</a>
-          <a class="nav-item nav-link" href="javascript:void(0)">About us</a>
-          <a class="nav-item nav-link" href="javascript:void(0)">Contact</a>
+          <a class="nav-item nav-link active bx bx-home-alt" href="{{route('home')}}">Home</a>
+          <a class="nav-item nav-link active bx bx-sitemap" href="">About us</a>
+          <a class="nav-item nav-link active bx bx-phone" href="">Contact</a>
         </div>
 
         <form onsubmit="return false">

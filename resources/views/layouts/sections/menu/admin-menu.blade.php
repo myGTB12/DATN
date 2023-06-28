@@ -21,14 +21,8 @@
       <span class="menu-header-text">Services</span>
     </li>
 
-    {{-- active menu method --}}
-    @php
-    $activeClass = App\Models\User::class;
-    $currentRouteName = Route::currentRouteName();
-    @endphp
-
     {{-- main menu --}}
-    <li class="menu-item {{$activeClass}}">
+    <li class="menu-item active">
       <a href="/" class="menu-link menu-toggle">
         <i class="menu-icon tf-icons bx bx-cube-alt"></i>
 
@@ -36,7 +30,7 @@
       </a>
 
       {{-- submenu --}}
-      @include('layouts.sections.menu.submenu')
+      @include('layouts.sections.menu.admin-submenu')
     </li>
   </ul>
 

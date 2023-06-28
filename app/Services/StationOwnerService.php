@@ -2,9 +2,9 @@
 
 namespace App\Services;
 
+use Exception;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
-use App\Form\EditStationOwnerForm;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use App\Repositories\Eloquent\StationOwnerRepository;
@@ -25,7 +25,7 @@ class StationOwnerService
         return $stationOwners;
     }
 
-    public function editStationOwner($id, EditStationOwnerForm $editStationOwnerRequest)
+    public function editStationOwner($id, Request $editStationOwnerRequest)
     {
         $this->stationOwnerRepository->editStationOwner($id, $editStationOwnerRequest);
     }
@@ -44,5 +44,13 @@ class StationOwnerService
         ]);
 
         return true;
+    }
+
+    public function delete($id){
+        try{
+            $this->stationOwnerRepository->delete($id);
+        } catch(Exception $e){
+            return $e;
+        }
     }
 }

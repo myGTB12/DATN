@@ -1,9 +1,9 @@
 @extends('layouts/contentNavbarLayout')
 
-@section('title', 'Carousel - UI elements')
+@section('title', __('messages.title'))
 
 @section('content')
-<h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">UI elements /</span> Carousel</h4>
+<h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Your station/</span></h4>
 @php
   $stationId = request()->route('station_id');
 @endphp
@@ -43,20 +43,8 @@
         <span class="carousel-control-next-icon" aria-hidden="true"></span>
         <span class="visually-hidden">Next</span>
       </a>
-      <!-- <div class="product-listing-content">
-        <h5><a href="">a </a></h5>
-        <p class="list-price" style="display: inline-block">Price Per Day: b RS </p>
-        <ul style="display: inline-block">
-          <li><i class="fa fa-user" aria-hidden="true"></i> c seats</li>
-          <li><i class="fa fa-calendar" aria-hidden="true"></i> d model</li>
-          <li><i class="fa fa-car" aria-hidden="true">e </i></li>
-        </ul>
-        <p class="list-city">City: f </p>
-
-        <a href="" class="btn">View Details <span class="angle_arrow"><i class="fa fa-angle-right" aria-hidden="true"></i></span></a>
-      </div> -->
     </div>
-    <a href="{{route('vehicle.show', ['id' => $vehicle->id, 'station_id' => $stationId])}}" class="btn btn-primary me-1" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="collapseExample">
+    <a href="{{route('vehicle.show', ['id' => $vehicle->id, 'station_id' => $stationId])}}" class="btn btn-primary me-1" role="button" aria-expanded="false" aria-controls="collapseExample">
       Details
     </a>
     <div class="divider">

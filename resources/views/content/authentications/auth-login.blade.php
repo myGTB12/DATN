@@ -1,6 +1,6 @@
 @extends('layouts/blankLayout')
 
-@section('title', 'Login Basic - Pages')
+@section('title', __('messages.title'))
 
 @section('page-style')
 <!-- Page -->
@@ -9,6 +9,13 @@
 
 @section('content')
 <div class="container-xxl">
+  @if(session()->has('error'))
+    <div class="alert alert-danger alert-dismissible" role="alert">
+      {{ session('error') }}
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+      </button>
+    </div>
+  @endif
   <div class="authentication-wrapper authentication-basic container-p-y">
     <div class="authentication-inner">
       <!-- Register -->
@@ -105,3 +112,4 @@
       });
     });
   </script>
+@endsection

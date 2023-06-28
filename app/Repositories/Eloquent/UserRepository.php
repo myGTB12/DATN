@@ -20,7 +20,6 @@ class UserRepository extends BaseRepository
     {
         $model = $this->model
             ->where("email", ($request->email))
-            ->whereNotNull("email_verified_at")
             ->first();
         if ($model && Hash::check($request->password, $model->password)) {
             return $model;

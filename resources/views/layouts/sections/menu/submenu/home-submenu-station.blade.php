@@ -20,6 +20,12 @@
                     <select class="form-select" id="formControlSelectDistrict" aria-label="Default select example">
                     </select>
                 </div>
+                <div class="mb-3">
+                    <label for="exampleFormControlSelect1" class="form-label">Station name</label>
+                    <div class="col-sm-10">
+                    <input type="text" class="form-control" id="basic-default-name" name="name"/>
+                    </div>
+                </div>
                 <button type="submit" class="btn btn-primary">Search</button>
             </div>
         </form>

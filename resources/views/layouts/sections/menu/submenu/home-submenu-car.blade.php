@@ -13,9 +13,9 @@
                 <div class="mb-3">
                     <label for="exampleFormControlSelect1" class="form-label">Select brand</label>
                     <select class="form-select" name="brand" id="exampleFormControlSelect1" aria-label="Default select example">
-                        <option value="1">Mazda</option>
-                        <option value="2">Hai Phong</option>
-                        <option value="3">Bac Ninh</option>
+                        <option value="Mazda">Mazda</option>
+                        <option value="Mercedes">Mercedes</option>
+                        <option value="Ranger Rover">Ranger Rover</option>
                     </select>
                 </div>
                 <div class="mb-3">
