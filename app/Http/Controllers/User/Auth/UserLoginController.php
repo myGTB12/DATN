@@ -38,7 +38,7 @@ class UserLoginController extends Controller
             return redirect()
                 ->back()
                 ->withInput()
-                ->with("error", $response);
+                ->with("error", __('messages.login_fail'));
         }
         
         return view("content.authentications.station-owner-auth-login");

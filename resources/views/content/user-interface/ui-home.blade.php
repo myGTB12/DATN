@@ -4,7 +4,7 @@
 
 @section('content')
 
-<h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">UI elements /</span> Carousel</h4>
+<h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Home /</span> Cars</h4>
 
 <div class="row">
   <!-- Bootstrap carousel -->
@@ -50,8 +50,6 @@
   </div>
   <!-- Bootstrap crossfade carousel -->
   <div class="col-md">
-    <h5 class="my-4">Bootstrap crossfade carousel (dark)</h5>
-
     <div id="carouselExample-cf" class="carousel carousel-dark slide carousel-fade" data-bs-ride="carousel">
       <ol class="carousel-indicators">
         <li data-bs-target="#carouselExample-cf" data-bs-slide-to="0" class="active"></li>

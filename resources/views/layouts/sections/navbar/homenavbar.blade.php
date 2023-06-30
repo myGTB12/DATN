@@ -6,6 +6,13 @@ $user = auth()->guard('user')->user();
 @include('layouts/sections/navbar/navbar')
 @else
 <nav class="navbar navbar-example navbar-expand-lg bg-light">
+    @if(session()->has('error'))
+    <div class="alert alert-danger alert-dismissible" role="alert">
+      {{ session('error') }}
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+      </button>
+    </div>
+    @endif
     <div class="container-fluid">
       <a class="navbar-brand">Rental Car</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-ex-3">
