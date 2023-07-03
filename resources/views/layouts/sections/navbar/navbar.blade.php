@@ -3,7 +3,10 @@ $containerNav = $containerNav ?? 'container-fluid';
 $navbarDetached = ($navbarDetached ?? '');
 $user = auth()->guard('user')->user();
 if(!$user){
-  $user = auth()->guard('station_owner')->user();
+$user = auth()->guard('station_owner')->user();
+}
+if(!$user){
+$user = auth()->guard('admin')->user();
 }
 @endphp
 

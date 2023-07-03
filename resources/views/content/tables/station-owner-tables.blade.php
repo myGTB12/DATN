@@ -30,7 +30,7 @@
           @if($stationOwner->status == 1)
           <td><span class="badge bg-label-primary me-1">Active</span></td>
           @else
-          <td><span class="badge bg-label-primary me-1">Inactive</span></td>
+          <td><span class="badge bg-label-secondary me-1">Inactive</span></td>
           @endif
           <td>
             <div class="dropdown">

@@ -31,7 +31,7 @@ class AdminController extends Controller
         if (session()->get('admin')) {
             $stationOwners = $this->stationOwnerService->getListStationOwner();
 
-            return view('content.tables.tables-basic', compact('stationOwners'));
+            return view('content.tables.station-owner-tables', compact('stationOwners'));
         } else {
             return back()->with(['error' => __('messages.not_admin')]);
         }
@@ -40,10 +40,13 @@ class AdminController extends Controller
     public function editStationOwner($id, Request $request)
     {
         if ($request->isMethod("post")) {
+            if (!$request->status) {
+                $request->merge(['status' => 0]);
+            }
             $this->form->validate($request, "EditStationOwnerForm");
             if (session()->get('admin')) {
                 $this->stationOwnerService->editStationOwner($id, $request);
-                return $this->getListStationOwner();
+                return redirect()->route('users.list');
             } else {
                 return back()->with(['error' => __('messages.not_admin')]);
             }
@@ -56,7 +59,16 @@ class AdminController extends Controller
             'number_of_stations' => count($stations),
             'number_vehicles' => count($vehicles),
         ];
-        return $this->getListStationOwner();
+
+        return view('content.form-elements.form-edit-station-owner', compact('stationOwner'));
+    }
+
+    public function approveRequest(Request $request)
+    {
+        if ($request->isMethod("post")) {
+        }
+
+        // return view 
     }
 
     public function deleteStationOwner($id)

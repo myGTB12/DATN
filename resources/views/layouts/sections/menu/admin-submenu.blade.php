@@ -7,7 +7,7 @@
   @endphp
 
   <li class="menu-item {{$currentRouteName === 'users.list' ? 'active open' : ''}}">
-    <a href="" class="menu-link">
+    <a href="{{route('users.list')}}" class="menu-link">
       <i class=""></i>
       <div>Manage Station Owner</div>
     </a>

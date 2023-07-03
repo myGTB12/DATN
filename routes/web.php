@@ -35,11 +35,14 @@ Route::group([
     "prefix" => "admin",
     // "middleware" => "auth",
 ], function () {
-    Route::match(['get', 'post'], "/stationOwners/edit/{id}", [AdminController::class, "editStationOwner"])->name("users.edit");
-    Route::get("/stationOwners", [AdminController::class, "getListStationOwner"])->name("users.list");
-    Route::post("/stationOwner/{id}", [AdminController::class, "deleteStationOwner"])->name("users.delete");
+    Route::group(["prefix" => "tationOwners"], function () {
+        Route::match(['get', 'post'], "/edit/{id}", [AdminController::class, "editStationOwner"])->name("users.edit");
+        Route::get("/", [AdminController::class, "getListStationOwner"])->name("users.list");
+        Route::post("/{id}", [AdminController::class, "deleteStationOwner"])->name("users.delete");
+        Route::match(['get', 'post'], "/request", [AdminController::class, "approveRequest"])->name("users.request");
+    });
     Route::match(["get", "post"], "/login", [LoginController::class, "login"])
-    ->name("login");
+        ->name("login");
     Route::get("/logout", [LoginController::class, "logout"])->name("logout");
 });
 

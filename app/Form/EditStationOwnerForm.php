@@ -17,7 +17,7 @@ class EditStationOwnerForm
         $validator = Validator::make($request->all(), [
             "name" => ["bail", "required", "string", "max:255"],
             "status" => ["bail", "required"],
-            "company_name" => ["bail", "required", "string", "max:255"],
+            "company_name" => ["bail", "string", "max:255"],
             "email" => ["bail", "email"],
             "phone" => ["bail"],
         ]);

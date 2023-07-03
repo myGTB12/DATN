@@ -10,4 +10,6 @@ return [
     "user_id_required" => "Please enter user or email!",
     "email_format" => "Input must be type of email",
     "password_required" => "Please enter password!",
+    "edit_station_owner" => "Edit station owner",
+    "merge_titles" => "Rental Cars - ",
 ];
