@@ -9,20 +9,18 @@
 <div class="row">
   <div class="card overflow-hidden">
     <!-- Help Center Header -->
-    <div class="help-center-header d-flex flex-column justify-content-center align-items-center">
-      <h3 class="text-center"> Hello, how can we help? </h3>
+    <div class="d-flex flex-column justify-content-center align-items-center" style="background-image: url('assets/img/pages/landing.png'); background-repeat: no-repeat; background-size: cover; min-height: 500px!important; border-radius: 16px">
+      <h3 class="text-center" style="color: #fff;"> {{__('messages.merge_titles')}} {{__('messages.slogan')}}</h3>
       <div class="input-wrapper my-3 input-group input-group-merge">
-        <span class="input-group-text" id="basic-addon1"><i class="bx bx-search-alt bx-xs text-muted"></i></span>
-        <input type="text" class="form-control form-control-lg" placeholder="Find anything (features, payment or reset password)" aria-label="Search" aria-describedby="basic-addon1">
       </div>
-      <p class="text-center px-3 mb-0">Common troubleshooting topics: eCommerce, Blogging to payment</p>
+      <p class="text-center px-3 mb-0" style="color: #fff;">Join us and find the car you want</p>
     </div>
     <!-- /Help Center Header -->
 
     <!-- Popular Articles -->
     <div class="help-center-popular-articles py-5">
       <div class="container-xl">
-        <h4 class="text-center mt-2 mb-4">Popular Articles</h4>
+        <h4 class="text-center mt-2 mb-4">Sales Off & Voucher</h4>
         <div class="row">
           <div class="col-lg-10 mx-auto">
             <div class="row mb-3">
@@ -64,8 +62,91 @@
       </div>
     </div>
     <!-- /Popular Articles -->
-
-    <!-- Knowledge Base -->
+  </div>
+  <!-- Bootstrap carousel -->
+  <div class="col-md">
+    <div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
+      <ol class="carousel-indicators">
+        <li data-bs-target="#carouselExample" data-bs-slide-to="0" class="active"></li>
+        <li data-bs-target="#carouselExample" data-bs-slide-to="1"></li>
+        <li data-bs-target="#carouselExample" data-bs-slide-to="2"></li>
+      </ol>
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img class="d-block w-100" src="{{asset('assets/img/elements/13.jpg')}}" alt="First slide" />
+          <div class="carousel-caption d-none d-md-block">
+            <h3>First slide</h3>
+            <p>Eos mutat malis maluisset et, agam ancillae quo te, in vim congue pertinacia.</p>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img class="d-block w-100" src="{{asset('assets/img/elements/2.jpg')}}" alt="Second slide" />
+          <div class="carousel-caption d-none d-md-block">
+            <h3>Second slide</h3>
+            <p>In numquam omittam sea.</p>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img class="d-block w-100" src="{{asset('assets/img/elements/18.jpg')}}" alt="Third slide" />
+          <div class="carousel-caption d-none d-md-block">
+            <h3>Third slide</h3>
+            <p>Lorem ipsum dolor sit amet, virtute consequat ea qui, minim graeco mel no.</p>
+          </div>
+        </div>
+      </div>
+      <a class="carousel-control-prev" href="#carouselExample" role="button" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </a>
+      <a class="carousel-control-next" href="#carouselExample" role="button" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </a>
+    </div>
+  </div>
+  <!-- Bootstrap crossfade carousel -->
+  <div class="col-md">
+    <div id="carouselExample-cf" class="carousel carousel-dark slide carousel-fade" data-bs-ride="carousel">
+      <ol class="carousel-indicators">
+        <li data-bs-target="#carouselExample-cf" data-bs-slide-to="0" class="active"></li>
+        <li data-bs-target="#carouselExample-cf" data-bs-slide-to="1"></li>
+        <li data-bs-target="#carouselExample-cf" data-bs-slide-to="2"></li>
+      </ol>
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img class="d-block w-100" src="{{asset('assets/img/elements/18.jpg')}}" alt="First slide" />
+          <div class="carousel-caption d-none d-md-block">
+            <h3>First slide</h3>
+            <p>Eos mutat malis maluisset et, agam ancillae quo te, in vim congue pertinacia.</p>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img class="d-block w-100" src="{{asset('assets/img/elements/13.jpg')}}" alt="Second slide" />
+          <div class="carousel-caption d-none d-md-block">
+            <h3>Second slide</h3>
+            <p>In numquam omittam sea.</p>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img class="d-block w-100" src="{{asset('assets/img/elements/2.jpg')}}" alt="Third slide" />
+          <div class="carousel-caption d-none d-md-block">
+            <h3>Third slide</h3>
+            <p>Lorem ipsum dolor sit amet, virtute consequat ea qui, minim graeco mel no.</p>
+          </div>
+        </div>
+      </div>
+      <a class="carousel-control-prev" href="#carouselExample-cf" role="button" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </a>
+      <a class="carousel-control-next" href="#carouselExample-cf" role="button" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </a>
+    </div>
+  </div>
+  <!-- Knowledge Base -->
+  <div class="card overflow-hidden">
     <div class="help-center-knowledge-base py-5">
       <div class="container-xl">
         <h4 class="text-center mb-4">Knowledge Base</h4>
@@ -191,149 +272,8 @@
         </div>
       </div>
     </div>
-    <!-- /Knowledge Base -->
-
-    <!-- Keep Learning -->
-    <div class="help-center-keep-learning py-5">
-      <div class="container-xl">
-        <h4 class="text-center mb-5">Keep Learning</h4>
-        <div class="row">
-          <div class="col-lg-10 mx-auto">
-            <div class="row">
-              <div class="col-md-4 mb-md-0 mb-4 text-center">
-                <img src="https://demos.themeselection.com/sneat-bootstrap-html-laravel-admin-template/demo/assets/img/icons/unicons/laptop.png" class="mb-2" height="50" alt="Help center blog">
-                <h5 class="my-3">Blogging</h5>
-                <p class="mb-1"> Expert tips and tools to improve your website or online store using our blog. </p>
-                <a href="https://demos.themeselection.com/sneat-bootstrap-html-laravel-admin-template/demo-1/pages/help-center-categories" class="d-flex align-items-center justify-content-center mt-2">
-                  <span class="align-middle me-1">Learn More</span>
-                  <i class="bx bx-right-arrow-circle scaleX-n1-rtl"></i>
-                </a>
-              </div>
-              <div class="col-md-4 mb-md-0 mb-4 text-center">
-                <img src="https://demos.themeselection.com/sneat-bootstrap-html-laravel-admin-template/demo/assets/img/icons/unicons/bulb.png" class="mb-2" height="50" alt="Help center inspiration">
-                <h5 class="my-3">Inspiration Center</h5>
-                <p class="mb-1"> Inspiration from experts to help you start and grow your big ideas. </p>
-                <a href="https://demos.themeselection.com/sneat-bootstrap-html-laravel-admin-template/demo-1/pages/help-center-categories" class="d-flex align-items-center justify-content-center mt-2">
-                  <span class="align-middle me-1">Learn More</span>
-                  <i class="bx bx-right-arrow-circle scaleX-n1-rtl"></i></a>
-              </div>
-              <div class="col-md-4 text-center">
-                <img src="https://demos.themeselection.com/sneat-bootstrap-html-laravel-admin-template/demo/assets/img/icons/unicons/community.png" class="mb-2" height="50" alt="Help center inspiration">
-                <h5 class="my-3">Community</h5>
-                <p class="mb-1"> A group of people living in the same place or having a particular. </p>
-                <a href="https://demos.themeselection.com/sneat-bootstrap-html-laravel-admin-template/demo-1/pages/help-center-categories" class="d-flex align-items-center justify-content-center mt-2">
-                  <span class="align-middle me-1">Learn More</span>
-                  <i class="bx bx-right-arrow-circle scaleX-n1-rtl"></i></a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- /Keep Learning -->
-
-    <!-- Help Area -->
-    <div class="help-center-contact-us help-center-bg-alt">
-      <div class="container-xl">
-        <div class="row justify-content-center py-5 my-3">
-          <div class="col-md-8 col-lg-6 text-center">
-            <h4>Still need help?</h4>
-            <p class="mb-4"> Our specialists are always happy to help. Contact <br>
-              us during standard business hours or email us 24/7
-              <br> and we'll get back to you.
-            </p>
-            <div class="d-flex justify-content-center flex-wrap gap-4">
-              <a href="javascript:void(0);" class="btn btn-label-primary">Visit our community</a>
-              <a href="javascript:void(0);" class="btn btn-label-primary">Contact us</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- /Help Area -->
   </div>
-  <!-- Bootstrap carousel -->
-  <div class="col-md">
-    <div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
-      <ol class="carousel-indicators">
-        <li data-bs-target="#carouselExample" data-bs-slide-to="0" class="active"></li>
-        <li data-bs-target="#carouselExample" data-bs-slide-to="1"></li>
-        <li data-bs-target="#carouselExample" data-bs-slide-to="2"></li>
-      </ol>
-      <div class="carousel-inner">
-        <div class="carousel-item active">
-          <img class="d-block w-100" src="{{asset('assets/img/elements/13.jpg')}}" alt="First slide" />
-          <div class="carousel-caption d-none d-md-block">
-            <h3>First slide</h3>
-            <p>Eos mutat malis maluisset et, agam ancillae quo te, in vim congue pertinacia.</p>
-          </div>
-        </div>
-        <div class="carousel-item">
-          <img class="d-block w-100" src="{{asset('assets/img/elements/2.jpg')}}" alt="Second slide" />
-          <div class="carousel-caption d-none d-md-block">
-            <h3>Second slide</h3>
-            <p>In numquam omittam sea.</p>
-          </div>
-        </div>
-        <div class="carousel-item">
-          <img class="d-block w-100" src="{{asset('assets/img/elements/18.jpg')}}" alt="Third slide" />
-          <div class="carousel-caption d-none d-md-block">
-            <h3>Third slide</h3>
-            <p>Lorem ipsum dolor sit amet, virtute consequat ea qui, minim graeco mel no.</p>
-          </div>
-        </div>
-      </div>
-      <a class="carousel-control-prev" href="#carouselExample" role="button" data-bs-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Previous</span>
-      </a>
-      <a class="carousel-control-next" href="#carouselExample" role="button" data-bs-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Next</span>
-      </a>
-    </div>
-  </div>
-  <!-- Bootstrap crossfade carousel -->
-  <div class="col-md">
-    <div id="carouselExample-cf" class="carousel carousel-dark slide carousel-fade" data-bs-ride="carousel">
-      <ol class="carousel-indicators">
-        <li data-bs-target="#carouselExample-cf" data-bs-slide-to="0" class="active"></li>
-        <li data-bs-target="#carouselExample-cf" data-bs-slide-to="1"></li>
-        <li data-bs-target="#carouselExample-cf" data-bs-slide-to="2"></li>
-      </ol>
-      <div class="carousel-inner">
-        <div class="carousel-item active">
-          <img class="d-block w-100" src="{{asset('assets/img/elements/18.jpg')}}" alt="First slide" />
-          <div class="carousel-caption d-none d-md-block">
-            <h3>First slide</h3>
-            <p>Eos mutat malis maluisset et, agam ancillae quo te, in vim congue pertinacia.</p>
-          </div>
-        </div>
-        <div class="carousel-item">
-          <img class="d-block w-100" src="{{asset('assets/img/elements/13.jpg')}}" alt="Second slide" />
-          <div class="carousel-caption d-none d-md-block">
-            <h3>Second slide</h3>
-            <p>In numquam omittam sea.</p>
-          </div>
-        </div>
-        <div class="carousel-item">
-          <img class="d-block w-100" src="{{asset('assets/img/elements/2.jpg')}}" alt="Third slide" />
-          <div class="carousel-caption d-none d-md-block">
-            <h3>Third slide</h3>
-            <p>Lorem ipsum dolor sit amet, virtute consequat ea qui, minim graeco mel no.</p>
-          </div>
-        </div>
-      </div>
-      <a class="carousel-control-prev" href="#carouselExample-cf" role="button" data-bs-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Previous</span>
-      </a>
-      <a class="carousel-control-next" href="#carouselExample-cf" role="button" data-bs-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Next</span>
-      </a>
-    </div>
-  </div>
+  <!-- /Knowledge Base -->
 </div>
 
 @endsection

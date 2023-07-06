@@ -2,56 +2,53 @@
 
 namespace App\Services;
 
-use App\Models\Station;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use App\Repositories\Eloquent\StationRepository;
+use App\Repositories\Eloquent\ReservationRepository;
+use App\Repositories\Eloquent\StationOwnerRepository;
 
 class ReservationService
 {
-    protected StationRepository $reservationRepository;
+    protected ReservationRepository $reservationRepository;
+    protected StationOwnerRepository $stationOwnerRepository;
 
-    public function __construct(StationRepository $reservationRepository)
-    {
+    public function __construct(
+        ReservationRepository $reservationRepository,
+        StationOwnerRepository $stationOwnerRepository
+    ) {
         $this->reservationRepository = $reservationRepository;
+        $this->stationOwnerRepository = $stationOwnerRepository;
     }
 
-    public function getListReservations()
+    public function getListReservations($user_id)
     {
-        $reservations = $this->reservationRepository->getListStations();
+        $reservations = $this->reservationRepository->getListReservations($user_id);
 
         return $reservations;
     }
 
-    public function createReservation($request)
+    public function createReservation($user_id, $request)
     {
-        $reservation = $this->reservationRepository->createStation($request);
+        $reservation = $this->reservationRepository->createReservation($user_id, $request);
         return $reservation;
     }
 
     public function editReservation(Request $request)
     {
-        $reservation = $this->validateStation($request->id);
-        if ($reservation) {
-            $reservation = $this->reservationRepository->createStation($request);
-            return $reservation;
-        }
-        return;
+        // $reservation = $this->validateStation($request->id);
+        // if ($reservation) {
+        //     $reservation = $this->reservationRepository->createStation($request);
+        //     return $reservation;
+        // }
+        // return;
     }
 
     public function showReservation($reservation_id)
     {
-        return $this->reservationRepository->showStation($reservation_id);
+        // return $this->reservationRepository->showStation($reservation_id);
     }
 
     public function cancelReservation($reservation_id)
     {
-        $reservation = $this->reservationRepository->deleteStation($reservation_id);
-    }
-
-    private function validateStation($id)
-    {
-        $reservation = Station::findOrFail($id);
-        return $reservation;
+        // $reservation = $this->reservationRepository->deleteStation($reservation_id);
     }
 }

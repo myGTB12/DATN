@@ -62,9 +62,9 @@ Route::group(["prefix" => "station"], function () {
     });
 });
 
-Route::group(["prefix" => "reservation"], function () {
-    Route::get("/reservations", [ReservationController::class, "index"]);
-    Route::post("/create", [ReservationController::class, "create"]);
+Route::group(["prefix" => "/reservation"], function () {
+    Route::get("/", [ReservationController::class, "index"]);
+    Route::match(['get', 'post'], "/create", [ReservationController::class, "create"]);
     Route::post("/edit", [ReservationController::class, "edit"]);
     Route::post("/show", [ReservationController::class, "show"]);
     Route::post("/delete", [ReservationController::class, "delete"]);

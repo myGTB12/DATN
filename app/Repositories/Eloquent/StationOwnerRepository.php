@@ -5,6 +5,7 @@ namespace App\Repositories\Eloquent;
 use App\Models\StationOwner;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
+use Exception;
 
 class StationOwnerRepository extends BaseRepository
 {

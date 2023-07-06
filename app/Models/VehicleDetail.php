@@ -38,6 +38,10 @@ class VehicleDetail extends Model
         "height",
         "booking_start",
         "booking_end",
+        "usage_fee",
+        "insurance_fee",
+        "per_night_price",
+        "unit_over_time_price"
     ];
     public $timestamps = true;
 

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Form\CustomValidator;
 use App\Services\ReservationService;
 use App\Helpers\Helper;
+use App\Http\Controllers\Controller;
 
 class ReservationController extends Controller
 {
@@ -22,19 +23,20 @@ class ReservationController extends Controller
 
     public function index()
     {
-        if (!session()->get('station_owner')) {
-            return back()->with(['error' => __('messages.station_owners_fail')]);
-        }
-        $reservations = $this->reservationService->getListReservations();
+        $user_id = auth()->guard('station_owner')->user()->id;
+        $reservations = $this->reservationService->getListReservations($user_id);
+
+        return view('content.tables.reservations-table', compact('reservations'));
     }
 
-    public function create(Request $request)
+    // public function create($user_id, Request $request)
+    public function create()
     {
-        if (!Helper::validateRole($request->id, 'station_owner')) {
-            back()->with(['error' => __('messages.station_owners_fail')]);
-        }
-        $this->form->validate($request, "CreateReservationForm");
-        $reservation = $this->reservationService->createReservation($request);
+        // if ($request->isMethod('POST')) {
+        //     $this->form->validate($request, "CreateReservationForm");
+        // }
+
+        return view('content.form-elements.form-create-reservation');
     }
 
     public function edit(Request $request)
