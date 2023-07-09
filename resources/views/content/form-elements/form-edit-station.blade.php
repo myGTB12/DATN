@@ -12,7 +12,7 @@
 </h4>
 
 <div class="row">
-    <form class="mb-3" action="{{route('station.edit', $station->id)}}" method="POST">
+    <form style="width: 100%;" class="mb-3" action="{{route('station.edit', $station->id)}}" method="POST">
         @csrf
         <div class="card mb-4">
             <h5 class="card-header">Station Information</h5>

@@ -4,8 +4,6 @@
 
 @section('content')
 
-<h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Home /</span> Cars</h4>
-
 <div class="row">
   <div class="card overflow-hidden">
     <!-- Help Center Header -->
@@ -63,8 +61,13 @@
     </div>
     <!-- /Popular Articles -->
   </div>
-  <!-- Bootstrap carousel -->
-  <div class="col-md">
+  <!-- Carousel -->
+  <!-- 1 -->
+  <div class="col-md-6 col-lg-4 mb-3">
+    <div class="card-body">
+      <h5 class="card-title">Card title</h5>
+      <h6 class="card-subtitle text-muted">Support card subtitle</h6>
+    </div>
     <div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
       <ol class="carousel-indicators">
         <li data-bs-target="#carouselExample" data-bs-slide-to="0" class="active"></li>
@@ -103,48 +106,113 @@
         <span class="visually-hidden">Next</span>
       </a>
     </div>
+    <div class="card-body">
+      <p class="card-text">Bear claw sesame snaps gummies chocolate.</p>
+      <a href="javascript:void(0);" class="card-link">Card link</a>
+      <a href="javascript:void(0);" class="card-link">Another link</a>
+    </div>
   </div>
-  <!-- Bootstrap crossfade carousel -->
-  <div class="col-md">
-    <div id="carouselExample-cf" class="carousel carousel-dark slide carousel-fade" data-bs-ride="carousel">
+  <!-- 2 -->
+  <div class="col-md-6 col-lg-4 mb-3">
+    <div class="card-body">
+      <h5 class="card-title">Card title</h5>
+      <h6 class="card-subtitle text-muted">Support card subtitle</h6>
+    </div>
+    <div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
       <ol class="carousel-indicators">
-        <li data-bs-target="#carouselExample-cf" data-bs-slide-to="0" class="active"></li>
-        <li data-bs-target="#carouselExample-cf" data-bs-slide-to="1"></li>
-        <li data-bs-target="#carouselExample-cf" data-bs-slide-to="2"></li>
+        <li data-bs-target="#carouselExample" data-bs-slide-to="0" class="active"></li>
+        <li data-bs-target="#carouselExample" data-bs-slide-to="1"></li>
+        <li data-bs-target="#carouselExample" data-bs-slide-to="2"></li>
       </ol>
       <div class="carousel-inner">
         <div class="carousel-item active">
-          <img class="d-block w-100" src="{{asset('assets/img/elements/18.jpg')}}" alt="First slide" />
+          <img class="d-block w-100" src="{{asset('assets/img/elements/13.jpg')}}" alt="First slide" />
           <div class="carousel-caption d-none d-md-block">
             <h3>First slide</h3>
             <p>Eos mutat malis maluisset et, agam ancillae quo te, in vim congue pertinacia.</p>
           </div>
         </div>
         <div class="carousel-item">
-          <img class="d-block w-100" src="{{asset('assets/img/elements/13.jpg')}}" alt="Second slide" />
+          <img class="d-block w-100" src="{{asset('assets/img/elements/2.jpg')}}" alt="Second slide" />
           <div class="carousel-caption d-none d-md-block">
             <h3>Second slide</h3>
             <p>In numquam omittam sea.</p>
           </div>
         </div>
         <div class="carousel-item">
-          <img class="d-block w-100" src="{{asset('assets/img/elements/2.jpg')}}" alt="Third slide" />
+          <img class="d-block w-100" src="{{asset('assets/img/elements/18.jpg')}}" alt="Third slide" />
           <div class="carousel-caption d-none d-md-block">
             <h3>Third slide</h3>
             <p>Lorem ipsum dolor sit amet, virtute consequat ea qui, minim graeco mel no.</p>
           </div>
         </div>
       </div>
-      <a class="carousel-control-prev" href="#carouselExample-cf" role="button" data-bs-slide="prev">
+      <a class="carousel-control-prev" href="#carouselExample" role="button" data-bs-slide="prev">
         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
         <span class="visually-hidden">Previous</span>
       </a>
-      <a class="carousel-control-next" href="#carouselExample-cf" role="button" data-bs-slide="next">
+      <a class="carousel-control-next" href="#carouselExample" role="button" data-bs-slide="next">
         <span class="carousel-control-next-icon" aria-hidden="true"></span>
         <span class="visually-hidden">Next</span>
       </a>
     </div>
+    <div class="card-body">
+      <p class="card-text">Bear claw sesame snaps gummies chocolate.</p>
+      <a href="javascript:void(0);" class="card-link">Card link</a>
+      <a href="javascript:void(0);" class="card-link">Another link</a>
+    </div>
   </div>
+  <!-- 3 -->
+  <div class="col-md-6 col-lg-4 mb-3">
+    <div class="card-body">
+      <h5 class="card-title">Card title</h5>
+      <h6 class="card-subtitle text-muted">Support card subtitle</h6>
+    </div>
+    <div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
+      <ol class="carousel-indicators">
+        <li data-bs-target="#carouselExample" data-bs-slide-to="0" class="active"></li>
+        <li data-bs-target="#carouselExample" data-bs-slide-to="1"></li>
+        <li data-bs-target="#carouselExample" data-bs-slide-to="2"></li>
+      </ol>
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img class="d-block w-100" src="{{asset('assets/img/elements/13.jpg')}}" alt="First slide" />
+          <div class="carousel-caption d-none d-md-block">
+            <h3>First slide</h3>
+            <p>Eos mutat malis maluisset et, agam ancillae quo te, in vim congue pertinacia.</p>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img class="d-block w-100" src="{{asset('assets/img/elements/2.jpg')}}" alt="Second slide" />
+          <div class="carousel-caption d-none d-md-block">
+            <h3>Second slide</h3>
+            <p>In numquam omittam sea.</p>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img class="d-block w-100" src="{{asset('assets/img/elements/18.jpg')}}" alt="Third slide" />
+          <div class="carousel-caption d-none d-md-block">
+            <h3>Third slide</h3>
+            <p>Lorem ipsum dolor sit amet, virtute consequat ea qui, minim graeco mel no.</p>
+          </div>
+        </div>
+      </div>
+      <a class="carousel-control-prev" href="#carouselExample" role="button" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </a>
+      <a class="carousel-control-next" href="#carouselExample" role="button" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </a>
+    </div>
+    <div class="card-body">
+      <p class="card-text">Bear claw sesame snaps gummies chocolate.</p>
+      <a href="javascript:void(0);" class="card-link">Card link</a>
+      <a href="javascript:void(0);" class="card-link">Another link</a>
+    </div>
+  </div>
+  <!-- End carousel-->
   <!-- Knowledge Base -->
   <div class="card overflow-hidden">
     <div class="help-center-knowledge-base py-5">

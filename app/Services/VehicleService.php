@@ -15,6 +15,7 @@ class VehicleService
     protected VehicleRepository $vehicleRepository;
     protected VehicleDetailRepository $vehicleDetailRepository;
     protected StationRepository $stationRepository;
+    private $PAGINATION = 9;
 
     public function __construct(
         VehicleRepository $vehicleRepository,
@@ -57,7 +58,7 @@ class VehicleService
                     "capacity" => $request->capacity,
                 ]);
             }
-            
+
             return ['vehicle' => $vehicle, 'vehicle_details' => $vehicleDetail];
         } catch (Exception $e) {
             back()->with(['error' => __('messages.create_data_failed')]);
@@ -124,14 +125,15 @@ class VehicleService
     public function getAvailableVehicle()
     {
         $vehicles = $this->vehicleRepository->findBy(['status' => 0], false);
-        $vehicleDetails = $vehicles->pluck('vehicleDetail')->all();
+        $vehicleDetails = $vehicles->pluck('vehicleDetail')->take($this->PAGINATION);
 
         return $vehicleDetails;
     }
 
-    public function searchByCar($request){
+    public function searchByCar($request)
+    {
         $vehicles = $this->vehicleDetailRepository->serchByCarDetail($request);
-        
+
         return $vehicles->toArray();
     }
 }

@@ -27,20 +27,15 @@ class VehicleController extends Controller
     public function index($station_id)
     {
         $vehicleDetails = $this->vehicleService->getListVehicles($station_id);
-        $length = count($vehicleDetails);
-        $midpoint = ceil($length / 2);
 
-        $array1 = array_slice($vehicleDetails, 0, $midpoint);
-        $array2 = array_slice($vehicleDetails, $midpoint);
-
-        return view('content.user-interface.ui-carousel', compact('array1', 'array2'));
+        return view('content.user-interface.ui-cars-station', compact('vehicleDetails'));
     }
 
     public function create(Request $request, $station_id)
     {
-        if($request->isMethod("post")){
-            $station = $this->vehicleService->createVehicle($station_id, $request);
-
+        if ($request->isMethod("post")) {
+            $vehicle = $this->vehicleService->createVehicle($station_id, $request);
+            dd($vehicle);
             return $this->index($station_id);
         }
         return view('content.form-elements.form-create-vehicle', compact('station_id'));
@@ -50,7 +45,7 @@ class VehicleController extends Controller
     {
         // $this->form->validate($request, "CreateVehicleForm");
         $result = $this->vehicleService->editVehicle($request, $id);
-        if($result){
+        if ($result) {
             return redirect()->route('vehicle.index', $station_id);
         }
     }
@@ -76,16 +71,14 @@ class VehicleController extends Controller
     public function searchByCar(Request $request)
     {
         $vehicles = $this->vehicleService->searchByCar($request);
-        $cities = __('city');
 
-        return view('content.user-interface.ui-home', ['vehicles' => $vehicles, 'cities' => $cities]);
+        return view('content.user-interface.ui-home', ['vehicles' => $vehicles]);
     }
 
     public function searchByStation(Request $request)
     {
         $vehicles = $this->stationService->searchByStation($request);
-        $cities = __('city');
 
-        return view('content.user-interface.ui-home', ['vehicles' => $vehicles, 'cities' => $cities]);
+        return view('content.user-interface.ui-home', ['vehicles' => $vehicles]);
     }
 }

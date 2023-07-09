@@ -90,10 +90,10 @@
   <div class="col-12 col-lg-8 order-2 order-md-3 order-lg-2 mb-4">
     <div class="card">
       <div class="row row-bordered g-0">
-        <div class="col-md-8">
+        <div class="col-md-8" style="width: 100%;">
           <h5 class="card-header m-0 me-2 pb-3">Station name: {{$station->name}}</h5>
         </div>
-        <div class="col-md-6">
+        <div class="col-md-6" style="width: 100%;">
           <div class="card mb-4">
             <!-- <a class="card-header" href="{{route('station.edit', $station->id)}}">{{$station->name}}</a> -->
             <a class="card-header" href="{{route('vehicle.index', ['station_id' => $station->id])}}">{{$station->name}}</a>
@@ -106,13 +106,13 @@
                 <label for="exampleFormControlReadOnlyInput1" class="form-label">Status</label>
                 @if($station->status == 1)
                 <div class="col">
-                  <button type="button" class="btn btn-success" data-bs-toggle="tooltip" data-bs-offset="0,4" data-bs-placement="right" data-bs-html="true" title="<i class='bx bx-trending-up bx-xs' ></i> <span>Tooltip on right</span>">
+                  <button type="button" class="btn btn-success">
                     Active
                   </button>
                 </div>
                 @else
                 <div class="col">
-                  <button type="button" class="btn btn-secondary" data-bs-toggle="tooltip" data-bs-offset="0,4" data-bs-placement="right" data-bs-html="true" title="<i class='bx bx-trending-up bx-xs' ></i> <span>Tooltip on right</span>">
+                  <button type="button" class="btn btn-secondary">
                     Inactive
                   </button>
                 </div>
