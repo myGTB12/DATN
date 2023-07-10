@@ -12,7 +12,7 @@
 </h4>
 
 <div class="row">
-    <form style="width: 100%;" class="col-md-8" action="{{route('vehicle.create', ['station_id' => $station_id])}}" method="POST">
+    <form style="width: 100%;" enctype="multipart/form-data" class="col-md-8" action="{{route('vehicle.create', ['station_id' => $station_id])}}" method="POST">
         @csrf
         <div class="card mb-4">
             <h5 class="card-header">Vehicle detail</h5>
@@ -64,6 +64,10 @@
                     <div class="col-sm-10">
                         <input type="text" name="height" class="form-control phone-mask" />
                     </div>
+                </div>
+                <div class="mb-3">
+                    <label for="formFile" class="form-label">Default file input example</label>
+                    <input class="form-control" name="img2" type="file" id="formFile">
                 </div>
                 <div class="row mb-3">
                     <label class="col-sm-2 col-form-label" for="basic-default-message">Per night price</label>

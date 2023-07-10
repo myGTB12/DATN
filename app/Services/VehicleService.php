@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Repositories\Eloquent\StationRepository;
 use App\Repositories\Eloquent\VehicleRepository;
 use App\Repositories\Eloquent\VehicleDetailRepository;
+use Illuminate\Support\Facades\Storage;
 
 class VehicleService
 {
@@ -44,10 +45,17 @@ class VehicleService
                 "vehicle_inspection_exp_date" => $request->vehicle_inspection_exp_date,
             ]);
             if ($vehicle) {
+                if($request->file('img2')){
+                    $file = $request->file('img2');
+                    $file_path = env('STORAGE_PATH');
+                    $file_name = $vehicle->id . '.' . $file->getClientOriginalExtension();
+                    Storage::disk('public')->putFileAs("img", $file, $file_name);
+                }
+                
                 $vehicleDetail = $this->vehicleDetailRepository->create([
                     "vehicle_id" => $vehicle->id,
                     "img" => $request->img,
-                    "img2" => $request->img2,
+                    "img2" => $file_path . $file_name,
                     "img3" => $request->img3,
                     "img4" => $request->img4,
                     "fuel" => $request->fuel,

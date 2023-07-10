@@ -35,7 +35,7 @@ class VehicleController extends Controller
     {
         if ($request->isMethod("post")) {
             $vehicle = $this->vehicleService->createVehicle($station_id, $request);
-            dd($vehicle);
+
             return $this->index($station_id);
         }
         return view('content.form-elements.form-create-vehicle', compact('station_id'));
