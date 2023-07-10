@@ -71,14 +71,18 @@ class VehicleController extends Controller
     public function searchByCar(Request $request)
     {
         $vehicles = $this->vehicleService->searchByCar($request);
-
+        if (!$vehicles) {
+            return view('content.pages.pages-misc-error');
+        }
         return view('content.user-interface.ui-home', ['vehicles' => $vehicles]);
     }
 
     public function searchByStation(Request $request)
     {
         $vehicles = $this->stationService->searchByStation($request);
-
+        if (!$vehicles) {
+            return view('content.pages.pages-misc-error');
+        }
         return view('content.user-interface.ui-home', ['vehicles' => $vehicles]);
     }
 }

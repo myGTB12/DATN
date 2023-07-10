@@ -45,13 +45,13 @@ class VehicleService
                 "vehicle_inspection_exp_date" => $request->vehicle_inspection_exp_date,
             ]);
             if ($vehicle) {
-                if($request->file('img2')){
+                if ($request->file('img2')) {
                     $file = $request->file('img2');
                     $file_path = env('STORAGE_PATH');
                     $file_name = $vehicle->id . '.' . $file->getClientOriginalExtension();
                     Storage::disk('public')->putFileAs("img", $file, $file_name);
                 }
-                
+
                 $vehicleDetail = $this->vehicleDetailRepository->create([
                     "vehicle_id" => $vehicle->id,
                     "img" => $request->img,

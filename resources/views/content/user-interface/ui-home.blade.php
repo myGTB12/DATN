@@ -62,10 +62,14 @@
     <!-- /Popular Articles -->
   </div>
   <!-- Carousel -->
+  <div class="m-container" style="text-align: center; padding-top:40px; position: relavtive; font-family: 'Manrope',-apple-system,BlinkMacSystemFont,'Segoe UI','Roboto','Oxygen','Ubuntu','Cantarell','Fira Sans','Droid Sans','Helvetica Neue',sans-serif!important;">
+    <h2 class="text-center" style="font-size: 3rem;">Cars For You</h2>
+  </div>
   <!-- 1 -->
-  <div class="col-md-6 col-lg-4 mb-3">
+  @foreach($vehicles_1 as $vehicle)
+  <div class="col-md-6 col-lg-4 mb-3" style="background-color: #fcfdfd; border: 1px solid #e0e0e0; border-radius:16px;">
     <div class="card-body">
-      <h5 class="card-title">Card title</h5>
+      <h5 class="card-title">{{$vehicle->color}}</h5>
       <h6 class="card-subtitle text-muted">Support card subtitle</h6>
     </div>
     <div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
@@ -76,7 +80,7 @@
       </ol>
       <div class="carousel-inner">
         <div class="carousel-item active">
-          <img class="d-block w-100" src="{{asset('assets/img/elements/13.jpg')}}" alt="First slide" />
+          <img class="d-block w-100" src="{{asset('storage/img/277c6ebd-ab53-4fe9-9cc9-9eed47576b3c.png')}}" alt="First slide" />
           <div class="carousel-caption d-none d-md-block">
             <h3>First slide</h3>
             <p>Eos mutat malis maluisset et, agam ancillae quo te, in vim congue pertinacia.</p>
@@ -111,9 +115,14 @@
       <a href="javascript:void(0);" class="card-link">Card link</a>
       <a href="javascript:void(0);" class="card-link">Another link</a>
     </div>
+  </div>
+  @endforeach
+  <div class="divider">
+    <div class="divider-text">Rental Cars</div>
   </div>
   <!-- 2 -->
-  <div class="col-md-6 col-lg-4 mb-3">
+  @foreach($vehicles_2 as $vehicle)
+  <div class="col-md-6 col-lg-4 mb-3" style="background-color: #fcfdfd; border: 1px solid #e0e0e0; border-radius:16px;">
     <div class="card-body">
       <h5 class="card-title">Card title</h5>
       <h6 class="card-subtitle text-muted">Support card subtitle</h6>
@@ -162,8 +171,13 @@
       <a href="javascript:void(0);" class="card-link">Another link</a>
     </div>
   </div>
+  @endforeach
+  <div class="divider">
+    <div class="divider-text">Rental Cars</div>
+  </div>
   <!-- 3 -->
-  <div class="col-md-6 col-lg-4 mb-3">
+  @foreach($vehicles_3 as $vehicle)
+  <div class="col-md-6 col-lg-4 mb-3" style="background-color: #fcfdfd; border: 1px solid #e0e0e0; border-radius:16px;">
     <div class="card-body">
       <h5 class="card-title">Card title</h5>
       <h6 class="card-subtitle text-muted">Support card subtitle</h6>
@@ -211,13 +225,17 @@
       <a href="javascript:void(0);" class="card-link">Card link</a>
       <a href="javascript:void(0);" class="card-link">Another link</a>
     </div>
+  </div>
+  @endforeach
+  <div class="divider">
+    <div class="divider-text">Rental Cars</div>
   </div>
   <!-- End carousel-->
   <!-- Knowledge Base -->
   <div class="card overflow-hidden">
     <div class="help-center-knowledge-base py-5">
       <div class="container-xl">
-        <h4 class="text-center mb-4">Knowledge Base</h4>
+        <h4 class="text-center mb-4">Our Advantages</h4>
         <div class="row">
           <div class="col-lg-10 mx-auto">
             <div class="row">
@@ -226,7 +244,7 @@
                   <div class="card-body">
                     <div class="d-flex align-items-center mb-2">
                       <span class="badge bg-label-success p-2 rounded me-2"><i class="bx bx-cart bx-sm"></i></span>
-                      <h5 class="fw-semibold mt-3 ms-1">eCommerce</h5>
+                      <h5 class="fw-semibold mt-3 ms-1">Keep mind to book a car</h5>
                     </div>
                     <ul>
                       <li class="text-primary py-1"><a href="https://demos.themeselection.com/sneat-bootstrap-html-laravel-admin-template/demo-1/pages/help-center-categories">Pricing Wizard</a></li>
@@ -243,7 +261,7 @@
                   <div class="card-body">
                     <div class="d-flex align-items-center mb-2">
                       <span class="badge bg-label-info p-2 rounded me-2"><i class="bx bx-laptop bx-sm"></i></span>
-                      <h5 class="fw-semibold mt-3 ms-1">Building Your Website</h5>
+                      <h5 class="fw-semibold mt-3 ms-1">Simple procedures</h5>
                     </div>
                     <ul>
                       <li class="text-primary py-1"><a href="https://demos.themeselection.com/sneat-bootstrap-html-laravel-admin-template/demo-1/pages/help-center-categories">First Steps</a></li>
@@ -260,7 +278,7 @@
                   <div class="card-body">
                     <div class="d-flex align-items-center mb-2">
                       <span class="badge bg-label-primary p-2 rounded me-2"><i class="bx bx-user bx-sm"></i></span>
-                      <h5 class="fw-semibold mt-3 ms-1">Your Account</h5>
+                      <h5 class="fw-semibold mt-3 ms-1">Easy payment</h5>
                     </div>
                     <ul>
                       <li class="text-primary py-1"><a href="https://demos.themeselection.com/sneat-bootstrap-html-laravel-admin-template/demo-1/pages/help-center-categories">Insights</a></li>
@@ -279,7 +297,7 @@
                   <div class="card-body">
                     <div class="d-flex align-items-center mb-2">
                       <span class="badge bg-label-danger p-2 rounded me-2"><i class="bx bx-world bx-sm"></i></span>
-                      <h5 class="fw-semibold mt-3 ms-1">Domains and Email</h5>
+                      <h5 class="fw-semibold mt-3 ms-1">Diversified car</h5>
                     </div>
                     <ul>
                       <li class="text-primary py-1">
@@ -300,7 +318,7 @@
                   <div class="card-body">
                     <div class="d-flex align-items-center mb-2">
                       <span class="badge bg-label-warning p-2 rounded me-2"><i class="bx bx-mobile-alt bx-sm"></i></span>
-                      <h5 class="fw-semibold mt-3 ms-1">Mobile Apps</h5>
+                      <h5 class="fw-semibold mt-3 ms-1">Drive safe</h5>
                     </div>
                     <ul>
                       <li class="text-primary py-1">
@@ -321,7 +339,7 @@
                   <div class="card-body">
                     <div class="d-flex align-items-center mb-2">
                       <span class="badge bg-label-secondary p-2 rounded me-2"><i class="bx bx-envelope bx-sm"></i></span>
-                      <h5 class="fw-semibold mt-3 ms-1">Email Marketing</h5>
+                      <h5 class="fw-semibold mt-3 ms-1">Car delivery</h5>
                     </div>
                     <ul>
                       <li class="text-primary py-1"><a href="https://demos.themeselection.com/sneat-bootstrap-html-laravel-admin-template/demo-1/pages/help-center-categories">Getting Started</a></li>

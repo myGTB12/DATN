@@ -18,15 +18,44 @@
             <div class="card-body">
                 <form>
                     <div class="row mb-3">
-                        <label class="col-sm-2 col-form-label" for="basic-default-name">Brand</label>
+                        <label for="exampleFormControlSelect1" class="col-sm-2 col-form-label">Select brand</label>
                         <div class="col-sm-10">
-                            <input type="text" name="brand" class="form-control" value="{{$vehicleDetail->brand}}" />
+                            <select class="select2 form-select select2-hidden-accessible" name="brand" id="exampleFormControlSelect1" aria-label="Default select example">
+                                <option value="Honda">Honda</option>
+                                <option value="Mercedes">Mercedes</option>
+                                <option value="Ford">Ford</option>
+                                <option value="Toyota">Toyota</option>
+                                <option value="Mazda">Mazda</option>
+                                <option value="Hyundai">Hyundai</option>
+                                <option value="Kia">Kia</option>
+                                <option value="Mitsubishi">Mitsubishi</option>
+                                <option value="Chevrolet">Chevrolet</option>
+                                <option value="Nissan">Nissan</option>
+                                <option value="Suzuki">Suzuki</option>
+                            </select>
                         </div>
                     </div>
                     <div class="row mb-3">
-                        <label class="col-sm-2 col-form-label" for="basic-default-company">Name</label>
+                        <label for="exampleFormControlSelect1" class="col-sm-2 col-form-label">Select name</label>
                         <div class="col-sm-10">
-                            <input type="text" name="name" class="form-control" value="{{$vehicleDetail->name}}" />
+                            <select class="form-select" name="name" id="exampleFormControlSelect1" aria-label="Default select example">
+                                <option value="Honda City">Honda City</option>
+                                <option value="Toyota Vios">Toyota Vios</option>
+                                <option value="Honda CR-V">Honda CR-V</option>
+                                <option value="Ford Ranger">Ford Ranger</option>
+                                <option value="Mazda CX-5">Mazda CX-5</option>
+                                <option value="Hyundai Tucson">Hyundai Tucson</option>
+                                <option value="Kia Cerato">Kia Cerato</option>
+                                <option value="Mitsubishi Triton">Mitsubishi Triton</option>
+                                <option value="Chevrolet Cruze">Chevrolet Cruze</option>
+                                <option value="Nissan Terra">Nissan Terra</option>
+                                <option value="Ford EcoSport">Ford EcoSport</option>
+                                <option value="Toyota Fortuner">Toyota Fortuner</option>
+                                <option value="Mitsubishi Xpander">Mitsubishi Xpander</option>
+                                <option value="Hyundai Grand i10">Hyundai Grand i10</option>
+                                <option value="Kia Seltos">Kia Seltos</option>
+                                <option value="Mazda3">Mazda3</option>
+                            </select>
                         </div>
                     </div>
                     <div class="row mb-3">
