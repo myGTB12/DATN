@@ -1,12 +1,11 @@
 'use strict';
 
-const { forEach } = require("lodash");
-
 (function() {
+    console.log(123);
     const citySelected = document.getElementById('formControlSelectCity');
     const districtSelected = document.getElementById('formControlSelectDistrict');
-    const districts = [ 
-        1 = [
+    const districts = { 
+        1 : [
             'Hoàng Mai',
             'Long Biên',
             'Thanh Xuân',
@@ -20,7 +19,7 @@ const { forEach } = require("lodash");
             'Tây Hồ ',
             'Nam Từ Liêm'
         ],
-        2 = [
+        2 : [
             'Thành phố Cao Bằng',
             'Bảo Lạc',
             'Bảo Lâm',
@@ -32,7 +31,7 @@ const { forEach } = require("lodash");
             'Thạch An',
             'Trùng Khánh',
         ],
-        3 = [
+        3 : [
             'Thành phố Lào Cai',
             'Thị xã Sa Pa',
             'Bát Xát',
@@ -43,7 +42,7 @@ const { forEach } = require("lodash");
             'Mường Khương',
             'Bắc Hà',
         ],
-        19 = [
+        19 : [
             'Đồ Sơn',
             'Dương Kinh',
             'Hải An',
@@ -60,16 +59,18 @@ const { forEach } = require("lodash");
             'Tiên Lãng',
             'Vĩnh Bảo',
         ]
-    ];
+    };
 
     citySelected.addEventListener('change', function() {
         const selectedValue = citySelected.value;
+        districtSelected.innerHTML = '';
         const i = 1;
         districts[selectedValue].forEach(element => {
             const newOption = document.createElement('option');
             newOption.value = i;
-            newOption.text = element; 
+            newOption.text = element;
+            districtSelected.appendChild(newOption);
             i++;
         });
     });
-})
+})()
