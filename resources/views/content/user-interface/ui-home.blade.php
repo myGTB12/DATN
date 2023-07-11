@@ -69,8 +69,8 @@
   @foreach($vehicles_1 as $vehicle)
   <div class="col-md-6 col-lg-4 mb-3" style="background-color: #fcfdfd; border: 1px solid #e0e0e0; border-radius:16px;">
     <div class="card-body">
-      <h5 class="card-title">{{$vehicle->color}}</h5>
-      <h6 class="card-subtitle text-muted">Support card subtitle</h6>
+      <h5 class="card-title">{{$vehicle->Name}}</h5>
+      <h6 class="card-subtitle text-muted">Color: {{$vehicle->color}}</h6>
     </div>
     <div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
       <ol class="carousel-indicators">
@@ -81,24 +81,12 @@
       <div class="carousel-inner">
         <div class="carousel-item active">
           <img class="d-block w-100" src="{{asset('storage/img/277c6ebd-ab53-4fe9-9cc9-9eed47576b3c.png')}}" alt="First slide" />
-          <div class="carousel-caption d-none d-md-block">
-            <h3>First slide</h3>
-            <p>Eos mutat malis maluisset et, agam ancillae quo te, in vim congue pertinacia.</p>
-          </div>
         </div>
         <div class="carousel-item">
           <img class="d-block w-100" src="{{asset('assets/img/elements/2.jpg')}}" alt="Second slide" />
-          <div class="carousel-caption d-none d-md-block">
-            <h3>Second slide</h3>
-            <p>In numquam omittam sea.</p>
-          </div>
         </div>
         <div class="carousel-item">
           <img class="d-block w-100" src="{{asset('assets/img/elements/18.jpg')}}" alt="Third slide" />
-          <div class="carousel-caption d-none d-md-block">
-            <h3>Third slide</h3>
-            <p>Lorem ipsum dolor sit amet, virtute consequat ea qui, minim graeco mel no.</p>
-          </div>
         </div>
       </div>
       <a class="carousel-control-prev" href="#carouselExample" role="button" data-bs-slide="prev">
@@ -111,9 +99,8 @@
       </a>
     </div>
     <div class="card-body">
-      <p class="card-text">Bear claw sesame snaps gummies chocolate.</p>
-      <a href="javascript:void(0);" class="card-link">Card link</a>
-      <a href="javascript:void(0);" class="card-link">Another link</a>
+      <p class="card-text"><i class='bx bxs-location-plus mb-2'></i> {{$vehicle->district . $vehicle->city}}</p>
+      <a href="{{route('booking.show', ['station_id' => '', 'id' => $vehicle->id])}}" class="card-link">Rent Now</a>
     </div>
   </div>
   @endforeach
@@ -124,8 +111,8 @@
   @foreach($vehicles_2 as $vehicle)
   <div class="col-md-6 col-lg-4 mb-3" style="background-color: #fcfdfd; border: 1px solid #e0e0e0; border-radius:16px;">
     <div class="card-body">
-      <h5 class="card-title">Card title</h5>
-      <h6 class="card-subtitle text-muted">Support card subtitle</h6>
+      <h5 class="card-title">{{$vehicle->Name}}</h5>
+      <h6 class="card-subtitle text-muted">Color: {{$vehicle->color}}</h6>
     </div>
     <div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
       <ol class="carousel-indicators">
@@ -135,25 +122,13 @@
       </ol>
       <div class="carousel-inner">
         <div class="carousel-item active">
-          <img class="d-block w-100" src="{{asset('assets/img/elements/13.jpg')}}" alt="First slide" />
-          <div class="carousel-caption d-none d-md-block">
-            <h3>First slide</h3>
-            <p>Eos mutat malis maluisset et, agam ancillae quo te, in vim congue pertinacia.</p>
-          </div>
+          <img class="d-block w-100" src="{{asset('storage/img/277c6ebd-ab53-4fe9-9cc9-9eed47576b3c.png')}}" alt="First slide" />
         </div>
         <div class="carousel-item">
           <img class="d-block w-100" src="{{asset('assets/img/elements/2.jpg')}}" alt="Second slide" />
-          <div class="carousel-caption d-none d-md-block">
-            <h3>Second slide</h3>
-            <p>In numquam omittam sea.</p>
-          </div>
         </div>
         <div class="carousel-item">
           <img class="d-block w-100" src="{{asset('assets/img/elements/18.jpg')}}" alt="Third slide" />
-          <div class="carousel-caption d-none d-md-block">
-            <h3>Third slide</h3>
-            <p>Lorem ipsum dolor sit amet, virtute consequat ea qui, minim graeco mel no.</p>
-          </div>
         </div>
       </div>
       <a class="carousel-control-prev" href="#carouselExample" role="button" data-bs-slide="prev">
@@ -166,9 +141,8 @@
       </a>
     </div>
     <div class="card-body">
-      <p class="card-text">Bear claw sesame snaps gummies chocolate.</p>
-      <a href="javascript:void(0);" class="card-link">Card link</a>
-      <a href="javascript:void(0);" class="card-link">Another link</a>
+      <p class="card-text"><i class='bx bxs-location-plus mb-2'></i> {{$vehicle->district . $vehicle->city}}</p>
+      <a href="javascript:void(0);" class="card-link">Rent Now</a>
     </div>
   </div>
   @endforeach
@@ -179,8 +153,8 @@
   @foreach($vehicles_3 as $vehicle)
   <div class="col-md-6 col-lg-4 mb-3" style="background-color: #fcfdfd; border: 1px solid #e0e0e0; border-radius:16px;">
     <div class="card-body">
-      <h5 class="card-title">Card title</h5>
-      <h6 class="card-subtitle text-muted">Support card subtitle</h6>
+      <h5 class="card-title">{{$vehicle->Name}}</h5>
+      <h6 class="card-subtitle text-muted">Color: {{$vehicle->color}}</h6>
     </div>
     <div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
       <ol class="carousel-indicators">
@@ -190,25 +164,13 @@
       </ol>
       <div class="carousel-inner">
         <div class="carousel-item active">
-          <img class="d-block w-100" src="{{asset('assets/img/elements/13.jpg')}}" alt="First slide" />
-          <div class="carousel-caption d-none d-md-block">
-            <h3>First slide</h3>
-            <p>Eos mutat malis maluisset et, agam ancillae quo te, in vim congue pertinacia.</p>
-          </div>
+          <img class="d-block w-100" src="{{asset('storage/img/277c6ebd-ab53-4fe9-9cc9-9eed47576b3c.png')}}" alt="First slide" />
         </div>
         <div class="carousel-item">
           <img class="d-block w-100" src="{{asset('assets/img/elements/2.jpg')}}" alt="Second slide" />
-          <div class="carousel-caption d-none d-md-block">
-            <h3>Second slide</h3>
-            <p>In numquam omittam sea.</p>
-          </div>
         </div>
         <div class="carousel-item">
           <img class="d-block w-100" src="{{asset('assets/img/elements/18.jpg')}}" alt="Third slide" />
-          <div class="carousel-caption d-none d-md-block">
-            <h3>Third slide</h3>
-            <p>Lorem ipsum dolor sit amet, virtute consequat ea qui, minim graeco mel no.</p>
-          </div>
         </div>
       </div>
       <a class="carousel-control-prev" href="#carouselExample" role="button" data-bs-slide="prev">
@@ -221,9 +183,8 @@
       </a>
     </div>
     <div class="card-body">
-      <p class="card-text">Bear claw sesame snaps gummies chocolate.</p>
-      <a href="javascript:void(0);" class="card-link">Card link</a>
-      <a href="javascript:void(0);" class="card-link">Another link</a>
+      <p class="card-text"><i class='bx bxs-location-plus mb-2'></i> {{$vehicle->district . $vehicle->city}}</p>
+      <a href="javascript:void(0);" class="card-link">Rent Now</a>
     </div>
   </div>
   @endforeach

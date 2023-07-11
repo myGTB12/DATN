@@ -7,18 +7,27 @@ use App\Form\CustomValidator;
 use App\Services\ReservationService;
 use App\Helpers\Helper;
 use App\Http\Controllers\Controller;
+use App\Services\VehicleService;
 
 class ReservationController extends Controller
 {
     protected $reservationService;
+    protected $vehicleService;
     protected $form;
 
     public function __construct(
         ReservationService $reservationService,
+        VehicleService $vehicleService,
         CustomValidator $form,
     ) {
         $this->reservationService = $reservationService;
         $this->form = $form;
+        $this->vehicleService = $vehicleService;
+    }
+
+    public function bookingDetails(Request $request, $vehicle_id)
+    {
+        
     }
 
     public function index()

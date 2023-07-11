@@ -61,6 +61,9 @@ Route::group(["prefix" => "station"], function () {
         Route::post("/delete/{id}", [VehicleController::class, "delete"])->name('vehicle.delete');
     });
 });
+Route::group(["prefix" => "booking"], function () {
+    Route::get("{id}", [VehicleController::class, "bookingShow"])->name('booking.show');
+});
 
 Route::group(["prefix" => "/reservation"], function () {
     Route::get("/", [ReservationController::class, "index"]);

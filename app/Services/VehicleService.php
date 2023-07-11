@@ -10,9 +10,12 @@ use App\Repositories\Eloquent\StationRepository;
 use App\Repositories\Eloquent\VehicleRepository;
 use App\Repositories\Eloquent\VehicleDetailRepository;
 use Illuminate\Support\Facades\Storage;
+use App\Traits\Pagination;
 
 class VehicleService
 {
+    use Pagination;
+
     protected VehicleRepository $vehicleRepository;
     protected VehicleDetailRepository $vehicleDetailRepository;
     protected StationRepository $stationRepository;
@@ -35,6 +38,16 @@ class VehicleService
         // $vehicleDetails = $this->getVehicleDetails($vehicles);
 
         return $vehicleDetails;
+    }
+
+    public function getVehicle($id)
+    {
+        return $this->vehicleRepository->find($id);
+    }
+
+    public function getDetail($id)
+    {
+        return $this->vehicleDetailRepository->findBy(['vehicle_id' => $id]);
     }
 
     public function createVehicle($station_id, $request)
@@ -113,9 +126,12 @@ class VehicleService
 
     public function getVehicleByDetail($vehicle_detail_id)
     {
-        $vehicle_id = $this->vehicleDetailRepository->find($vehicle_detail_id)->vehicle_id;
+        $vehicle = $this->vehicleDetailRepository->find($vehicle_detail_id);
+        if (!$vehicle) {
+            return null;
+        }
 
-        return $this->vehicleRepository->find($vehicle_id);
+        return $this->vehicleRepository->find($vehicle->vehicle_id);
     }
 
     public function deleteVehicle($vehicle_id, $vehicle_detail_id)
@@ -132,10 +148,10 @@ class VehicleService
 
     public function getAvailableVehicle()
     {
-        $vehicles = $this->vehicleRepository->findBy(['status' => 0], false);
-        $vehicleDetails = $vehicles->pluck('vehicleDetail')->take($this->PAGINATION);
+        $data = $this->vehicleRepository->getListVehiclesAtStation();
+        $pagination = $this->pagination($data, $this->PAGINATION);
 
-        return $vehicleDetails;
+        return $pagination;
     }
 
     public function searchByCar($request)

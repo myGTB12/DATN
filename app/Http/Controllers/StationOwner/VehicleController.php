@@ -58,6 +58,14 @@ class VehicleController extends Controller
         return view('content.form-elements.form-edit-vehicle', compact('vehicleDetail', 'vehicle', 'station_id'));
     }
 
+    public function bookingShow($id)
+    {
+        $vehicle = $this->vehicleService->getVehicle($id);
+        $vehicleDetail = $this->vehicleService->getDetail($id)[0];
+
+        return view('content.form-elements.form-booking', compact('vehicleDetail', 'vehicle'));
+    }
+
     public function delete($station_id, $vehicle_id, Request $request)
     {
         $result = $this->vehicleService->deleteVehicle($vehicle_id, $request->vehicleDetail);

@@ -19,9 +19,24 @@ class VehicleRepository extends BaseRepository
 
     public function getListVehiclesAtStation()
     {
-        $vehicles = $this->getModel()->stations;
+        $vehicles = $this->model->select(
+            "vehicles.id",
+            "vehicle_details.vehicle_number",
+            "vehicle_details.brand",
+            "vehicle_details.name",
+            "stations.city",
+            "stations.district",
+        )
+            ->join(
+                "vehicle_details",
+                "vehicle_details.vehicle_id",
+                "=",
+                "vehicles.id"
+            )
+            ->join("stations", "stations.id", "=", "vehicles.station_id");
 
-        return $vehicles;
+        return $vehicles->whereNull("vehicles.deleted_at")
+            ->distinct()->get();
     }
 
     public function createVehicle($request)
