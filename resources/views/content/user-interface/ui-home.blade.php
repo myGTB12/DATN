@@ -2,6 +2,9 @@
 
 @section('title', __('messages.title'))
 
+@php
+$user = auth()->guard('user')->user();
+@endphp
 @section('content')
 
 <div class="row">
@@ -98,10 +101,17 @@
         <span class="visually-hidden">Next</span>
       </a>
     </div>
+    @if(!$user)
+    <form onsubmit="return false">
+      <p class="card-text"><i class='bx bx-map-pin mb-2'></i> {{$vehicle->district . $vehicle->city}}</p>
+      <button class="btn btn-outline-primary" type="button" data-bs-toggle="modal" data-bs-target="#modalSignin">Rent Now</button>
+    </form>
+    @else
     <div class="card-body">
-      <p class="card-text"><i class='bx bxs-location-plus mb-2'></i> {{$vehicle->district . $vehicle->city}}</p>
-      <a href="{{route('booking.show', ['station_id' => '', 'id' => $vehicle->id])}}" class="card-link">Rent Now</a>
+      <p class="card-text"><i class='bx bx-map-pin mb-2'></i> {{$vehicle->district . $vehicle->city}}</p>
+      <a href="{{route('booking.show', ['station_id' => '', 'id' => $vehicle->id])}}" class="btn btn-outline-primary">Rent Now</a>
     </div>
+    @endif
   </div>
   @endforeach
   <div class="divider">
@@ -140,10 +150,17 @@
         <span class="visually-hidden">Next</span>
       </a>
     </div>
+    @if(!$user)
+    <form onsubmit="return false">
+      <p class="card-text"><i class='bx bx-map-pin mb-2'></i> {{$vehicle->district . $vehicle->city}}</p>
+      <button class="btn btn-outline-primary" type="button" data-bs-toggle="modal" data-bs-target="#modalSignin">Rent Now</button>
+    </form>
+    @else
     <div class="card-body">
-      <p class="card-text"><i class='bx bxs-location-plus mb-2'></i> {{$vehicle->district . $vehicle->city}}</p>
-      <a href="javascript:void(0);" class="card-link">Rent Now</a>
+      <p class="card-text"><i class='bx bx-map-pin mb-2'></i> {{$vehicle->district . $vehicle->city}}</p>
+      <a href="{{route('booking.show', ['station_id' => '', 'id' => $vehicle->id])}}" class="card-link">Rent Now</a>
     </div>
+    @endif
   </div>
   @endforeach
   <div class="divider">
@@ -182,10 +199,17 @@
         <span class="visually-hidden">Next</span>
       </a>
     </div>
+    @if(!$user)
+    <form onsubmit="return false">
+      <p class="card-text"><i class='bx bx-map-pin mb-2'></i> {{$vehicle->district . $vehicle->city}}</p>
+      <button class="btn btn-outline-primary" type="button" data-bs-toggle="modal" data-bs-target="#modalSignin">Rent Now</button>
+    </form>
+    @else
     <div class="card-body">
-      <p class="card-text"><i class='bx bxs-location-plus mb-2'></i> {{$vehicle->district . $vehicle->city}}</p>
-      <a href="javascript:void(0);" class="card-link">Rent Now</a>
+      <p class="card-text"><i class='bx bx-map-pin mb-2'></i> {{$vehicle->district . $vehicle->city}}</p>
+      <a href="{{route('booking.show', ['station_id' => '', 'id' => $vehicle->id])}}" class="card-link">Rent Now</a>
     </div>
+    @endif
   </div>
   @endforeach
   <div class="divider">
@@ -324,3 +348,36 @@
 </div>
 
 @endsection
+
+<!-- Modal sign in -->
+<div class="modal fade" id="modalSignin" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modalCenterTitle">Sign-in to continue</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <form action="{{route('user.login')}}" method="POST">
+        @csrf
+        <div class="modal-body">
+          <div class="row">
+            <div class="col mb-3">
+              <label for="nameWithTitle" class="form-label">User name or email</label>
+              <input type="text" name="email" id="nameWithTitle" class="form-control" placeholder="Enter Name">
+            </div>
+          </div>
+          <div class="row g-2">
+            <div class="col mb-0">
+              <label for="emailWithTitle" class="form-label">Password</label>
+              <input type="password" name="password" id="emailWithTitle" class="form-control" placeholder="xxxx@xxx.xx">
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-primary">Login</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

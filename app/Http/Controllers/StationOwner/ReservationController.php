@@ -27,7 +27,6 @@ class ReservationController extends Controller
 
     public function bookingDetails(Request $request, $vehicle_id)
     {
-        
     }
 
     public function index()
@@ -38,12 +37,9 @@ class ReservationController extends Controller
         return view('content.tables.reservations-table', compact('reservations'));
     }
 
-    // public function create($user_id, Request $request)
-    public function create()
+    public function create(Request $request, $vehicle_id)
     {
-        // if ($request->isMethod('POST')) {
-        //     $this->form->validate($request, "CreateReservationForm");
-        // }
+        $this->reservationService->createReservation($vehicle_id, $request);
 
         return view('content.form-elements.form-create-reservation');
     }

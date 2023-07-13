@@ -63,6 +63,7 @@ Route::group(["prefix" => "station"], function () {
 });
 Route::group(["prefix" => "booking"], function () {
     Route::get("{id}", [VehicleController::class, "bookingShow"])->name('booking.show');
+    Route::post("{id}", [ReservationController::class, "create"])->name('booking.rent');
 });
 
 Route::group(["prefix" => "/reservation"], function () {

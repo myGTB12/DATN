@@ -26,9 +26,10 @@ class ReservationService
         return $reservations;
     }
 
-    public function createReservation($user_id, $request)
+    public function createReservation($vehicle_id, $request)
     {
-        $reservation = $this->reservationRepository->createReservation($user_id, $request);
+        $reservation = $this->reservationRepository->createReservation($vehicle_id, $request);
+
         return $reservation;
     }
 
