@@ -28,9 +28,13 @@ class ReservationService
 
     public function createReservation($vehicle_id, $request)
     {
-        $reservation = $this->reservationRepository->createReservation($vehicle_id, $request);
+        $user_id = auth()->guard('user')->user();
+        if ($user_id) {
+            $reservation = $this->reservationRepository->createReservation($user_id, $vehicle_id, $request);
+            return $reservation;
+        }
 
-        return $reservation;
+        return redirect()->route('user.login');
     }
 
     public function editReservation(Request $request)

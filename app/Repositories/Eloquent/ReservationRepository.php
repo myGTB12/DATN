@@ -23,7 +23,7 @@ class ReservationRepository extends BaseRepository
         $this->model->all()->where('');
     }
 
-    public function createReservation($user_id, $request)
+    public function createReservation($user_id, $vehicle_id, $request)
     {
         try {
             $reservation = $this->model->create([
@@ -35,15 +35,15 @@ class ReservationRepository extends BaseRepository
                 "end_time" => $request->end_time,
                 "status" => 1,
                 "unit_price" => $request->unit_price,
-                // "usage_fee" =>,
-                // "insurance_fee",
-                // "total_amount",
-                // "cancel_at",
-                // "cancel_reason",
-                // "per_night_price",
-                // "count_day",
-                // "unit_over_time",
-                // "unit_over_time_price",
+                "usage_fee",
+                "insurance_fee",
+                "total_amount",
+                "cancel_at",
+                "cancel_reason",
+                "per_night_price",
+                "count_day",
+                "unit_over_time",
+                "unit_over_time_price",
             ]);
         } catch (Exception $e) {
             back()->with('error', __('messages.create_data_failed'));
