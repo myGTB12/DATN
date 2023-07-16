@@ -8,7 +8,7 @@
 
 @section('content')
 <h4 class="fw-bold py-3 mb-4">
-    <span class="text-muted fw-light">Edit vehicle :</span> {{$vehicleDetail->name}}
+    <span class="text-muted fw-light">Edit vehicle :</span> {{$vehicleDetail->car_name}}
 </h4>
 
 <div class="row">
@@ -103,7 +103,7 @@
                     <div class="row mb-3">
                         <label class="col-sm-2 col-form-label" for="basic-default-message">Over time price</label>
                         <div class="col-sm-10">
-                            <input type="text" name="unit_over_time_price" value="{{$vehicleDetail->unit_over_time_price}}" />
+                            <input type="text" name="over_time_price" value="{{$vehicleDetail->over_time_price}}" />
                         </div>
                     </div>
                     <div class="divider divider-primary">
@@ -126,7 +126,7 @@
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="modalCenterTitle">Delete Vehicle: {{$vehicleDetail->name}}</h5>
+                    <h5 class="modal-title" id="modalCenterTitle">Delete Vehicle: {{$vehicleDetail->car_name}}</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">

@@ -28,7 +28,7 @@ class Vehicle extends Model
 
     public function stations()
     {
-        return $this->belongsTo(Station::class, 'id', 'station_id');
+        return $this->belongsTo(Station::class, 'station_id', 'id');
     }
 
     public $timestamps = true;

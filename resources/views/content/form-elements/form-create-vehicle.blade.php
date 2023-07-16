@@ -111,7 +111,7 @@
                 <div class="row mb-3">
                     <label class="col-sm-2 col-form-label" for="basic-default-message">Over time price</label>
                     <div class="col-sm-10">
-                        <input type="text" name="unit_over_time_price" class="form-control phone-mask" />
+                        <input type="text" name="over_time_price" class="form-control phone-mask" />
                     </div>
                 </div>
                 <div class="col-md-5">

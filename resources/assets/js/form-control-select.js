@@ -1,7 +1,6 @@
 'use strict';
 
 (function() {
-    console.log(123);
     const citySelected = document.getElementById('formControlSelectCity');
     const districtSelected = document.getElementById('formControlSelectDistrict');
     const districts = { 

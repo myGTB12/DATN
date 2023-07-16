@@ -12,7 +12,7 @@
             <div class="card-body">
                 <div class="mb-3">
                     <label for="exampleFormControlSelect1" class="form-label">Select brand</label>
-                    <select class="form-select" name="brand" id="exampleFormControlSelect1" aria-label="Default select example">
+                    <select class="form-select" name="brand" aria-label="Default select example">
                         <option value="Honda">Honda</option>
                         <option value="Mercedes">Mercedes</option>
                         <option value="Ford">Ford</option>
@@ -28,7 +28,7 @@
                 </div>
                 <div class="mb-3">
                     <label for="exampleFormControlSelect1" class="form-label">Select name</label>
-                    <select class="form-select" name="name" id="exampleFormControlSelect1" aria-label="Default select example">
+                    <select class="form-select" name="name" aria-label="Default select example">
                         <option value="Honda City">Honda City</option>
                         <option value="Toyota Vios">Toyota Vios</option>
                         <option value="Honda CR-V">Honda CR-V</option>

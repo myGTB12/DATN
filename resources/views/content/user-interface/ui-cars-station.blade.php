@@ -29,7 +29,7 @@ $stationId = request()->route('station_id');
         @foreach($vehicleDetails as $detail)
         <tr>
           <td><i class="fab fa-angular fa-lg text-danger me-3"></i> <strong>{{$detail->brand}}</strong></td>
-          <td>{{$detail->name}}</td>
+          <td>{{$detail->car_name}}</td>
           <td>{{$detail->capacity}}</td>
           <td>{{$detail->per_night_price}}</td>
           <td>

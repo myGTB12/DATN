@@ -37,9 +37,10 @@ class ReservationController extends Controller
         return view('content.tables.reservations-table', compact('reservations'));
     }
 
-    public function create(Request $request, $vehicle_id)
+    public function create(Request $request, $vehicle_detail_id)
     {
-        $this->reservationService->createReservation($vehicle_id, $request);
+        dd($request->all());
+        $this->reservationService->createReservation($vehicle_detail_id, $request);
 
         return view('content.form-elements.form-create-reservation');
     }

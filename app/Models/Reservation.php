@@ -42,7 +42,7 @@ class Reservation extends Model
         "per_night_price",
         "count_day",
         "unit_over_time",
-        "unit_over_time_price",
+        "over_time_price",
         "created_by",
         "updated_by",
     ];

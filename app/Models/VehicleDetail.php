@@ -31,7 +31,8 @@ class VehicleDetail extends Model
         "vehicle_number",
         "color",
         "brand",
-        "name",
+        "engine",
+        "car_name",
         "capacity",
         "length",
         "width",
@@ -41,7 +42,7 @@ class VehicleDetail extends Model
         "usage_fee",
         "insurance_fee",
         "per_night_price",
-        "unit_over_time_price"
+        "over_time_price"
     ];
     public $timestamps = true;
 

@@ -33,7 +33,7 @@ return new class extends Migration
             $table->integer('per_night_price')->nullable();
             $table->integer('count_day')->nullable();
             $table->integer('unit_over_time')->nullable();
-            $table->integer('unit_over_time_price')->nullable();
+            $table->integer('over_time_price')->nullable();
             $table->uuid('created_by')->nullable();
             $table->uuid('updated_by')->nullable();
             $table->timestamps();

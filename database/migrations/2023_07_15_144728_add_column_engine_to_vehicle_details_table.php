@@ -12,10 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('vehicle_details', function (Blueprint $table) {
-            $table->integer('usage_fee')->nullable();
-            $table->integer('insurance_fee')->nullable();
-            $table->integer('per_night_price')->nullable();
-            $table->integer('over_time_price')->nullable();
+            $table->integer('engine')->default(0);
         });
     }
 

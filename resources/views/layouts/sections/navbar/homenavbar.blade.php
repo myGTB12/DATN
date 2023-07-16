@@ -50,13 +50,13 @@ $user = auth()->guard('user')->user();
                     <div class="row">
                         <div class="col mb-3">
                             <label for="nameWithTitle" class="form-label">User name or email</label>
-                            <input type="text" name="email" id="nameWithTitle" class="form-control" placeholder="Enter Name">
+                            <input type="text" name="email" class="form-control" placeholder="Enter Name">
                         </div>
                     </div>
                     <div class="row g-2">
                         <div class="col mb-0">
                             <label for="emailWithTitle" class="form-label">Password</label>
-                            <input type="password" name="password" id="emailWithTitle" class="form-control" placeholder="xxxx@xxx.xx">
+                            <input type="password" name="password" class="form-control" placeholder="xxxx@xxx.xx">
                         </div>
                     </div>
                 </div>
@@ -83,31 +83,31 @@ $user = auth()->guard('user')->user();
                     <div class="row">
                         <div class="col mb-3">
                             <label for="nameWithTitle" class="form-label">User name</label>
-                            <input type="text" name="user_name" id="nameWithTitle" class="form-control" placeholder="Enter Name">
+                            <input type="text" name="user_name" class="form-control" placeholder="Enter Name">
                         </div>
                     </div>
                     <div class="row">
                         <div class="col mb-3">
                             <label for="nameWithTitle" class="form-label">Email</label>
-                            <input type="text" name="email" id="nameWithTitle" class="form-control" placeholder="xxxx@xxx.xx">
+                            <input type="text" name="email" class="form-control" placeholder="xxxx@xxx.xx">
                         </div>
                     </div>
                     <div class="row g-2">
                         <div class="col mb-0">
                             <label for="emailWithTitle" class="form-label">Password</label>
-                            <input type="password" name="password" id="emailWithTitle" class="form-control" placeholder="">
+                            <input type="password" name="password" class="form-control" placeholder="">
                         </div>
                     </div>
                     <div class="row g-2">
                         <div class="col mb-0">
                             <label for="emailWithTitle" class="form-label">Confirm Password</label>
-                            <input type="password" name="confirm_password" id="emailWithTitle" class="form-control" placeholder="">
+                            <input type="password" name="confirm_password" class="form-control" placeholder="">
                         </div>
                     </div>
                     <div class="row g-2">
                         <div class="col mb-0">
                             <label for="emailWithTitle" class="form-label">Phone</label>
-                            <input type="text" name="phone" id="emailWithTitle" class="form-control" placeholder="+084 12345678">
+                            <input type="text" name="phone" class="form-control" placeholder="+084 12345678">
                         </div>
                     </div>
                 </div>

@@ -17,23 +17,31 @@ class VehicleDetailRepository extends BaseRepository
         return VehicleDetail::class;
     }
 
-    public function serchByCarDetail($request){
+    public function getVehicle($vehicle_id)
+    {
+        $query = $this->model->select("vehicle_details.*")->whereNull("vehicle_details.deleted_at")
+            ->where('vehicle_id', $vehicle_id)->get();
+        return $query;
+    }
+
+    public function serchByCarDetail($request)
+    {
         $brand = $request->brand;
         $name = $request->name;
         $capacity = $request->capacity;
 
         $query = $this->model->select("vehicle_details.*")->whereNull("vehicle_details.deleted_at");
 
-        if($brand){
+        if ($brand) {
             $query = $query->where("vehicle_details.brand", "like", "%" . $brand . "%");
         }
-        if($name){
+        if ($name) {
             $query = $query->orWhere("vehicle_details.name", "like", "%" . $name . "%");
         };
-        if($capacity){
+        if ($capacity) {
             $query = $query->orWhere("vehicle_details.capacity", $capacity);
         }
-        
+
         return $query->orderByDesc("vehicle_details.updated_at")->get();
     }
 }

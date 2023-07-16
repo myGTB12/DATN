@@ -72,7 +72,7 @@ $user = auth()->guard('user')->user();
   @foreach($vehicles_1 as $vehicle)
   <div class="col-md-6 col-lg-4 mb-3" style="background-color: #fcfdfd; border: 1px solid #e0e0e0; border-radius:16px;">
     <div class="card-body">
-      <h5 class="card-title">{{$vehicle->Name}}</h5>
+      <h5 class="card-title">{{$vehicle->car_name}}</h5>
       <h6 class="card-subtitle text-muted">Color: {{$vehicle->color}}</h6>
     </div>
     <div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
@@ -121,7 +121,7 @@ $user = auth()->guard('user')->user();
   @foreach($vehicles_2 as $vehicle)
   <div class="col-md-6 col-lg-4 mb-3" style="background-color: #fcfdfd; border: 1px solid #e0e0e0; border-radius:16px;">
     <div class="card-body">
-      <h5 class="card-title">{{$vehicle->Name}}</h5>
+      <h5 class="card-title">{{$vehicle->car_name}}</h5>
       <h6 class="card-subtitle text-muted">Color: {{$vehicle->color}}</h6>
     </div>
     <div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
@@ -170,7 +170,7 @@ $user = auth()->guard('user')->user();
   @foreach($vehicles_3 as $vehicle)
   <div class="col-md-6 col-lg-4 mb-3" style="background-color: #fcfdfd; border: 1px solid #e0e0e0; border-radius:16px;">
     <div class="card-body">
-      <h5 class="card-title">{{$vehicle->Name}}</h5>
+      <h5 class="card-title">{{$vehicle->car_name}}</h5>
       <h6 class="card-subtitle text-muted">Color: {{$vehicle->color}}</h6>
     </div>
     <div id="carouselExample" class="carousel slide" data-bs-ride="carousel">

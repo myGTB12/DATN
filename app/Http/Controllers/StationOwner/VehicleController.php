@@ -61,9 +61,11 @@ class VehicleController extends Controller
     public function bookingShow($id)
     {
         $vehicle = $this->vehicleService->getVehicle($id);
+        $station_owner = $vehicle->stations->stationOwner;
         $vehicleDetail = $this->vehicleService->getDetail($id)[0];
+        $data = array_merge($station_owner->toArray(), $vehicleDetail);
 
-        return view('content.form-elements.form-booking', compact('vehicleDetail', 'vehicle'));
+        return view('content.form-elements.form-booking', compact('data', 'vehicle'));
     }
 
     public function delete($station_id, $vehicle_id, Request $request)
