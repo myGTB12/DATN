@@ -12,15 +12,15 @@ $cities = __('city');
                 <div class="card-body">
                     <div class="mb-3">
                         <label for="exampleFormControlSelect1" class="form-label">Select city</label>
-                        <select class="form-select" id="formControlSelectCity" aria-label="Default select example">
+                        <select class="form-select" name="city" id="formControlSelectCity" aria-label="Default select example">
                             @foreach($cities as $key => $city)
-                            <option value="{{$key}}">{{$city}}</option>
+                            <option value="{{$key}}">{{array_key_first($city)}}</option>
                             @endforeach
                         </select>
                     </div>
                     <div class="mb-3">
                         <label for="exampleFormControlSelect1" class="form-label">Select district</label>
-                        <select class="form-select" id="formControlSelectDistrict" aria-label="Default select example">
+                        <select class="form-select" name="district" id="formControlSelectDistrict" aria-label="Default select example">
                         </select>
                     </div>
                     <button type="submit" class="btn btn-primary">Search</button>

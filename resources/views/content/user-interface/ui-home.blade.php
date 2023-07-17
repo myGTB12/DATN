@@ -4,6 +4,7 @@
 
 @php
 $user = auth()->guard('user')->user();
+$cities = __('city');
 @endphp
 @section('content')
 
@@ -103,7 +104,7 @@ $user = auth()->guard('user')->user();
     </div>
     @if(!$user)
     <form onsubmit="return false">
-      <p class="card-text"><i class='bx bx-map-pin mb-2'></i> {{$vehicle->district . $vehicle->city}}</p>
+      <p class="card-text"><i class='bx bx-map-pin mb-2'></i> {{$vehicle->district . $cities[$vehicle->city]}}</p>
       <button class="btn btn-outline-primary" type="button" data-bs-toggle="modal" data-bs-target="#modalSignin">Rent Now</button>
     </form>
     @else

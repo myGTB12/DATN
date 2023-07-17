@@ -12,11 +12,11 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // $this->call(TblAdminsSeeder::class);
-        // $this->call(SeedDataStationOwner::class);
-        // $this->call(SeedDataStation::class);
-        // $this->call(SeedDataVehicles::class);
+        $this->call(TblAdminsSeeder::class);
+        $this->call(SeedDataStationOwner::class);
+        $this->call(SeedDataStation::class);
+        $this->call(SeedDataVehicles::class);
         $this->call(SeedDataVehicleDetail::class);
-        // $this->call(SeedDataUser::class);
+        $this->call(SeedDataUser::class);
     }
 }

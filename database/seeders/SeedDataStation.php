@@ -25,6 +25,8 @@ class SeedDataStation extends Seeder
                 "start_business_time" => fake()->time(),
                 "end_business_time" => fake()->time(),
                 "always_open" => random_int(0, 1),
+                "city" => random_int(1, 30),
+                "district" => random_int(1, 6),
             ]);
         }
     }

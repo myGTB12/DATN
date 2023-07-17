@@ -56,7 +56,7 @@ class SeedDataVehicleDetail extends Seeder
             VehicleDetail::create([
                 "vehicle_id" => $vehicle->id,
                 "brand" => $this->brand[random_int(0, 9)],
-                "name" => $this->name[random_int(0, 18)],
+                "car_name" => $this->name[random_int(0, 18)],
                 "capacity" => random_int(4, 16),
                 "insurance_fee" => random_int(100000, 1000000),
                 "per_night_price" => random_int(500000, 5000000),
@@ -67,7 +67,7 @@ class SeedDataVehicleDetail extends Seeder
                 "img3" => env('STORAGE_PATH') . "car" . random_int(1, 16) . ".jpg",
                 "img4" => env('STORAGE_PATH') . "car" . random_int(1, 16) . ".jpg",
                 "fuel" => random_int(0, 1),
-                // "engine" => random_int(0, 1),
+                "engine" => random_int(0, 1),
                 "vehicle_number" => random_int(10000, 99999),
                 "color" => fake()->colorName(),
             ]);

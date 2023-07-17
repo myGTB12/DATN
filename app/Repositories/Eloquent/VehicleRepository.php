@@ -23,7 +23,8 @@ class VehicleRepository extends BaseRepository
             "vehicles.id",
             "vehicle_details.vehicle_number",
             "vehicle_details.brand",
-            "vehicle_details.name",
+            "vehicle_details.car_name",
+            "vehicle_details.color",
             "stations.city",
             "stations.district",
         )

@@ -59,7 +59,8 @@ class StationService
         return $results;
     }
 
-    public function searchByStation($request){
+    public function searchByStation($request)
+    {
         $stations = $this->stationRepository->searchByLocation($request);
 
         return $stations;

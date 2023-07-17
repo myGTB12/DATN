@@ -11,7 +11,7 @@
         parseInt(perNightPrice.dataset.value) +
         parseInt(serviceCharge.dataset.value) +
         parseInt(insuranceFee.dataset.value);
-    console.log(1234);
+
     document.getElementById("total").textContent = "$" + sum.toFixed(2);
     totalInput.value = sum;
 })();

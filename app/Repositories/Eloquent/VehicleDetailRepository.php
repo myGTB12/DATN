@@ -27,7 +27,7 @@ class VehicleDetailRepository extends BaseRepository
     public function serchByCarDetail($request)
     {
         $brand = $request->brand;
-        $name = $request->name;
+        $name = $request->car_name;
         $capacity = $request->capacity;
 
         $query = $this->model->select("vehicle_details.*")->whereNull("vehicle_details.deleted_at");
@@ -36,7 +36,7 @@ class VehicleDetailRepository extends BaseRepository
             $query = $query->where("vehicle_details.brand", "like", "%" . $brand . "%");
         }
         if ($name) {
-            $query = $query->orWhere("vehicle_details.name", "like", "%" . $name . "%");
+            $query = $query->orWhere("vehicle_details.car_name", "like", "%" . $name . "%");
         };
         if ($capacity) {
             $query = $query->orWhere("vehicle_details.capacity", $capacity);

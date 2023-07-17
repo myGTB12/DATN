@@ -38,7 +38,7 @@
                     <div class="row mb-3">
                         <label for="exampleFormControlSelect1" class="col-sm-2 col-form-label">Select name</label>
                         <div class="col-sm-10">
-                            <select class="form-select" name="name" id="exampleFormControlSelect1" aria-label="Default select example">
+                            <select class="form-select" name="car_name" id="exampleFormControlSelect1" aria-label="Default select example">
                                 <option value="Honda City">Honda City</option>
                                 <option value="Toyota Vios">Toyota Vios</option>
                                 <option value="Honda CR-V">Honda CR-V</option>
