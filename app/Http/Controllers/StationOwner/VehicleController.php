@@ -93,6 +93,16 @@ class VehicleController extends Controller
         if (!$vehicles) {
             return view('content.pages.pages-misc-error');
         }
-        return view('content.user-interface.ui-home', ['vehicles' => $vehicles]);
+        $vehicles->chunk(3);
+        dd($vehicles);
+        $vehicles_1 = $vehicles[0];
+        $vehicles_2 = $vehicles[1];
+        $vehicles_3 = $vehicles[2];
+
+        return view('content.user-interface.ui-home', [
+            'vehicles_1' => $vehicles_1,
+            'vehicles_2' => $vehicles_2,
+            'vehicles_3' => $vehicles_3
+        ]);
     }
 }
