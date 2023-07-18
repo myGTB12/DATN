@@ -84,13 +84,13 @@ $cities = __('city');
       </ol>
       <div class="carousel-inner">
         <div class="carousel-item active">
-          <img class="d-block w-100" src="{{asset('storage/img/277c6ebd-ab53-4fe9-9cc9-9eed47576b3c.png')}}" alt="First slide" />
+          <img class="d-block w-100" src="{{asset($vehicle->img)}}" alt="First slide" />
         </div>
         <div class="carousel-item">
-          <img class="d-block w-100" src="{{asset('assets/img/elements/2.jpg')}}" alt="Second slide" />
+          <img class="d-block w-100" src="{{asset($vehicle->img2)}}" alt="Second slide" />
         </div>
         <div class="carousel-item">
-          <img class="d-block w-100" src="{{asset('assets/img/elements/18.jpg')}}" alt="Third slide" />
+          <img class="d-block w-100" src="{{asset($vehicle->img3)}}" alt="Third slide" />
         </div>
       </div>
       <a class="carousel-control-prev" href="#carouselExample" role="button" data-bs-slide="prev">
@@ -104,19 +104,23 @@ $cities = __('city');
     </div>
     @if(!$user)
     <form onsubmit="return false">
-      <p class="card-text"><i class='bx bx-map-pin mb-2'></i> {{$vehicle->district . array_key_first($cities[$vehicle->city])}}</p>
+      <p class="card-text" style="padding-top: 10px;"><i class='bx bx-map-pin mb-2'></i> {{$cities[$vehicle->city][array_key_first($cities[$vehicle->city])][$vehicle->district] . " - " . array_key_first($cities[$vehicle->city])}}</p>
+      <p class="card-text" style="padding-top: 10px; color: #5fcf86"><i class='bx bx-dollar-circle mb-2' style="padding-top: 3px;"></i> {{$vehicle->per_night_price}}</p>
+      <div style="margin: auto 0 12px; border-bottom: 1px solid #e0e0e0;"></div>
       <button class="btn btn-outline-primary" type="button" data-bs-toggle="modal" data-bs-target="#modalSignin">Rent Now</button>
     </form>
     @else
     <div class="card-body">
-      <p class="card-text"><i class='bx bx-map-pin mb-2'></i> {{$vehicle->district . $vehicle->city}}</p>
+      <p class="card-text" style="padding-top: 10px;"><i class='bx bx-map-pin mb-2'></i> {{$cities[$vehicle->city][array_key_first($cities[$vehicle->city])][$vehicle->district] . " - " . array_key_first($cities[$vehicle->city])}}</p>
+      <p class="card-text" style="padding-top: 10px; color: #5fcf86"><i class='bx bx-dollar-circle mb-2' style="padding-top: 3px;"></i> {{$vehicle->per_night_price}}</p>
+      <div style="margin: auto 0 12px; border-bottom: 1px solid #e0e0e0;"></div>
       <a href="{{route('booking.show', ['station_id' => '', 'id' => $vehicle->id])}}" class="btn btn-outline-primary">Rent Now</a>
     </div>
     @endif
   </div>
   @endforeach
   <div class="divider">
-    <div class="divider-text">Rental Cars</div>
+    <div class="divider-text" style="margin-bottom: 15px;">Rental Cars</div>
   </div>
   <!-- 2 -->
   @foreach($vehicles_2 as $vehicle)
@@ -133,13 +137,13 @@ $cities = __('city');
       </ol>
       <div class="carousel-inner">
         <div class="carousel-item active">
-          <img class="d-block w-100" src="{{asset('storage/img/277c6ebd-ab53-4fe9-9cc9-9eed47576b3c.png')}}" alt="First slide" />
+          <img class="d-block w-100" src="{{asset($vehicle->img)}}" alt="First slide" />
         </div>
         <div class="carousel-item">
-          <img class="d-block w-100" src="{{asset('assets/img/elements/2.jpg')}}" alt="Second slide" />
+          <img class="d-block w-100" src="{{asset($vehicle->img2)}}" alt="Second slide" />
         </div>
         <div class="carousel-item">
-          <img class="d-block w-100" src="{{asset('assets/img/elements/18.jpg')}}" alt="Third slide" />
+          <img class="d-block w-100" src="{{asset($vehicle->img3)}}" alt="Third slide" />
         </div>
       </div>
       <a class="carousel-control-prev" href="#carouselExample" role="button" data-bs-slide="prev">
@@ -153,19 +157,23 @@ $cities = __('city');
     </div>
     @if(!$user)
     <form onsubmit="return false">
-      <p class="card-text"><i class='bx bx-map-pin mb-2'></i> {{$vehicle->district . $vehicle->city}}</p>
+      <p class="card-text" style="padding-top: 10px;"><i class='bx bx-map-pin mb-2'></i> {{$cities[$vehicle->city][array_key_first($cities[$vehicle->city])][$vehicle->district] . " - " . array_key_first($cities[$vehicle->city])}}</p>
+      <p class="card-text" style="padding-top: 10px; color: #5fcf86"><i class='bx bx-dollar-circle mb-2' style="padding-top: 3px;"></i> {{$vehicle->per_night_price}}</p>
+      <div style="margin: auto 0 12px; border-bottom: 1px solid #e0e0e0;"></div>
       <button class="btn btn-outline-primary" type="button" data-bs-toggle="modal" data-bs-target="#modalSignin">Rent Now</button>
     </form>
     @else
     <div class="card-body">
-      <p class="card-text"><i class='bx bx-map-pin mb-2'></i> {{$vehicle->district . $vehicle->city}}</p>
+      <p class="card-text" style="padding-top: 10px;"><i class='bx bx-map-pin mb-2'></i> {{$cities[$vehicle->city][array_key_first($cities[$vehicle->city])][$vehicle->district] . " - " . array_key_first($cities[$vehicle->city])}}</p>
+      <p class="card-text" style="padding-top: 10px; color: #5fcf86"><i class='bx bx-dollar-circle mb-2' style="padding-top: 3px;"></i> {{$vehicle->per_night_price}}</p>
+      <div style="margin: auto 0 12px; border-bottom: 1px solid #e0e0e0;"></div>
       <a href="{{route('booking.show', ['station_id' => '', 'id' => $vehicle->id])}}" class="card-link">Rent Now</a>
     </div>
     @endif
   </div>
   @endforeach
   <div class="divider">
-    <div class="divider-text">Rental Cars</div>
+    <div class="divider-text" style="margin-bottom: 15px;">Rental Cars</div>
   </div>
   <!-- 3 -->
   @foreach($vehicles_3 as $vehicle)
@@ -182,13 +190,13 @@ $cities = __('city');
       </ol>
       <div class="carousel-inner">
         <div class="carousel-item active">
-          <img class="d-block w-100" src="{{asset('storage/img/277c6ebd-ab53-4fe9-9cc9-9eed47576b3c.png')}}" alt="First slide" />
+          <img class="d-block w-100" src="{{asset($vehicle->img)}}" alt="First slide" />
         </div>
         <div class="carousel-item">
-          <img class="d-block w-100" src="{{asset('assets/img/elements/2.jpg')}}" alt="Second slide" />
+          <img class="d-block w-100" src="{{asset($vehicle->img2)}}" alt="Second slide" />
         </div>
         <div class="carousel-item">
-          <img class="d-block w-100" src="{{asset('assets/img/elements/18.jpg')}}" alt="Third slide" />
+          <img class="d-block w-100" src="{{asset($vehicle->img3)}}" alt="Third slide" />
         </div>
       </div>
       <a class="carousel-control-prev" href="#carouselExample" role="button" data-bs-slide="prev">
@@ -202,19 +210,23 @@ $cities = __('city');
     </div>
     @if(!$user)
     <form onsubmit="return false">
-      <p class="card-text"><i class='bx bx-map-pin mb-2'></i> {{$vehicle->district . $vehicle->city}}</p>
+      <p class="card-text" style="padding-top: 10px;"><i class='bx bx-map-pin mb-2'></i> {{$cities[$vehicle->city][array_key_first($cities[$vehicle->city])][$vehicle->district] . " - " . array_key_first($cities[$vehicle->city])}}</p>
+      <p class="card-text" style="padding-top: 10px; color: #5fcf86"><i class='bx bx-dollar-circle mb-2' style="padding-top: 3px;"></i> {{$vehicle->per_night_price}}</p>
+      <div style="margin: auto 0 12px; border-bottom: 1px solid #e0e0e0;"></div>
       <button class="btn btn-outline-primary" type="button" data-bs-toggle="modal" data-bs-target="#modalSignin">Rent Now</button>
     </form>
     @else
     <div class="card-body">
-      <p class="card-text"><i class='bx bx-map-pin mb-2'></i> {{$vehicle->district . $vehicle->city}}</p>
+      <p class="card-text" style="padding-top: 10px;"><i class='bx bx-map-pin mb-2'></i> {{$cities[$vehicle->city][array_key_first($cities[$vehicle->city])][$vehicle->district] . " - " . array_key_first($cities[$vehicle->city])}}</p>
+      <p class="card-text" style="padding-top: 10px; color: #5fcf86"><i class='bx bx-dollar-circle mb-2' style="padding-top: 3px;"></i> {{$vehicle->per_night_price}}</p>
+      <div style="margin: auto 0 12px; border-bottom: 1px solid #e0e0e0;"></div>
       <a href="{{route('booking.show', ['station_id' => '', 'id' => $vehicle->id])}}" class="card-link">Rent Now</a>
     </div>
     @endif
   </div>
   @endforeach
   <div class="divider">
-    <div class="divider-text">Rental Cars</div>
+    <div class="divider-text" style="margin-bottom: 15px;">Rental Cars</div>
   </div>
   <!-- End carousel-->
   <!-- Knowledge Base -->
@@ -346,6 +358,7 @@ $cities = __('city');
     </div>
   </div>
   <!-- /Knowledge Base -->
+  @include('content.form-elements.become-station-owner')
 </div>
 
 @endsection

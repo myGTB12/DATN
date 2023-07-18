@@ -21,10 +21,7 @@ class VehicleRepository extends BaseRepository
     {
         $vehicles = $this->model->select(
             "vehicles.id",
-            "vehicle_details.vehicle_number",
-            "vehicle_details.brand",
-            "vehicle_details.car_name",
-            "vehicle_details.color",
+            "vehicle_details.*",
             "stations.city",
             "stations.district",
         )
