@@ -20,8 +20,8 @@ class VehicleRepository extends BaseRepository
     public function getListVehiclesAtStation()
     {
         $vehicles = $this->model->select(
-            "vehicles.id",
             "vehicle_details.*",
+            "vehicles.id",
             "stations.city",
             "stations.district",
         )

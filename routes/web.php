@@ -21,6 +21,10 @@ use App\Http\Controllers\User\UserController;
 |
 */
 
+Route::get("/test", function () {
+    return view("content.form-elements.form-reservation-success");
+});
+
 Route::group(["prefix" => "/"], function () {
     Route::get('/', [UserController::class, "home"])->name('home');
     Route::post('/login', [UserLoginController::class, "login"])->name('user.login');
@@ -35,7 +39,7 @@ Route::group([
     "prefix" => "admin",
     // "middleware" => "auth",
 ], function () {
-    Route::group(["prefix" => "tationOwners"], function () {
+    Route::group(["prefix" => "stationOwners"], function () {
         Route::match(['get', 'post'], "/edit/{id}", [AdminController::class, "editStationOwner"])->name("users.edit");
         Route::get("/", [AdminController::class, "getListStationOwner"])->name("users.list");
         Route::post("/{id}", [AdminController::class, "deleteStationOwner"])->name("users.delete");

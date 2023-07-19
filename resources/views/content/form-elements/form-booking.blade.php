@@ -8,18 +8,18 @@
 
 @section('content')
 
-<div class="card-group mb-5">
+<div class="card-group mb-5" style="border: 1px solid #000; border-radius: 10px;">
     <div class="card">
-        <img class="card-img-top" style="border-bottom: 15px;" src="{{asset($data['img'])}}">
+        <img class="card-img-top" style="border-right: 1px solid #000;" src="{{asset($data['img'])}}">
     </div>
     <div class="card">
-        <img class="card-img-top" src="{{asset($data['img2'])}}">
+        <img class="card-img-top" style="border-right: 1px solid #000;" src="{{asset($data['img2'])}}">
     </div>
     <div class="card">
-        <img class="card-img-top" src="{{asset($data['img3'])}}">
+        <img class="card-img-top" style="border-right: 1px solid #000;" src="{{asset($data['img3'])}}">
     </div>
     <div class="card">
-        <img class="card-img-top" src="{{asset($data['img4'])}}">
+        <img class="card-img-top" style="border-right: 1px solid #000;" src="{{asset($data['img4'])}}">
     </div>
 </div>
 <div class="divider">
@@ -158,7 +158,7 @@
                 <h6>Price Details</h6>
                 <dl class=" row mb-0">
                     <dt class="col-6 fw-normal">Per night price</dt>
-                    <dd class="col-6 text-end" id="per_night_price" name="per_night_price" data-value="{{$data['per_night_price']}}">${{$data['per_night_price']}}</dd>
+                    <dd class="col-6 text-end" type="text" id="per_night_price" name="per_night_price" data-value="{{$data['per_night_price']}}">${{$data['per_night_price']}}</dd>
 
                     <dt class="col-6 fw-normal">Service charge</dt>
                     <dd class="col-6 text-success text-end" id="service_charge" name="usage_fee" data-value="{{$data['usage_fee']}}">${{$data['usage_fee']}}</dd>
@@ -171,13 +171,13 @@
                     <dt class="col-6">Total</dt>
                     <dd class="col-6 fw-semibold text-end mb-0" name="total_amount" id="total"><input id="total_input" hidden name="total_amount">123</input></dd>
                 </dl>
-                <div class="d-grid">
+                <div class="d-grid" style="padding-top: 10px">
                     <button class="btn btn-primary btn-next">Rent now</button>
                 </div>
             </form>
         </div>
         <div class="surcharge" style="padding: 16px; border: 1px solid #e0e0e0; border-radius: 10px; background: #fff;">
-            <p class="title text-primary">Phụ phí có thể phát sinh</p>
+            <p class="title text-primary">Additional fees may contain</p>
             <div class="surcharge-container ">
                 <div class="surcharge-item">
                     <div class="wrap-svg"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
