@@ -39,7 +39,6 @@ class ReservationController extends Controller
 
     public function create(Request $request, $vehicle_detail_id)
     {
-        dd($request->all());
         $this->reservationService->createReservation($vehicle_detail_id, $request);
 
         return view('content.form-elements.form-create-reservation');

@@ -159,12 +159,15 @@
                 <dl class=" row mb-0">
                     <dt class="col-6 fw-normal">Per night price</dt>
                     <dd class="col-6 text-end" type="text" id="per_night_price" name="per_night_price" data-value="{{$data['per_night_price']}}">${{$data['per_night_price']}}</dd>
+                    <input type="hidden" name="per_night_price" value="{{$data['per_night_price']}}"></input>
 
                     <dt class="col-6 fw-normal">Service charge</dt>
                     <dd class="col-6 text-success text-end" id="service_charge" name="usage_fee" data-value="{{$data['usage_fee']}}">${{$data['usage_fee']}}</dd>
+                    <input type="hidden" name="usage_fee" value="{{$data['usage_fee']}}"></input>
 
                     <dt class="col-6 fw-normal">Insurance fees</dt>
                     <dd class="col-6 text-end" data-value="1200" id="insurance_fee" name="insurance_fee" data-value="{{$data['insurance_fee']}}">${{$data['insurance_fee']}}</dd>
+                    <input type="hidden" name="insurance_fee" value="{{$data['insurance_fee']}}"></input>
                 </dl>
                 <hr class="mx-n3 mt-0">
                 <dl class="row mb-0">
