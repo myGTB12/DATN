@@ -52,19 +52,18 @@
                                 Sneat
                             </span>
                         </div>
-                        <p class="mb-1">Office 149, 450 South Brand Brooklyn</p>
-                        <p class="mb-1">San Diego County, CA 91905, USA</p>
-                        <p class="mb-0">+1 (123) 456 7891, +44 (876) 543 2198</p>
+                        <p class="mb-1">Office {{$data['station']['name']}},</p>
+                        <p class="mb-1">{{$data['address']}},</p>
+                        <p class="mb-0">Contact number: {{$data['station']['phone']}}</p>
                     </div>
                     <div>
-                        <h4>Invoice #3492</h4>
                         <div class="mb-2">
-                            <span class="me-1">Date Issues:</span>
-                            <span class="fw-semibold">25/08/2020</span>
+                            <span class="me-1">Booking Date:</span>
+                            <span class="fw-semibold">{{$data['start_time']}}</span>
                         </div>
                         <div>
                             <span class="me-1">Date Due:</span>
-                            <span class="fw-semibold">29/08/2020</span>
+                            <span class="fw-semibold">{{$data['end_time']}}</span>
                         </div>
                     </div>
                 </div>
@@ -73,12 +72,10 @@
             <div class="card-body">
                 <div class="row p-sm-3 p-0">
                     <div class="col-xl-6 col-md-12 col-sm-5 col-12 mb-xl-0 mb-md-4 mb-sm-0 mb-4">
-                        <h6 class="pb-2">Invoice To:</h6>
-                        <p class="mb-1">Thomas shelby</p>
-                        <p class="mb-1">Shelby Company Limited</p>
-                        <p class="mb-1">Small Heath, B10 0HF, UK</p>
-                        <p class="mb-1">718-986-6062</p>
-                        <p class="mb-0">peakyFBlinders@gmail.com</p>
+                        <h6 class="pb-2">Customer:</h6>
+                        <p class="mb-1">{{$data['user']['first_name'] . " " . $data['user']['last_name']}}</p>
+                        <p class="mb-1">{{$data['user']['phone']}}</p>
+                        <p class="mb-0">{{$data['user']['email']}}</p>
                     </div>
                     <div class="col-xl-6 col-md-12 col-sm-7 col-12">
                         <h6 class="pb-2">Bill To:</h6>
@@ -86,23 +83,15 @@
                             <tbody>
                                 <tr>
                                     <td class="pe-3">Total Due:</td>
-                                    <td>$12,110.55</td>
+                                    <td>${{$data['total_amount']}}</td>
                                 </tr>
                                 <tr>
-                                    <td class="pe-3">Bank name:</td>
-                                    <td>American Bank</td>
+                                    <td class="pe-3">Station name:</td>
+                                    <td>{{$data['station']['name']}}</td>
                                 </tr>
                                 <tr>
-                                    <td class="pe-3">Country:</td>
-                                    <td>United States</td>
-                                </tr>
-                                <tr>
-                                    <td class="pe-3">IBAN:</td>
-                                    <td>ETD95476213874685</td>
-                                </tr>
-                                <tr>
-                                    <td class="pe-3">SWIFT code:</td>
-                                    <td>BR91905</td>
+                                    <td class="pe-3">Address:</td>
+                                    <td>{{$data['address']}}</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -113,41 +102,20 @@
                 <table class="table border-top m-0">
                     <thead>
                         <tr>
-                            <th>Item</th>
-                            <th>Description</th>
-                            <th>Cost</th>
-                            <th>Qty</th>
+                            <th>Car name</th>
+                            <th>Brand</th>
                             <th>Price</th>
+                            <th>Insurance Fee</th>
+                            <th>Service Fee</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td class="text-nowrap">Vuexy Admin Template</td>
+                            <td class="text-nowrap"></td>
                             <td class="text-nowrap">HTML Admin Template</td>
                             <td>$32</td>
                             <td>1</td>
                             <td>$32.00</td>
-                        </tr>
-                        <tr>
-                            <td class="text-nowrap">Frest Admin Template</td>
-                            <td class="text-nowrap">Angular Admin Template</td>
-                            <td>$22</td>
-                            <td>1</td>
-                            <td>$22.00</td>
-                        </tr>
-                        <tr>
-                            <td class="text-nowrap">Apex Admin Template</td>
-                            <td class="text-nowrap">HTML Admin Template</td>
-                            <td>$17</td>
-                            <td>2</td>
-                            <td>$34.00</td>
-                        </tr>
-                        <tr>
-                            <td class="text-nowrap">Robust Admin Template</td>
-                            <td class="text-nowrap">React Admin Template</td>
-                            <td>$66</td>
-                            <td>1</td>
-                            <td>$66.00</td>
                         </tr>
                         <tr>
                             <td colspan="3" class="align-top px-4 py-5">

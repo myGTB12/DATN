@@ -59,7 +59,7 @@
                     <div class="flex-grow-1">
                         <div class="row">
                             <div class="col-md-8">
-                                <h6 class="me-3"><a href="" class="text-body">{{$data['name']}}</a></h6>
+                                <h6 class="me-3"><a href="" class="text-body">{{$data['car_name']}}</a></h6>
                                 <div class="text-muted mb-1 d-flex flex-wrap" style="padding-bottom: 10px;"><span class="me-1">Owner:</span> <a href="" class="me-1">{{$data['name']}}</a> <span class="badge bg-label-success">In Stock</span></div>
                                 <div class="car-outstanding">
                                     <div class="outstanding-features__item">
@@ -145,14 +145,22 @@
                 <div class="mb-3 row">
                     <label for="html5-datetime-local-input" class="col-md-2 col-form-label">Datetime</label>
                     <div class="col-md-10">
-                        <input class="form-control" type="datetime-local" value="2023-06-18T12:30:00" name="booking_start">
+                        <input class="form-control" type="datetime-local" value="2023-06-18T12:30:00" name="start_time">
                     </div>
                 </div>
                 <div class="mb-3 row">
                     <label for="html5-datetime-local-input" class="col-md-2 col-form-label">Datetime</label>
                     <div class="col-md-10">
-                        <input class="form-control" type="datetime-local" value="2023-06-18T12:30:00" name="booking_end">
+                        <input class="form-control" type="datetime-local" value="2023-06-18T12:30:00" name="end_time">
                     </div>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Station to retrun vehicle</label>
+                    <select class="form-select" name="station_end_id" aria-label="Default select example">
+                        @foreach($data['address'] as $key => $value)
+                        <option value="{{$key}}">{{$value}}</option>
+                        @endforeach
+                    </select>
                 </div>
                 <!-- Price Details -->
                 <h6>Price Details</h6>

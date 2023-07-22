@@ -26,23 +26,23 @@ class ReservationRepository extends BaseRepository
     public function createReservation($user_id, $details, $request)
     {
         try {
-            $this->model->create([
+            $reservation = $this->model->create([
                 "user_id" => $user_id,
                 "vehicle_id" => $details->vehicle_id,
-                "station_start_id" => $request->station_start_id,
                 "station_end_id" => $request->station_end_id,
                 "start_time" => $request->start_time,
                 "end_time" => $request->end_time,
                 "status" => 1,
                 "usage_fee" => $details->usage_fee,
-                "insurance_fee" => $details->infurance_fee,
-                "total_amount" => $request->total_amount,
+                "insurance_fee" => $details->insurance_fee,
+                "total_amount" => $details->per_night_price + $details->usage_fee + $details->infurance_fee,
                 "per_night_price" => $details->per_night_price,
-                // "count_day",
                 "over_time_price" => $details->over_time_price,
             ]);
+
+            return $reservation;
         } catch (Exception $e) {
-            back()->with('error', __('messages.create_data_failed'));
+            return back()->with('error', __('messages.create_data_failed'));
         }
     }
 }

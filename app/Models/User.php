@@ -42,6 +42,8 @@ class User extends Authenticatable
         "email_verified_at" => "datetime",
     ];
 
+    protected $hidden = ["password", "remember_token"];
+
     public $timestamps = true;
 
     public function reservation(): HasOne

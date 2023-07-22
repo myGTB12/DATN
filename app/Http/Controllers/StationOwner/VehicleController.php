@@ -4,9 +4,11 @@ namespace App\Http\Controllers\StationOwner;
 
 use Illuminate\Http\Request;
 use App\Form\CustomValidator;
+use App\Helpers\Helper;
 use App\Services\VehicleService;
 use App\Http\Controllers\Controller;
 use App\Services\StationService;
+use Illuminate\Support\Arr;
 
 class VehicleController extends Controller
 {
@@ -62,8 +64,15 @@ class VehicleController extends Controller
     {
         $vehicle = $this->vehicleService->getVehicle($id);
         $station_owner = $vehicle->stations->stationOwner;
+        $stations = $station_owner->stations;
+        $address = [];
+        foreach ($stations as $station) {
+            $stationAddress = Helper::getStationAddress($station->district, $station->city);
+            $address[$station->id] = $stationAddress;
+        }
         $vehicleDetail = $this->vehicleService->getDetail($id)[0];
         $data = array_merge($station_owner->toArray(), $vehicleDetail);
+        $data['address'] = $address;
 
         return view('content.form-elements.form-booking', compact('data', 'vehicle'));
     }

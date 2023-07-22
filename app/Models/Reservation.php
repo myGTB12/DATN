@@ -15,8 +15,8 @@ class Reservation extends Model
     protected $table = "reservations";
 
     protected $casts = [
-        // "start_time" => "datetime",
-        // "end_time" => "datetime",
+        "start_time" => "datetime",
+        "end_time" => "datetime",
     ];
 
     /**

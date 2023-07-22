@@ -76,4 +76,5 @@ Route::group(["prefix" => "/reservation"], function () {
     Route::post("/edit", [ReservationController::class, "edit"]);
     Route::post("/show", [ReservationController::class, "show"]);
     Route::post("/delete", [ReservationController::class, "delete"]);
+    Route::get("{res_id}/preview", [ReservationController::class, "preview"])->name('booking.preview');
 });

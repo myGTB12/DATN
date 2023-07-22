@@ -31,7 +31,8 @@ class VehicleRepository extends BaseRepository
                 "=",
                 "vehicles.id"
             )
-            ->join("stations", "stations.id", "=", "vehicles.station_id");
+            ->join("stations", "stations.id", "=", "vehicles.station_id")
+            ->where("vehicles.status", 1);
 
         return $vehicles->whereNull("vehicles.deleted_at")
             ->distinct()->get();

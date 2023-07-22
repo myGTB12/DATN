@@ -25,10 +25,6 @@ class ReservationController extends Controller
         $this->vehicleService = $vehicleService;
     }
 
-    public function bookingDetails(Request $request, $vehicle_id)
-    {
-    }
-
     public function index()
     {
         $user_id = auth()->guard('station_owner')->user()->id;
@@ -39,9 +35,13 @@ class ReservationController extends Controller
 
     public function create(Request $request, $vehicle_detail_id)
     {
-        $this->reservationService->createReservation($vehicle_detail_id, $request);
+        $data = $this->reservationService->createReservation($vehicle_detail_id, $request);
 
-        return view('content.form-elements.form-create-reservation');
+        if ($data) {
+            return redirect()->route('booking.preview', [$data->id]);
+        }
+
+        return view("content.pages.pages-misc-error");
     }
 
     public function edit(Request $request)
@@ -70,5 +70,12 @@ class ReservationController extends Controller
         }
 
         $reservation = $this->reservationService->cancelReservation($id);
+    }
+
+    public function preview($id)
+    {
+        $data = $this->reservationService->showReservation($id);
+
+        return view("content.form-elements.form-reservation-success", compact('data'));
     }
 }

@@ -114,4 +114,11 @@ class Helper
 
         return true;
     }
+
+    public static function getStationAddress(int $district, int $city)
+    {
+        $cities = __('city');
+
+        return $cities[$city][array_key_first($cities[$city])][$district] . " - " . array_key_first($cities[$city]);
+    }
 }
