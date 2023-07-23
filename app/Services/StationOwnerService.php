@@ -18,9 +18,9 @@ class StationOwnerService
         $this->stationOwnerRepository = $stationOwnerRepository;
     }
 
-    public function getListStationOwner()
+    public function getListStationOwner($status = null)
     {
-        $stationOwners = $this->stationOwnerRepository->getListStationOwner();
+        $stationOwners = $this->stationOwnerRepository->getListStationOwner($status);
 
         return $stationOwners;
     }
@@ -46,11 +46,17 @@ class StationOwnerService
         return true;
     }
 
-    public function delete($id){
-        try{
+    public function delete($id)
+    {
+        try {
             $this->stationOwnerRepository->delete($id);
-        } catch(Exception $e){
+        } catch (Exception $e) {
             return $e;
         }
+    }
+
+    public function registerAccount(Request $request)
+    {
+        $this->stationOwnerRepository->registerAccount($request);
     }
 }

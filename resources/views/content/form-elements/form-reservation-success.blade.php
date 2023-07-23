@@ -1,9 +1,9 @@
-@extends('layouts/contentNavbarLayout')
+@extends('layouts/homeNavbarLayout')
 
-@section('title', ' Vertical Layouts - Forms')
+@section('title', __('messages.title'))
 
 @section('content')
-<h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Forms/</span> Vertical Layouts</h4>
+<h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Reservation/</span> Details</h4>
 
 <!-- Basic Layout -->
 <div class="row invoice-preview">
@@ -111,80 +111,25 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td class="text-nowrap"></td>
-                            <td class="text-nowrap">HTML Admin Template</td>
-                            <td>$32</td>
-                            <td>1</td>
-                            <td>$32.00</td>
+                            <td class="text-nowrap">{{$data['details']['car_name']}}</td>
+                            <td class="text-nowrap">{{$data['details']['brand']}}</td>
+                            <td>${{$data['per_night_price']}}</td>
+                            <td>${{$data['insurance_fee']}}</td>
+                            <td>${{$data['usage_fee']}}</td>
                         </tr>
                         <tr>
                             <td colspan="3" class="align-top px-4 py-5">
                                 <p class="mb-2">
                                     <span class="me-1 fw-semibold">Salesperson:</span>
-                                    <span>Alfie Solomons</span>
+                                    <span>{{$data['owner'][0]['name']}}</span>
                                 </p>
-                                <span>Thanks for your business</span>
-                            </td>
-                            <td class="text-end px-4 py-5">
-                                <p class="mb-2">Subtotal:</p>
-                                <p class="mb-2">Discount:</p>
-                                <p class="mb-2">Tax:</p>
-                                <p class="mb-0">Total:</p>
-                            </td>
-                            <td class="px-4 py-5">
-                                <p class="fw-semibold mb-2">$154.25</p>
-                                <p class="fw-semibold mb-2">$00.00</p>
-                                <p class="fw-semibold mb-2">$50.00</p>
-                                <p class="fw-semibold mb-0">$204.25</p>
+                                <span>Thanks for your business. Safe drive and enjoy your trip</span>
                             </td>
                         </tr>
                     </tbody>
                 </table>
             </div>
-
-            <div class="card-body">
-                <div class="row">
-                    <div class="col-12">
-                        <span class="fw-semibold">Note:</span>
-                        <span>It was a pleasure working with you and your team. We hope you will keep us in mind for future freelance
-                            projects. Thank You!</span>
-                    </div>
-                </div>
-            </div>
         </div>
     </div>
-    <!-- /Invoice -->
-
-    <!-- Invoice Actions -->
-    <div class="col-xl-3 col-md-4 col-12 invoice-actions">
-        <div class="card">
-            <div class="card-body">
-                <button class="btn btn-primary d-grid w-100 mb-3" data-bs-toggle="offcanvas" data-bs-target="#sendInvoiceOffcanvas">
-                    <span class="d-flex align-items-center justify-content-center text-nowrap"><i class="bx bx-paper-plane bx-xs me-1"></i>Send Invoice</span>
-                </button>
-                <button class="btn btn-label-secondary d-grid w-100 mb-3">
-                    Download
-                </button>
-                <a class="btn btn-label-secondary d-grid w-100 mb-3" target="_blank" href="https://demos.themeselection.com/sneat-bootstrap-html-laravel-admin-template/demo-1/app/invoice/print">
-                    Print
-                </a>
-                <a href="https://demos.themeselection.com/sneat-bootstrap-html-laravel-admin-template/demo-1/app/invoice/edit" class="btn btn-label-secondary d-grid w-100 mb-3">
-                    Edit Invoice
-                </a>
-                <button class="btn btn-primary d-grid w-100" data-bs-toggle="offcanvas" data-bs-target="#addPaymentOffcanvas">
-                    <span class="d-flex align-items-center justify-content-center text-nowrap"><i class="bx bx-dollar bx-xs me-1"></i>Add Payment</span>
-                </button>
-            </div>
-        </div>
-    </div>
-    <!-- /Invoice Actions -->
 </div>
-
-<style>
-    .card-body {
-        color: var(--bs-card-color);
-        -ms-flex: 1 1 auto;
-        flex: 1 1 auto;
-    }
-</style>
 @endsection

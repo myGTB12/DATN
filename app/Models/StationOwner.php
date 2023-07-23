@@ -37,7 +37,15 @@ class StationOwner extends Authenticatable
      *
      * @var array
      */
-    protected $hidden = ["password", "remember_token"];
+    protected $hidden = [
+        "password",
+        "remember_token",
+        "id",
+        "created_at",
+        "updated_at",
+        "email_verified_at",
+        "admin_id"
+    ];
 
     /**
      * The attributes that should be visible for serialization.

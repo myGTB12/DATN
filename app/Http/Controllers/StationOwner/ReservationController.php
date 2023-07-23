@@ -27,8 +27,7 @@ class ReservationController extends Controller
 
     public function index()
     {
-        $user_id = auth()->guard('station_owner')->user()->id;
-        $reservations = $this->reservationService->getListReservations($user_id);
+        $reservations = $this->reservationService->getListReservations();
 
         return view('content.tables.reservations-table', compact('reservations'));
     }
@@ -75,7 +74,7 @@ class ReservationController extends Controller
     public function preview($id)
     {
         $data = $this->reservationService->showReservation($id);
-
+        // dd($data);
         return view("content.form-elements.form-reservation-success", compact('data'));
     }
 }

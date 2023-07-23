@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Enums\ActivityStatus;
 use App\Helpers\Helper;
 use App\Models\StationOwner;
 use Illuminate\Http\Request;
@@ -41,7 +42,7 @@ class AdminController extends Controller
     {
         if ($request->isMethod("post")) {
             if (!$request->status) {
-                $request->merge(['status' => 0]);
+                $request->merge(['status' => ActivityStatus::INACTIVE->value]);
             }
             $this->form->validate($request, "EditStationOwnerForm");
             if (session()->get('admin')) {
@@ -68,7 +69,9 @@ class AdminController extends Controller
         if ($request->isMethod("post")) {
         }
 
-        // return view 
+        $stationOwners = $this->stationOwnerService->getListStationOwner(ActivityStatus::REGISTER);
+
+        return view('content.tables.station-owner-register', compact('stationOwners'));
     }
 
     public function deleteStationOwner($id)

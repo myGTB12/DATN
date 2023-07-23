@@ -2,6 +2,7 @@
 
 namespace App\Repositories\Eloquent;
 
+use App\Enums\ActivityStatus;
 use Exception;
 use App\Models\Vehicle;
 use Illuminate\Http\Request;
@@ -32,7 +33,7 @@ class VehicleRepository extends BaseRepository
                 "vehicles.id"
             )
             ->join("stations", "stations.id", "=", "vehicles.station_id")
-            ->where("vehicles.status", 1);
+            ->where("vehicles.status", ActivityStatus::ACTIVE->value);
 
         return $vehicles->whereNull("vehicles.deleted_at")
             ->distinct()->get();

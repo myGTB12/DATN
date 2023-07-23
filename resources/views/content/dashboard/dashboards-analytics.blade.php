@@ -22,9 +22,9 @@
         <div class="col-sm-7">
           <div class="card-body">
             <h5 class="card-title text-primary">Welcome {{$station_owner->name}}! 🎉</h5>
-            <p class="mb-4">Manage your station and verify rent contract here</p>
+            <p class="mb-4">Manage your station and verify reservations here</p>
 
-            <a href="javascript:;" class="btn btn-sm btn-outline-primary">Check contract here!</a>
+            <a href="{{route('booking.index')}}" class="btn btn-sm btn-outline-primary">Check reservation here!</a>
           </div>
         </div>
         <div class="col-sm-5 text-center text-sm-left">

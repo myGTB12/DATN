@@ -5,6 +5,7 @@ namespace App\Repositories\Eloquent;
 use Exception;
 use App\Models\Station;
 use Illuminate\Http\Request;
+use App\Enums\ActivityStatus;
 use Illuminate\Support\Facades\Hash;
 
 class StationRepository extends BaseRepository
@@ -52,7 +53,7 @@ class StationRepository extends BaseRepository
             $request->merge(['always_open' => 0]);
         }
         if (!$request->status) {
-            $request->merge(['status' => 0]);
+            $request->merge(['status' => ActivityStatus::INACTIVE->value]);
         }
         try {
             $station = $this->getModel()::where('id', $request->id)->update([

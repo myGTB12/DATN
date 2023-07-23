@@ -52,6 +52,7 @@ Route::group([
 
 Route::group(["prefix" => "station"], function () {
     Route::match(['get', 'post'], "/login", [StationOwnerLoginController::class, "login"])->name("station.login");
+    Route::match(['get', 'post'], "/register", [StationOwnerLoginController::class, "register"])->name("station.register");
     Route::get("/stations", [StationController::class, "index"])->name('stations.index');
     Route::post("/create", [StationController::class, "create"]);
     Route::match(['get', 'post'], "/edit/{id}", [StationController::class, "edit"])->name('station.edit');
@@ -71,7 +72,7 @@ Route::group(["prefix" => "booking"], function () {
 });
 
 Route::group(["prefix" => "/reservation"], function () {
-    Route::get("/", [ReservationController::class, "index"]);
+    Route::get("/", [ReservationController::class, "index"])->name('booking.index');
     Route::match(['get', 'post'], "/create", [ReservationController::class, "create"]);
     Route::post("/edit", [ReservationController::class, "edit"]);
     Route::post("/show", [ReservationController::class, "show"]);

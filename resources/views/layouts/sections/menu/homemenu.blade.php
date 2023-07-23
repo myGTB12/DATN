@@ -49,6 +49,14 @@
       {{-- submenu --}}
       @include('layouts.sections.menu.submenu.home-submenu-car')
     </li>
+
+    <li class="menu-item {{$activeClass}}">
+      <a href="{{route('station.register')}}" class="menu-link">
+        <i class="menu-icon tf-icons bx bxs-car-garage"></i>
+
+        <div>Become Station Owner</div>
+      </a>
+    </li>
   </ul>
 
 </aside>

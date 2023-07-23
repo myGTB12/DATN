@@ -2,6 +2,7 @@
 
 namespace App\Repositories\Eloquent;
 
+use App\Enums\ActivityStatus;
 use Exception;
 use App\Models\Reservation;
 use Illuminate\Http\Request;
@@ -23,16 +24,17 @@ class ReservationRepository extends BaseRepository
         $this->model->all()->where('');
     }
 
-    public function createReservation($user_id, $details, $request)
+    public function createReservation($user_id, $details, Request $request, $station_start_id)
     {
         try {
             $reservation = $this->model->create([
                 "user_id" => $user_id,
                 "vehicle_id" => $details->vehicle_id,
+                "station_start_id" => $station_start_id,
                 "station_end_id" => $request->station_end_id,
                 "start_time" => $request->start_time,
                 "end_time" => $request->end_time,
-                "status" => 1,
+                "status" => ActivityStatus::ACTIVE->value,
                 "usage_fee" => $details->usage_fee,
                 "insurance_fee" => $details->insurance_fee,
                 "total_amount" => $details->per_night_price + $details->usage_fee + $details->infurance_fee,

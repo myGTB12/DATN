@@ -1,4 +1,4 @@
-@extends('layouts/adminNavbarLayout')
+@extends('layouts/contentNavbarLayout')
 
 @section('title', __('messages.title'))
 

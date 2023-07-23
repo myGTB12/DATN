@@ -32,7 +32,7 @@ class StationOwnerLoginController extends Controller
                 //Check user verify
                 auth()->guard('station_owner')->user();
                 session()->push('station_owner', true);
-                
+
                 return redirect()->route('stations.index');
             }
 
@@ -43,6 +43,17 @@ class StationOwnerLoginController extends Controller
         }
 
         return view("content.authentications.station-owner-auth-login");
+    }
+
+    public function register(Request $request)
+    {
+        if ($request->isMethod("post")) {
+            $this->stationOwnerService->registerAccount($request);
+
+            return view('content.authentications.auth-register-success');
+        }
+
+        return view('content.authentications.auth-station-owner-register');
     }
 
     public function logout(Request $request)

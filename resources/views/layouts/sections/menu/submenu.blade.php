@@ -12,8 +12,8 @@
       <div>My Station</div>
     </a>
   </li>
-  <li class="menu-item {{$currentRouteName === 'reservation.request' ? 'active open' : ''}}">
-    <a href="" class="menu-link">
+  <li class="menu-item {{$currentRouteName === 'booking.index' ? 'active open' : ''}}">
+    <a href="{{route('booking.index')}}" class="menu-link">
       <i class=""></i>
       <div>My Reservation</div>
     </a>
