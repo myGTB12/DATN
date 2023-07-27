@@ -1,0 +1,12 @@
+Với nhiệm vụ chính là giao tiếp với người dùng, nên ở tầng controller này, em đặt các module người dùng cùng các đầu controller thực hiện giao tiếp với server.
+
+Với nhiệm vụ là xử lý các logic liên quan đến nghiệp vụ, xử lý các dữ liệu nhận được từ Comtroller nên các lớp ở layer này thực hiện một số các nhiệm vụ như: mã hóa mật khẩu khi thêm người dùng, kiểm tra tồn tại người dùng, kiểm tra mật khẩu đã nhập có đúng với người dùng đang thực hiện đăng nhập hay không … 
+
+Với nhiệm vụ giao tiếp với hệ quản trị CSDL như thực hiện các công việc liên quan đến lưu trữ và truy vấn dữ liệu (tìm kiếm, thêm, xóa, sửa…). Em xây dựng các class thuộc layer này thực hiện các thao tác thêm một bản ghi, thêm nhiều bản ghi, update các bản ghi, lấy dữ liệu phân trang, lấy dữ liệu theo ID …
+Data access layer với các interface nằm trong thư mục Interfaces và các class nằm trong thư mục Eloquent là triển khai của các interface đã khai báo.
+Ở đây, em sử dụng kĩ thuật Dependence Injection để loại bỏ sự phụ thuộc trực tiếp giữa các class với nhau, giúp code dễ mở rộng và bảo trì. Dependence Injection là một design pattern được sử dụng để triển khai IoC (Inversion of Control) – một nguyên tắc thiết kế thường được sử dụng để đảo ngược các loại phụ thuộc kiểu control trong thiết kế hướng đối tượng. Với Dependence Injection nó cho phép việc khởi tạo các đối tượng mà một lớp phụ thuộc bên ngoài phạm vi lớp đó và cung cấp các đối tượng cho lớp thông qua các cách khác nhau. 
+Có ba cách để áp dụng Dependence Injection:
+Constructor Injection: injector cung cấp việc khởi tạo đối tượng thông qua constructor của một lớp.
+Property Injection: injector cung cấp việc khởi tạo đối tượng thông qua một thuộc tính công khai (public property)
+Method Injection: khai báo một interface đã định nghĩa sẵn các hàm cung cấp các phương thức hay thuộc tính cần thiết, lớp bị phụ thuộc sẽ triển khai chính interface này.
+Với ứng dụng của mình, em lựa chọn cách áp dung Constructor Injection bằng việc khai báo a protected property của lớp và khởi tạo nó trong constructor của lớp đó. Sau khi được khởi, hiện tượng đa hình của lập trình hướng đối tượng sẽ bị loại bỏ do class triển khai interface đã được chỉ định. Việc này có tác dụng giúp code dễ dàng bảo trì. Mỗi khi có nâng cấp hoặc thay đổi, ta chỉ cần thêm một lớp mới triển khai interface đã có sẵn và thay thế class trước đó. Nó có tác dụng như một Factory Method, khởi tạo class được chỉ định một cách rất linh hoạt.

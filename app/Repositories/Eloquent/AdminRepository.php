@@ -4,8 +4,9 @@ namespace App\Repositories\Eloquent;
 
 use App\Models\Admins;
 use Illuminate\Support\Facades\Hash;
+use App\Repositories\Interfaces\AdminRepositoryInterface;
 
-class AdminRepository extends BaseRepository
+class AdminRepository extends BaseRepository implements AdminRepositoryInterface
 {
     /**
      * getModel
