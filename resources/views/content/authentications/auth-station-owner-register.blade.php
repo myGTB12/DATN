@@ -28,20 +28,6 @@
     <!-- Include Scripts for customizer, helper, analytics, config -->
     <!-- laravel style -->
     <script src="https://demos.themeselection.com/sneat-bootstrap-html-laravel-admin-template/demo/assets/vendor/js/helpers.js"></script>
-    <style type="text/css">
-        .layout-menu-fixed .layout-navbar-full .layout-menu,
-        .layout-menu-fixed-offcanvas .layout-navbar-full .layout-menu {
-            top: 0px !important;
-        }
-
-        .layout-page {
-            padding-top: 0px !important;
-        }
-
-        .content-wrapper {
-            padding-bottom: 0px !important;
-        }
-    </style>
 </head>
 @section('page-style')
 <!-- Page -->
@@ -91,18 +77,6 @@
                                     </span>
                                 </button>
                             </div>
-                            <div class="line">
-                                <i class="bx bx-chevron-right"></i>
-                            </div>
-                            <div class="step" data-target="#billingLinksValidation">
-                                <button type="button" class="step-trigger" aria-selected="false" disabled="disabled">
-                                    <span class="bs-stepper-circle"><i class="bx bx-detail"></i></span>
-                                    <span class="bs-stepper-label mt-1">
-                                        <span class="bs-stepper-title">Billing</span>
-                                        <span class="bs-stepper-subtitle">Payment Details</span>
-                                    </span>
-                                </button>
-                            </div>
                         </div>
                         <div class="bs-stepper-content">
                             <form id="multiStepsForm" onsubmit="return false">
@@ -115,18 +89,18 @@
                                     <div class="row g-3">
                                         <div class="col-sm-6 fv-plugins-icon-container">
                                             <label class="form-label" for="multiStepsUsername">Username</label>
-                                            <input type="text" name="multiStepsUsername" id="multiStepsUsername" class="form-control" placeholder="johndoe">
+                                            <input type="text" name="name" id="multiStepsUsername" class="form-control">
                                             <div class="fv-plugins-message-container invalid-feedback"></div>
                                         </div>
                                         <div class="col-sm-6 fv-plugins-icon-container">
                                             <label class="form-label" for="multiStepsEmail">Email</label>
-                                            <input type="email" name="multiStepsEmail" id="multiStepsEmail" class="form-control" placeholder="john.doe@email.com" aria-label="john.doe">
+                                            <input type="email" name="email" id="multiStepsEmail" class="form-control" aria-label="john.doe">
                                             <div class="fv-plugins-message-container invalid-feedback"></div>
                                         </div>
                                         <div class="col-sm-6 form-password-toggle fv-plugins-icon-container">
                                             <label class="form-label" for="multiStepsPass">Password</label>
                                             <div class="input-group input-group-merge has-validation">
-                                                <input type="password" id="multiStepsPass" name="multiStepsPass" class="form-control" placeholder="············" aria-describedby="multiStepsPass2">
+                                                <input type="password" id="multiStepsPass" name="password" class="form-control" placeholder="············" aria-describedby="multiStepsPass2">
                                                 <span class="input-group-text cursor-pointer" id="multiStepsPass2"><i class="bx bx-hide"></i></span>
                                             </div>
                                             <div class="fv-plugins-message-container invalid-feedback"></div>
@@ -134,14 +108,10 @@
                                         <div class="col-sm-6 form-password-toggle fv-plugins-icon-container">
                                             <label class="form-label" for="multiStepsConfirmPass">Confirm Password</label>
                                             <div class="input-group input-group-merge has-validation">
-                                                <input type="password" id="multiStepsConfirmPass" name="multiStepsConfirmPass" class="form-control" placeholder="············" aria-describedby="multiStepsConfirmPass2">
+                                                <input type="password" id="multiStepsConfirmPass" name="confirm_password" class="form-control" placeholder="············" aria-describedby="multiStepsConfirmPass2">
                                                 <span class="input-group-text cursor-pointer" id="multiStepsConfirmPass2"><i class="bx bx-hide"></i></span>
                                             </div>
                                             <div class="fv-plugins-message-container invalid-feedback"></div>
-                                        </div>
-                                        <div class="col-md-12">
-                                            <label class="form-label" for="multiStepsURL">Profile Link</label>
-                                            <input type="text" name="multiStepsURL" id="multiStepsURL" class="form-control" placeholder="johndoe/profile" aria-label="johndoe">
                                         </div>
                                         <div class="col-12 d-flex justify-content-between">
                                             <button class="btn btn-label-secondary btn-prev" disabled=""> <i class="bx bx-chevron-left bx-sm ms-sm-n2"></i>
@@ -160,99 +130,25 @@
                                     <div class="row g-3">
                                         <div class="col-sm-6 fv-plugins-icon-container">
                                             <label class="form-label" for="multiStepsFirstName">First Name</label>
-                                            <input type="text" id="multiStepsFirstName" name="multiStepsFirstName" class="form-control" placeholder="John">
+                                            <input type="text" id="multiStepsFirstName" name="first_name" class="form-control" >
                                             <div class="fv-plugins-message-container invalid-feedback"></div>
                                         </div>
                                         <div class="col-sm-6">
                                             <label class="form-label" for="multiStepsLastName">Last Name</label>
-                                            <input type="text" id="multiStepsLastName" name="multiStepsLastName" class="form-control" placeholder="Doe">
+                                            <input type="text" id="multiStepsLastName" name="last_name" class="form-control">
                                         </div>
                                         <div class="col-sm-6">
                                             <label class="form-label" for="multiStepsMobile">Mobile</label>
                                             <div class="input-group input-group-merge">
-                                                <span class="input-group-text">US (+1)</span>
-                                                <input type="text" id="multiStepsMobile" name="multiStepsMobile" class="form-control multi-steps-mobile" placeholder="202 555 0111">
+                                                <span class="input-group-text">VN (+84)</span>
+                                                <input type="text" id="multiStepsMobile" name="phone" class="form-control multi-steps-mobile">
                                             </div>
-                                        </div>
-                                        <div class="col-sm-6">
-                                            <label class="form-label" for="multiStepsPincode">Pincode</label>
-                                            <input type="text" id="multiStepsPincode" name="multiStepsPincode" class="form-control multi-steps-pincode" placeholder="Postal Code" maxlength="6">
-                                        </div>
-                                        <div class="col-md-12 fv-plugins-icon-container">
-                                            <label class="form-label" for="multiStepsAddress">Address</label>
-                                            <input type="text" id="multiStepsAddress" name="multiStepsAddress" class="form-control" placeholder="Address">
-                                            <div class="fv-plugins-message-container invalid-feedback"></div>
-                                        </div>
-                                        <div class="col-md-12">
-                                            <label class="form-label" for="multiStepsArea">Landmark</label>
-                                            <input type="text" id="multiStepsArea" name="multiStepsArea" class="form-control" placeholder="Area/Landmark">
-                                        </div>
-                                        <div class="col-sm-6">
-                                            <label class="form-label" for="multiStepsCity">City</label>
-                                            <input type="text" id="multiStepsCity" class="form-control" placeholder="Jackson">
-                                        </div>
-                                        <div class="col-sm-6">
-                                            <label class="form-label" for="multiStepsState">State</label>
-                                            <div class="position-relative"><select id="multiStepsState" class="select2 form-select select2-hidden-accessible" data-allow-clear="true" data-select2-id="multiStepsState" tabindex="-1" aria-hidden="true">
-                                                    <option value="" data-select2-id="2">Select</option>
-                                                    <option value="AL">Alabama</option>
-                                                    <option value="AK">Alaska</option>
-                                                    <option value="AZ">Arizona</option>
-                                                    <option value="AR">Arkansas</option>
-                                                    <option value="CA">California</option>
-                                                    <option value="CO">Colorado</option>
-                                                    <option value="CT">Connecticut</option>
-                                                    <option value="DE">Delaware</option>
-                                                    <option value="DC">District Of Columbia</option>
-                                                    <option value="FL">Florida</option>
-                                                    <option value="GA">Georgia</option>
-                                                    <option value="HI">Hawaii</option>
-                                                    <option value="ID">Idaho</option>
-                                                    <option value="IL">Illinois</option>
-                                                    <option value="IN">Indiana</option>
-                                                    <option value="IA">Iowa</option>
-                                                    <option value="KS">Kansas</option>
-                                                    <option value="KY">Kentucky</option>
-                                                    <option value="LA">Louisiana</option>
-                                                    <option value="ME">Maine</option>
-                                                    <option value="MD">Maryland</option>
-                                                    <option value="MA">Massachusetts</option>
-                                                    <option value="MI">Michigan</option>
-                                                    <option value="MN">Minnesota</option>
-                                                    <option value="MS">Mississippi</option>
-                                                    <option value="MO">Missouri</option>
-                                                    <option value="MT">Montana</option>
-                                                    <option value="NE">Nebraska</option>
-                                                    <option value="NV">Nevada</option>
-                                                    <option value="NH">New Hampshire</option>
-                                                    <option value="NJ">New Jersey</option>
-                                                    <option value="NM">New Mexico</option>
-                                                    <option value="NY">New York</option>
-                                                    <option value="NC">North Carolina</option>
-                                                    <option value="ND">North Dakota</option>
-                                                    <option value="OH">Ohio</option>
-                                                    <option value="OK">Oklahoma</option>
-                                                    <option value="OR">Oregon</option>
-                                                    <option value="PA">Pennsylvania</option>
-                                                    <option value="RI">Rhode Island</option>
-                                                    <option value="SC">South Carolina</option>
-                                                    <option value="SD">South Dakota</option>
-                                                    <option value="TN">Tennessee</option>
-                                                    <option value="TX">Texas</option>
-                                                    <option value="UT">Utah</option>
-                                                    <option value="VT">Vermont</option>
-                                                    <option value="VA">Virginia</option>
-                                                    <option value="WA">Washington</option>
-                                                    <option value="WV">West Virginia</option>
-                                                    <option value="WI">Wisconsin</option>
-                                                    <option value="WY">Wyoming</option>
-                                                </select><span class="select2 select2-container select2-container--default" dir="ltr" data-select2-id="1" style="width: auto;"><span class="selection"><span class="select2-selection select2-selection--single" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-disabled="false" aria-labelledby="select2-multiStepsState-container"><span class="select2-selection__rendered" id="select2-multiStepsState-container" role="textbox" aria-readonly="true"><span class="select2-selection__placeholder">Select an country</span></span><span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span></div>
                                         </div>
                                         <div class="col-12 d-flex justify-content-between">
                                             <button class="btn btn-primary btn-prev"> <i class="bx bx-chevron-left bx-sm ms-sm-n2"></i>
                                                 <span class="align-middle d-sm-inline-block d-none">Previous</span>
                                             </button>
-                                            <button class="btn btn-primary btn-next"> <span class="align-middle d-sm-inline-block d-none me-sm-1 me-0">Next</span> <i class="bx bx-chevron-right bx-sm me-sm-n2"></i></button>
+                                            <button class="btn btn-success btn-next btn-submit" type="submit"> <span class="align-middle d-sm-inline-block d-none me-sm-1 me-0">Submit</span></button>
                                         </div>
                                     </div>
                                 </div>
@@ -361,10 +257,6 @@
         </div>
     </div>
 
-    <script>
-        // Check selected custom option
-        window.Helpers.initCustomOptionCheck();
-    </script>
     <!--/ Content -->
 
     <!-- Include Scripts -->
@@ -375,7 +267,6 @@
     <script src="https://demos.themeselection.com/sneat-bootstrap-html-laravel-admin-template/demo/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js?id=44b8e955848dc0c56597c09f6aebf89a"></script>
     <script src="https://demos.themeselection.com/sneat-bootstrap-html-laravel-admin-template/demo/assets/vendor/libs/hammer/hammer.js?id=f2b232153f92e544aab0ed45c56ab524"></script>
     <script src="https://demos.themeselection.com/sneat-bootstrap-html-laravel-admin-template/demo/assets/vendor/libs/typeahead-js/typeahead.js?id=f6bda588c16867a6cc4158cb4ed37ec6"></script>
-    <script src="https://demos.themeselection.com/sneat-bootstrap-html-laravel-admin-template/demo/assets/vendor/js/menu.js?id=c6ce30ded4234d0c4ca0fb5f2a2990d8"></script>
     <script src="https://demos.themeselection.com/sneat-bootstrap-html-laravel-admin-template/demo/assets/vendor/libs/cleavejs/cleave.js"></script>
     <script src="https://demos.themeselection.com/sneat-bootstrap-html-laravel-admin-template/demo/assets/vendor/libs/cleavejs/cleave-phone.js"></script>
     <script src="https://demos.themeselection.com/sneat-bootstrap-html-laravel-admin-template/demo/assets/vendor/libs/bs-stepper/bs-stepper.js"></script>
@@ -391,7 +282,7 @@
     <!-- Pricing Modal JS-->
     <!-- END: Pricing Modal JS-->
     <!-- BEGIN: Page JS-->
-    <script src="https://demos.themeselection.com/sneat-bootstrap-html-laravel-admin-template/demo/assets/js/pages-auth-multisteps.js"></script>
+    <script src="{{asset('assets/js/pages-auth-multisteps.js')}}"></script>
     <!-- END: Page JS-->
 </body>
 @endsection
