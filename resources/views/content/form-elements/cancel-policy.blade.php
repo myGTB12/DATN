@@ -65,8 +65,6 @@
         scroll-margin-top: 110px;
     }
 
-    .cancel-policy {}
-
     .cancel-policy .column.title {
         border-radius: 12px 12px 0 0;
     }

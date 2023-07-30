@@ -1,6 +1,6 @@
 @extends('layouts/contentNavbarLayout')
 
-@section('title', 'Basic Inputs - Forms')vehicle
+@section('title', __('messages.title'))
 
 @section('page-script')
 <script src="{{asset('assets/js/form-basic-inputs.js')}}"></script>
