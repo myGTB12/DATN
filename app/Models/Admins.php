@@ -30,8 +30,6 @@ class Admins extends Authenticatable
         "password",
         "email_verified_at",
         "token",
-        "expires_at",
-        "updater_id",
     ];
 
     /** The attributes that should be hidden for arrays.

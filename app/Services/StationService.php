@@ -26,6 +26,7 @@ class StationService
     public function createStation($request)
     {
         $station = $this->stationRepository->createStation($request);
+
         return $station;
     }
 

@@ -35,11 +35,12 @@ class StationController extends Controller
 
     public function create(Request $request)
     {
-        if (!Helper::validateRole($request->id, 'admin')) {
-            back()->with(['error' => __('messages.station_owners_fail')]);
+        if($request->isMethod("post")){
+            $this->form->validate($request, "CreateStationForm");
+            $station = $this->stationService->createStation($request);
         }
-        $this->form->validate($request, "CreateStationForm");
-        $station = $this->stationService->createStation($request);
+
+        return view("content.form-layout.form-create-station");
     }
 
     public function edit(Request $request, $id)

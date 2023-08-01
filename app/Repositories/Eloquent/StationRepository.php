@@ -4,6 +4,7 @@ namespace App\Repositories\Eloquent;
 
 use Exception;
 use App\Models\Station;
+use App\Enums\StationStatus;
 use Illuminate\Http\Request;
 use App\Enums\ActivityStatus;
 use Illuminate\Support\Facades\Hash;
@@ -31,7 +32,7 @@ class StationRepository extends BaseRepository
         try {
             $station = $this->model->create([
                 "name" => $request->name,
-                "status" => $request->status,
+                "status" => StationStatus::PENDING->value,
                 "owner_id" => $request->owner_id,
                 "address" => $request->address,
                 "mail_address" => $request->mail_address,

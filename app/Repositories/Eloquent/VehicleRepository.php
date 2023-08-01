@@ -33,6 +33,7 @@ class VehicleRepository extends BaseRepository
                 "vehicles.id"
             )
             ->join("stations", "stations.id", "=", "vehicles.station_id")
+            ->where("vehicles.status", ActivityStatus::ACTIVE->value)
             ->where("vehicles.status", ActivityStatus::ACTIVE->value);
 
         return $vehicles->whereNull("vehicles.deleted_at")
@@ -41,6 +42,7 @@ class VehicleRepository extends BaseRepository
 
     public function createVehicle($request)
     {
+        dd($request->all());
         try {
             $vehicle = $this->model->create([
                 "name" => $request->name,

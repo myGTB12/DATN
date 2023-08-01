@@ -10,6 +10,8 @@ use App\Http\Controllers\Controller;
 use App\Services\StationService;
 use Illuminate\Support\Arr;
 
+use function PHPUnit\Framework\isEmpty;
+
 class VehicleController extends Controller
 {
     protected $vehicleService;
@@ -93,16 +95,25 @@ class VehicleController extends Controller
         if (!$vehicles) {
             return view('content.pages.pages-misc-error');
         }
-        return view('content.user-interface.ui-home', ['vehicles' => $vehicles]);
+        $vehicles->chunk(3);
+        $vehicles_1 = $vehicles[0];
+        $vehicles_2 = $vehicles[1];
+        $vehicles_3 = $vehicles[2];
+
+        return view('content.user-interface.ui-home', [
+            'vehicles_1' => $vehicles_1,
+            'vehicles_2' => $vehicles_2,
+            'vehicles_3' => $vehicles_3
+        ]);
     }
 
     public function searchByStation(Request $request)
     {
         $vehicles = $this->stationService->searchByStation($request);
-        if (!$vehicles) {
-            return view('content.pages.pages-misc-error');
+        if ($vehicles->isEmpty()) {
+            return redirect()->route('home');
         }
-        $vehicles->chunk(3);
+        $vehicles = $vehicles->chunk(3);
         dd($vehicles);
         $vehicles_1 = $vehicles[0];
         $vehicles_2 = $vehicles[1];

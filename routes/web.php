@@ -54,7 +54,7 @@ Route::group(["prefix" => "station"], function () {
     Route::match(['get', 'post'], "/login", [StationOwnerLoginController::class, "login"])->name("station.login");
     Route::match(['get', 'post'], "/register", [StationOwnerLoginController::class, "register"])->name("station.register");
     Route::get("/stations", [StationController::class, "index"])->name('stations.index');
-    Route::post("/create", [StationController::class, "create"]);
+    Route::match(['get', 'post'], "/create", [StationController::class, "create"])->name('station.create');
     Route::match(['get', 'post'], "/edit/{id}", [StationController::class, "edit"])->name('station.edit');
     Route::post("/delete", [StationController::class, "delete"]);
 
