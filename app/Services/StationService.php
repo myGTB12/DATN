@@ -62,9 +62,9 @@ class StationService
 
     public function searchByStation($request)
     {
-        $stations = $this->stationRepository->searchByLocation($request);
+        $vehicles = $this->stationRepository->searchByLocation($request);
 
-        return $stations;
+        return $vehicles;
     }
 
     private function validateStation($id)

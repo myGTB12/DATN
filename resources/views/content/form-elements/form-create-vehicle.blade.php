@@ -123,7 +123,7 @@
                 <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#modalCenter">
                     Create vehicle
                 </button>
-                <button type="button" id="cancelEditButton" class="btn btn-warning">Cancel</button>
+                <button type="button" id="cancelEditButton" class="btn btn-secondary">Cancel</button>
                 <!-- Modal -->
                 <div class="modal fade" id="modalCenter" tabindex="-1" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered" role="document">

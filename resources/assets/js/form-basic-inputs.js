@@ -8,8 +8,7 @@
     document
         .getElementById("cancelEditButton")
         .addEventListener("click", function () {
-            window.location.href =
-                "http://localhost:8000/admin/station/stations";
+            window.location.href = "http://localhost:8000/station/stations";
         });
 
     document.addEventListener("DOMContentLoaded", function () {

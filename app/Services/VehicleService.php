@@ -160,6 +160,6 @@ class VehicleService
     {
         $vehicles = $this->vehicleDetailRepository->serchByCarDetail($request);
 
-        return $vehicles->toArray();
+        return $vehicles;
     }
 }

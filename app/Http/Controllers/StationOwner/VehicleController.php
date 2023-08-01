@@ -92,13 +92,13 @@ class VehicleController extends Controller
     public function searchByCar(Request $request)
     {
         $vehicles = $this->vehicleService->searchByCar($request);
-        if (!$vehicles) {
-            return view('content.pages.pages-misc-error');
+        if ($vehicles->isEmpty()) {
+            return redirect()->route('home');
         }
-        $vehicles->chunk(3);
+        $vehicles = $vehicles->chunk(3);
         $vehicles_1 = $vehicles[0];
         $vehicles_2 = $vehicles[1];
-        $vehicles_3 = $vehicles[2];
+        $vehicles_3 = $vehicles[2] ?? $vehicles[1];
 
         return view('content.user-interface.ui-home', [
             'vehicles_1' => $vehicles_1,
@@ -114,7 +114,7 @@ class VehicleController extends Controller
             return redirect()->route('home');
         }
         $vehicles = $vehicles->chunk(3);
-        dd($vehicles);
+
         $vehicles_1 = $vehicles[0];
         $vehicles_2 = $vehicles[1];
         $vehicles_3 = $vehicles[2];

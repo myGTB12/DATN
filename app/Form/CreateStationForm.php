@@ -17,11 +17,11 @@ class CreateStationForm
         $validator = Validator::make($request->all(), [
             "name" => ["bail", "required", "string", "max:255"],
             "status" => ["bail"],
-            "address" => ["bail", "required", "string", "max:255"],
+            "address" => ["bail", "string", "max:255"],
             "mail_address" => ["bail", "email"],
             "phone" => ["bail", "required"],
-            "start_business_time" => ["bail", "date_format:H:i"],
-            "end_business_time" => ["bail", "date_format:H:i", "after:start_business_time"],
+            "start_business_time" => ["bail"],
+            "end_business_time" => ["bail"],
             "maintenance_time" => ["bail"],
             "always_open" => ["bail", "digits:1"],
         ]);

@@ -21,7 +21,11 @@ class ReservationRepository extends BaseRepository
 
     public function getListReservations()
     {
-        $this->model->all()->where('');
+        $query = $this->model->select("reservations.*")->whereNull("reservations.deleted_at")
+            ->join("stations", "stations.id", "=", "reservations.station_start_id")
+            ->join("station_owners", "stations.owner_id", "=", "station_owners.id");
+
+        return $query->orderByDesc("reservations.updated_at")->distinct()->get();
     }
 
     public function createReservation($user_id, $details, Request $request, $station_start_id)

@@ -36,10 +36,8 @@ class ReservationService
 
     public function getListReservations()
     {
-        $stationOwner = auth()->guard('station_owner')->user();
-        // if ($stationOwner) {
-        //     $reservations = $stationOwner->
-        // }
+        $stationOwner_id = auth()->guard('station_owner')->user()->id;
+        $this->reservationRepository->getListReservations($stationOwner_id);
     }
 
     public function createReservation($vehicle_detail_id, Request $request)

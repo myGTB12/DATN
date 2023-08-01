@@ -29,15 +29,20 @@ class StationController extends Controller
         }
         $station_owner = auth()->guard('station_owner')->user();
         $stations = $this->stationService->getListStations();
-        
+
         return view('content.dashboard.dashboards-analytics', compact('station_owner', 'stations'));
     }
 
     public function create(Request $request)
     {
-        if($request->isMethod("post")){
+        if ($request->isMethod("post")) {
+            if (!$request->always_open) {
+                $request->merge(['always_open' => 0]);
+            }
             $this->form->validate($request, "CreateStationForm");
             $station = $this->stationService->createStation($request);
+
+            return view("content.pages.pages-create-success");
         }
 
         return view("content.form-layout.form-create-station");

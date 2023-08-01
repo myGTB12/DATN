@@ -33,7 +33,7 @@ class StationRepository extends BaseRepository
             $station = $this->model->create([
                 "name" => $request->name,
                 "status" => StationStatus::PENDING->value,
-                "owner_id" => $request->owner_id,
+                "owner_id" => auth()->guard('station_owner')->user()->id,
                 "address" => $request->address,
                 "mail_address" => $request->mail_address,
                 "phone" => $request->phone,
@@ -45,7 +45,8 @@ class StationRepository extends BaseRepository
         } catch (Exception $e) {
             back()->with(['error' => __('messages.create_data_failed')]);
         }
-        return $station;
+
+        return true;
     }
 
     public function editStation(Request $request)
@@ -99,7 +100,19 @@ class StationRepository extends BaseRepository
         if ($district) {
             $query = $query->where("stations.district", $district);
         }
+        $query = $query->join(
+            "vehicles",
+            "stations.id",
+            "=",
+            "vehicles.station_id"
+        )
+            ->join("vehicle_details", "vehicle_details.vehicle_id", "=", "vehicles.id")
+            ->where("stations.status", ActivityStatus::ACTIVE->value)
+            ->addSelect(
+                "vehicle_details.*",
+                "vehicles.id",
+            );
 
-        return $query->orderByDesc("stations.updated_at")->get();
+        return $query->orderByDesc("stations.updated_at")->distinct()->get();
     }
 }

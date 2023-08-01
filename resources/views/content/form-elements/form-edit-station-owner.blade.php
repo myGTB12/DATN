@@ -39,7 +39,7 @@
                 </div>
 
                 <button type="submit" class="btn btn-primary">Save</button>
-                <button type="button" id="cancelEditButton" class="btn btn-warning">Cancel</button>
+                <button type="button" id="cancelEditButton" class="btn btn-secondary">Cancel</button>
             </div>
         </div>
     </form>

@@ -5,6 +5,7 @@ namespace App\Repositories\Eloquent;
 use Exception;
 use App\Models\VehicleDetail;
 use Illuminate\Http\Request;
+use App\Enums\ActivityStatus;
 
 class VehicleDetailRepository extends BaseRepository
 {
@@ -24,7 +25,7 @@ class VehicleDetailRepository extends BaseRepository
         return $query;
     }
 
-    public function serchByCarDetail($request)
+    public function serchByCarDetail(Request $request)
     {
         $brand = $request->brand;
         $name = $request->car_name;
@@ -41,6 +42,18 @@ class VehicleDetailRepository extends BaseRepository
         if ($capacity) {
             $query = $query->orWhere("vehicle_details.capacity", $capacity);
         }
+        $query = $query->join(
+            "vehicles",
+            "vehicles.id",
+            "=",
+            "vehicle_details.vehicle_id"
+        )
+            ->join("stations", "stations.id", "=", "vehicles.station_id")
+            ->where("stations.status", ActivityStatus::ACTIVE->value)
+            ->addSelect(
+                "stations.*",
+                "vehicles.id",
+            );
 
         return $query->orderByDesc("vehicle_details.updated_at")->get();
     }

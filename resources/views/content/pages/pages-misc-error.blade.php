@@ -1,6 +1,6 @@
 @extends('layouts/blankLayout')
 
-@section('title', 'Error - Pages')
+@section('title', __('messages.title'))
 
 @section('page-style')
 <!-- Page -->
