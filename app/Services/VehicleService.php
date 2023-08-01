@@ -73,9 +73,11 @@ class VehicleService
                     "img4" => $request->img4,
                     "fuel" => $request->fuel,
                     "vehicle_number" => $request->vehicle_number,
+                    "per_night_price" => $request->per_night_price,
+                    "over_time_price" => $request->over_time_price,
                     "color" => $request->color,
                     "brand" => $request->brand,
-                    "name" => $request->name,
+                    "car_name" => $request->car_name,
                     "capacity" => $request->capacity,
                 ]);
             }
