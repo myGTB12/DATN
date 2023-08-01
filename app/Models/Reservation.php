@@ -43,7 +43,6 @@ class Reservation extends Model
         "count_day",
         "unit_over_time",
         "over_time_price",
-        "created_by",
         "updated_by",
     ];
     public $timestamps = true;
