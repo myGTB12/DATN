@@ -24,7 +24,7 @@ services:
             - .:/project
         depends_on:
             - db
-        # entrypoint: ./docker/wait-for-it.sh db:3306 -- bash ./docker/laravel.sh
+        entrypoint: ./docker/wait-for-it.sh db:3306 -- bash ./docker/laravel.sh
         links:
             - db
 volumes:
