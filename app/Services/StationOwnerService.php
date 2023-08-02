@@ -30,6 +30,11 @@ class StationOwnerService
         $this->stationOwnerRepository->editStationOwner($id, $editStationOwnerRequest);
     }
 
+    public function approveStationOwner($id)
+    {
+        $this->stationOwnerRepository->approveStationOwner($id);
+    }
+
     public function loginAccount(Request $request)
     {
         // Check info login

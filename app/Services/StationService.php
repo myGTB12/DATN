@@ -16,9 +16,9 @@ class StationService
         $this->stationRepository = $stationRepository;
     }
 
-    public function getListStations()
+    public function getListStations($status = null)
     {
-        $stations = $this->stationRepository->getListStations();
+        $stations = $this->stationRepository->getListStations($status);
 
         return $stations;
     }

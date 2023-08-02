@@ -1,12 +1,9 @@
 @extends('layouts/blankLayout')
 
-@section('title', 'Forgot Password Basic - Pages')
+@section('title', __('messages.title'))
 
 
 <head>
-    <title>Multi Steps Sign-up - Pages |
-        Sneat -
-        Bootstrap 5 HTML Admin Template - Pro</title>
     <!-- BEGIN: Theme CSS-->
     <!-- Fonts -->
     <link rel="stylesheet" href="https://demos.themeselection.com/sneat-bootstrap-html-laravel-admin-template/demo/assets/vendor/fonts/boxicons.css?id=87122b3a3900320673311cebdeb618da">
@@ -46,7 +43,7 @@
             <!-- Left Text -->
             <div class="d-none d-lg-flex col-lg-4 align-items-center justify-content-end p-5 pe-0">
                 <div class="w-px-400">
-                    <img src="https://demos.themeselection.com/sneat-bootstrap-html-laravel-admin-template/demo/assets/img/illustrations/create-account-light.png" class="img-fluid" alt="multi-steps" width="600" data-app-dark-img="illustrations/create-account-dark.png" data-app-light-img="illustrations/create-account-light.png">
+                    <img src="https://i.pinimg.com/564x/f1/d7/ab/f1d7ab7ea78800a08390dc361b8fa9fe.jpg" class="img-fluid" alt="multi-steps" width="900" data-app-dark-img="illustrations/create-account-dark.png" data-app-light-img="illustrations/create-account-light.png">
                 </div>
             </div>
             <!-- /Left Text -->
@@ -79,14 +76,24 @@
                             </div>
                         </div>
                         <div class="bs-stepper-content">
-                            <form id="multiStepsForm" onsubmit="return false">
-                                <!-- Account Details -->
+                            <form id="multiStepsForm" action="{{route('station.register')}}" method="post">
+                                @csrf
                                 <div id="accountDetailsValidation" class="content active dstepper-block fv-plugins-bootstrap5 fv-plugins-framework">
                                     <div class="content-header mb-3">
                                         <h3 class="mb-1">Account Information</h3>
                                         <span>Enter Your Account Details</span>
                                     </div>
                                     <div class="row g-3">
+                                        <div class="col-sm-6 fv-plugins-icon-container">
+                                            <label class="form-label">First name</label>
+                                            <input type="text" name="first_name" class="form-control">
+                                            <div class="fv-plugins-message-container invalid-feedback"></div>
+                                        </div>
+                                        <div class="col-sm-6 fv-plugins-icon-container">
+                                            <label class="form-label">Last name</label>
+                                            <input type="text" name="last_name" class="form-control">
+                                            <div class="fv-plugins-message-container invalid-feedback"></div>
+                                        </div>
                                         <div class="col-sm-6 fv-plugins-icon-container">
                                             <label class="form-label" for="multiStepsUsername">Username</label>
                                             <input type="text" name="name" id="multiStepsUsername" class="form-control">
@@ -114,28 +121,24 @@
                                             <div class="fv-plugins-message-container invalid-feedback"></div>
                                         </div>
                                         <div class="col-12 d-flex justify-content-between">
-                                            <button class="btn btn-label-secondary btn-prev" disabled=""> <i class="bx bx-chevron-left bx-sm ms-sm-n2"></i>
+                                            <button class="btn btn-label-secondary btn-prev" type="button" disabled=""> <i class="bx bx-chevron-left bx-sm ms-sm-n2"></i>
                                                 <span class="align-middle d-sm-inline-block d-none">Previous</span>
                                             </button>
-                                            <button class="btn btn-primary btn-next"> <span class="align-middle d-sm-inline-block d-none me-sm-1 me-0">Next</span> <i class="bx bx-chevron-right bx-sm me-sm-n2"></i></button>
+                                            <button class="btn btn-primary btn-next" type="button"> <span class="align-middle d-sm-inline-block d-none me-sm-1 me-0">Next</span> <i class="bx bx-chevron-right bx-sm me-sm-n2"></i></button>
                                         </div>
                                     </div>
                                 </div>
                                 <!-- Personal Info -->
                                 <div id="personalInfoValidation" class="content fv-plugins-bootstrap5 fv-plugins-framework">
                                     <div class="content-header mb-3">
-                                        <h3 class="mb-1">Personal Information</h3>
-                                        <span>Enter Your Personal Information</span>
+                                        <h3 class="mb-1">Your representative Information</h3>
+                                        <span>Enter Your Representative Information</span>
                                     </div>
                                     <div class="row g-3">
                                         <div class="col-sm-6 fv-plugins-icon-container">
-                                            <label class="form-label" for="multiStepsFirstName">First Name</label>
-                                            <input type="text" id="multiStepsFirstName" name="first_name" class="form-control" >
+                                            <label class="form-label" for="multiStepsFirstName">Company Name</label>
+                                            <input type="text" id="multiStepsFirstName" name="company_name" class="form-control">
                                             <div class="fv-plugins-message-container invalid-feedback"></div>
-                                        </div>
-                                        <div class="col-sm-6">
-                                            <label class="form-label" for="multiStepsLastName">Last Name</label>
-                                            <input type="text" id="multiStepsLastName" name="last_name" class="form-control">
                                         </div>
                                         <div class="col-sm-6">
                                             <label class="form-label" for="multiStepsMobile">Mobile</label>
@@ -145,7 +148,7 @@
                                             </div>
                                         </div>
                                         <div class="col-12 d-flex justify-content-between">
-                                            <button class="btn btn-primary btn-prev"> <i class="bx bx-chevron-left bx-sm ms-sm-n2"></i>
+                                            <button class="btn btn-primary btn-prev" type="button"> <i class="bx bx-chevron-left bx-sm ms-sm-n2"></i>
                                                 <span class="align-middle d-sm-inline-block d-none">Previous</span>
                                             </button>
                                             <button class="btn btn-success btn-next btn-submit" type="submit"> <span class="align-middle d-sm-inline-block d-none me-sm-1 me-0">Submit</span></button>
@@ -154,99 +157,6 @@
                                 </div>
                                 <!-- Billing Links -->
                                 <div id="billingLinksValidation" class="content fv-plugins-bootstrap5 fv-plugins-framework">
-                                    <div class="content-header mb-3">
-                                        <h3 class="mb-1">Select Plan</h3>
-                                        <span>Select plan as per your requirement</span>
-                                    </div>
-                                    <!-- Custom plan options -->
-                                    <div class="row gap-md-0 gap-3 mb-4">
-                                        <div class="col-md">
-                                            <div class="form-check custom-option custom-option-icon">
-                                                <label class="form-check-label custom-option-content" for="basicOption">
-                                                    <span class="custom-option-body">
-                                                        <span class="mb-2 h4 d-block">Basic</span>
-                                                        <span class="mb-2 d-block">A simple start for start ups &amp; Students</span>
-                                                        <span class="d-flex justify-content-center">
-                                                            <sup class="text-primary fs-big lh-1 mt-3">$</sup>
-                                                            <span class="display-5 text-primary">0</span>
-                                                            <sub class="lh-1 fs-big mt-auto mb-2 text-muted">/month</sub>
-                                                        </span>
-                                                    </span>
-                                                    <input name="customRadioIcon" class="form-check-input" type="radio" value="" id="basicOption">
-                                                </label>
-                                            </div>
-                                        </div>
-                                        <div class="col-md">
-                                            <div class="form-check custom-option custom-option-icon checked">
-                                                <label class="form-check-label custom-option-content" for="standardOption">
-                                                    <span class="custom-option-body">
-                                                        <span class="mb-2 h4 d-block">Standard</span>
-                                                        <span class="mb-2 d-block">For small to medium businesses</span>
-                                                        <span class="d-flex justify-content-center">
-                                                            <sup class="text-primary fs-big lh-1 mt-3">$</sup>
-                                                            <span class="display-5 text-primary">99</span>
-                                                            <sub class="lh-1 fs-big mt-auto mb-2 text-muted">/month</sub>
-                                                        </span>
-                                                    </span>
-                                                    <input name="customRadioIcon" class="form-check-input" type="radio" value="" id="standardOption" checked="">
-                                                </label>
-                                            </div>
-                                        </div>
-                                        <div class="col-md">
-                                            <div class="form-check custom-option custom-option-icon">
-                                                <label class="form-check-label custom-option-content" for="enterpriseOption">
-                                                    <span class="custom-option-body">
-                                                        <span class="mb-2 h4 d-block">Enterprise</span>
-                                                        <span class="mb-2 d-block">Solution for enterprise &amp; organizations</span>
-                                                        <span class="d-flex justify-content-center">
-                                                            <sup class="text-primary fs-big lh-1 mt-3">$</sup>
-                                                            <span class="display-5 text-primary">499</span>
-                                                            <sub class="lh-1 fs-big mt-auto mb-2 text-muted">/year</sub>
-                                                        </span>
-                                                    </span>
-                                                    <input name="customRadioIcon" class="form-check-input" type="radio" value="" id="enterpriseOption">
-                                                </label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!--/ Custom plan options -->
-                                    <div class="content-header mb-3">
-                                        <h3 class="mb-1">Payment Information</h3>
-                                        <span>Enter your card information</span>
-                                    </div>
-                                    <!-- Credit Card Details -->
-                                    <div class="row g-3">
-                                        <div class="col-md-12 fv-plugins-icon-container">
-                                            <label class="form-label w-100" for="multiStepsCard">Card Number</label>
-                                            <div class="input-group input-group-merge has-validation">
-                                                <input id="multiStepsCard" class="form-control multi-steps-card" name="multiStepsCard" type="text" placeholder="1356 3215 6548 7898" aria-describedby="multiStepsCardImg">
-                                                <span class="input-group-text cursor-pointer" id="multiStepsCardImg"><span class="card-type"></span></span>
-                                            </div>
-                                            <div class="fv-plugins-message-container invalid-feedback"></div>
-                                        </div>
-                                        <div class="col-md-5">
-                                            <label class="form-label" for="multiStepsName">Name On Card</label>
-                                            <input type="text" id="multiStepsName" class="form-control" name="multiStepsName" placeholder="John Doe">
-                                        </div>
-                                        <div class="col-6 col-md-4">
-                                            <label class="form-label" for="multiStepsExDate">Expiry Date</label>
-                                            <input type="text" id="multiStepsExDate" class="form-control multi-steps-exp-date" name="multiStepsExDate" placeholder="MM/YY">
-                                        </div>
-                                        <div class="col-6 col-md-3">
-                                            <label class="form-label" for="multiStepsCvv">CVV Code</label>
-                                            <div class="input-group input-group-merge">
-                                                <input type="text" id="multiStepsCvv" class="form-control multi-steps-cvv" name="multiStepsCvv" maxlength="3" placeholder="654">
-                                                <span class="input-group-text cursor-pointer" id="multiStepsCvvHelp"><i class="bx bx-help-circle text-muted" data-bs-toggle="tooltip" data-bs-placement="top" aria-label="Card Verification Value" data-bs-original-title="Card Verification Value"></i></span>
-                                            </div>
-                                        </div>
-                                        <div class="col-12 d-flex justify-content-between">
-                                            <button class="btn btn-primary btn-prev"> <i class="bx bx-chevron-left bx-sm ms-sm-n2"></i>
-                                                <span class="align-middle d-sm-inline-block d-none">Previous</span>
-                                            </button>
-                                            <button type="submit" class="btn btn-success btn-next btn-submit">Submit</button>
-                                        </div>
-                                    </div>
-                                    <!--/ Credit Card Details -->
                                 </div>
                             </form>
                         </div>

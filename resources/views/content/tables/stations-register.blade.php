@@ -2,9 +2,17 @@
 
 @section('title', __('messages.title'))
 
+@php
+$cities = __('city');
+@endphp
+
+@section('page-script')
+<script src="{{asset('assets/js/address-length.js')}}"></script>
+@endsection
+
 @section('content')
 <h4 class="fw-bold py-3 mb-4">
-    <span class="text-muted fw-light">Users /</span> Request
+    <span class="text-muted fw-light">Stations /</span> Request
 </h4>
 
 <!-- Basic Bootstrap Table -->
@@ -14,30 +22,29 @@
         <table class="table">
             <thead>
                 <tr>
-                    <th>Name</th>
+                    <th>Station Name</th>
                     <th>Email</th>
                     <th>Phone</th>
                     <th>Company Name</th>
                     <th>Number Of Vehicles</th>
+                    <th>Address</th>
                     <th>Actions</th>
                 </tr>
             </thead>
             <tbody class="table-border-bottom-0">
-                @foreach ($stationOwners as $stationOwner)
+                @foreach ($stations as $station)
                 <tr>
-                    <td><i class="fab fa-angular fa-lg text-danger me-3"></i> <strong>{{$stationOwner->name}}</strong></td>
-                    <td>{{$stationOwner->email}}</td>
-                    <td>{{$stationOwner->phone}}</td>
-                    @if($stationOwner->status == 1)
-                    <td><span class="badge bg-label-primary me-1">Active</span></td>
-                    @else
-                    <td><span class="badge bg-label-secondary me-1">Inactive</span></td>
-                    @endif
+                    <td><i class="fab fa-angular fa-lg text-danger me-3"></i> <strong>{{$station->name}}</strong></td>
+                    <td>{{$station->mail_address}}</td>
+                    <td>{{$station->phone}}</td>
+                    <td>{{$station->company_name}}</td>
+                    <td>{{$station->amount_of_vehicles}}</td>
+                    <td id="tdaddress" class="truncate-text">{{$cities[$station->city][array_key_first($cities[$station->city])][$station->district] . " - " . array_key_first($cities[$station->city])}}</td>
                     <td>
                         <div class="dropdown">
                             <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown"><i class="bx bx-dots-vertical-rounded"></i></button>
                             <div class="dropdown-menu">
-                                <a class="dropdown-item" href="{{route('users.edit', $stationOwner->id)}}"><i class="bx bx-edit-alt me-1"></i> Edit</a>
+                                <a class="dropdown-item" href="{{route('users.edit', $station->id)}}"><i class="bx bx-edit-alt me-1"></i> More details</a>
                                 <a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#modelDelete"><i class="bx bx-trash me-1"></i> Delete</a>
                             </div>
                         </div>
@@ -46,7 +53,7 @@
                 <!-- Modal -->
                 <div class="modal fade" id="modelDelete" tabindex="-1" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered" role="document">
-                        <form method="POST" action="{{route('users.delete', $stationOwner->id)}}">
+                        <form method="POST" action="{{route('users.delete', $station->id)}}">
                             @csrf
                             <div class="modal-content">
                                 <div class="modal-header">
@@ -57,17 +64,17 @@
                                     <div class="row">
                                         <div class="col mb-3">
                                             <label for="nameWithTitle" class="form-label">Name</label>
-                                            <input type="text" readonly name="name" class="form-control" value="{{$stationOwner->name}}">
+                                            <input type="text" readonly name="name" class="form-control" value="{{$station->name}}">
                                         </div>
                                     </div>
                                     <div class="row g-2">
                                         <div class="col mb-0">
                                             <label for="emailWithTitle" class="form-label">Email</label>
-                                            <input type="text" readonly name="email" class="form-control" value="{{$stationOwner->email}}">
+                                            <input type="text" readonly name="email" class="form-control" value="{{$station->email}}">
                                         </div>
                                         <div class="col mb-0">
                                             <label for="dobWithTitle" class="form-label">Phone</label>
-                                            <input type="text" readonly name="phone" class="form-control" value="{{$stationOwner->phone}}">
+                                            <input type="text" readonly name="phone" class="form-control" value="{{$station->phone}}">
                                         </div>
                                     </div>
                                 </div>

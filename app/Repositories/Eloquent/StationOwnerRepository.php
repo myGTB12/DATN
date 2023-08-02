@@ -24,6 +24,7 @@ class StationOwnerRepository extends BaseRepository
     {
         $model = $this->model
             ->where("email", ($request->email))
+            ->where("status", ActivityStatus::ACTIVE->value)
             ->whereNotNull("email_verified_at")
             ->first();
         if ($model && Hash::check($request->password, $model->password)) {
@@ -51,21 +52,39 @@ class StationOwnerRepository extends BaseRepository
         }
     }
 
+    public function approveStationOwner($id)
+    {
+        $stationOwner = $this->model->findOrFail($id);
+        $admin = auth()->guard('admin')->user();
+        try {
+            $stationOwner->update([
+                "status" => ActivityStatus::ACTIVE->value,
+                "admin_id" => $admin->id,
+            ]);
+        } catch (Exception) {
+            return back()->with(['error' => __("messages.update_data_failed")]);
+        }
+    }
+
     public function registerAccount($request)
     {
         try {
             $stationOwner = $this->model->create([
                 "status" => ActivityStatus::REGISTER->value,
-                "admin_id" => $request->admin_id,
                 "name" => $request->name,
+                "first_name" => $request->first_name,
+                "last_name" => $request->last_name,
+                "email_verified_at" => now(),
                 "company_name" => $request->company_name,
                 "email" => $request->email,
                 "phone" => $request->phone,
                 "password" => Hash::make($request->password),
             ]);
+
             return $stationOwner;
         } catch (Exception $e) {
             Log::info($e);
+
             return redirect()->route('station.register')->with('error', __('messages.create_data_failed'));
         }
     }

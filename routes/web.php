@@ -43,9 +43,12 @@ Route::group([
         Route::match(['get', 'post'], "/edit/{id}", [AdminController::class, "editStationOwner"])->name("users.edit");
         Route::get("/", [AdminController::class, "getListStationOwner"])->name("users.list");
         Route::post("/{id}", [AdminController::class, "deleteStationOwner"])->name("users.delete");
-        Route::match(['get', 'post'], "/request", [AdminController::class, "approveRequest"])->name("users.request");
+        Route::get("/request", [AdminController::class, "approveRequest"])->name("station_owner.request");
     });
 });
+
+Route::post("/request", [AdminController::class, "approveRequest"])->name("post_station_owner.request");
+
 Route::group([
     "prefix" => "admin",
 ], function () {
@@ -54,11 +57,9 @@ Route::group([
     Route::get("/logout", [LoginController::class, "logout"])->name("logout");
 });
 
-Route::group(["prefix" => "station"], function () {
-    Route::match(['get', 'post'], "/login", [StationOwnerLoginController::class, "login"])->name("station.login");
-    Route::match(['get', 'post'], "/register", [StationOwnerLoginController::class, "register"])->name("station.register");
+Route::group(["prefix" => "station", "middleware" => "isStationOwner"], function () {
     Route::get("/stations", [StationController::class, "index"])->name('stations.index');
-    Route::match(['get', 'post'], "/create", [StationController::class, "create"])->name('station.create');
+    Route::match(['get', 'post'], "/create", [StationController::class, "create"])->name('station.create')->middleware("canCreateStation");
     Route::match(['get', 'post'], "/edit/{id}", [StationController::class, "edit"])->name('station.edit');
     Route::post("/delete", [StationController::class, "delete"]);
 
@@ -70,6 +71,12 @@ Route::group(["prefix" => "station"], function () {
         Route::post("/delete/{id}", [VehicleController::class, "delete"])->name('vehicle.delete');
     });
 });
+
+Route::group(["prefix" => "station"], function () {
+    Route::match(['get', 'post'], "/login", [StationOwnerLoginController::class, "login"])->name("station.login");
+    Route::match(['get', 'post'], "/register", [StationOwnerLoginController::class, "register"])->name("station.register");
+});
+
 Route::group(["prefix" => "booking"], function () {
     Route::get("{id}", [VehicleController::class, "bookingShow"])->name('booking.show');
     Route::post("{id}", [ReservationController::class, "create"])->name('booking.rent');

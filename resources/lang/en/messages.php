@@ -15,4 +15,5 @@ return [
     "slogan" => "Fast Flexible Friendly",
     "create_reservation_failed" => "Create reservation failed! Please try again!",
     "unauthorized" => "Unauthorized!",
+    "cant_create_station" => "You have a staion in pending status, wait for admin approve it and try again!",
 ];

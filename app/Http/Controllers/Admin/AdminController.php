@@ -44,6 +44,12 @@ class AdminController extends Controller
             if (!$request->status) {
                 $request->merge(['status' => ActivityStatus::INACTIVE->value]);
             }
+            if ($request->status == ActivityStatus::REGISTER->value) {
+                $this->stationOwnerService->approveStationOwner($id);
+
+                return redirect()->route('users.list');
+            }
+
             $this->form->validate($request, "EditStationOwnerForm");
             if (session()->get('admin')) {
                 $this->stationOwnerService->editStationOwner($id, $request);
@@ -69,9 +75,9 @@ class AdminController extends Controller
         if ($request->isMethod("post")) {
         }
 
-        $stationOwners = $this->stationOwnerService->getListStationOwner(ActivityStatus::REGISTER);
+        $stations = $this->stationService->getListStations(true);
 
-        return view('content.tables.station-owner-register', compact('stationOwners'));
+        return view('content.tables.stations-register', compact('stations'));
     }
 
     public function deleteStationOwner($id)

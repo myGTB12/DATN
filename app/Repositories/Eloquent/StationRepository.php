@@ -7,6 +7,7 @@ use App\Models\Station;
 use App\Enums\StationStatus;
 use Illuminate\Http\Request;
 use App\Enums\ActivityStatus;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 
 class StationRepository extends BaseRepository
@@ -20,8 +21,24 @@ class StationRepository extends BaseRepository
         return Station::class;
     }
 
-    public function getListStations()
+    public function getListStations($status = null)
     {
+        if ($status) {
+            $stations = $this->model->select("stations.*")
+                ->where('stations.status', StationStatus::PENDING->value)
+                ->leftJoin(
+                    "vehicles",
+                    "vehicles.station_id",
+                    "=",
+                    "stations.id"
+                )
+                ->groupBy('stations.id')
+                ->addSelect(DB::raw("COUNT(vehicles.id) as amount_of_vehicles"))
+                ->orderBy('stations.created_at', 'asc')
+                ->get()->all();
+
+            return $stations;
+        }
         $owner_id = auth()->guard('station_owner')->user()->id;
         $stations = $this->model->where('owner_id', $owner_id)->get()->all();
         return $stations;

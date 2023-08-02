@@ -8,7 +8,7 @@
 
 @section('content')
 <h4 class="fw-bold py-3 mb-4">
-    <span class="text-muted fw-light">Edit station owner:</span> {{$stationOwner->id}}
+    <span class="text-muted fw-light">Edit station owner:</span> {{$stationOwner->first_name}}
 </h4>
 
 <div class="row">
@@ -19,7 +19,7 @@
             <div class="card-body">
                 <div class="mb-3">
                     <label for="exampleFormControlInput1" class="form-label">Station owner's name</label>
-                    <input type="text" name="name" class="form-control" readonly id="exampleFormControlInput1" value="{{$stationOwner->name}}" />
+                    <input type="text" name="name" class="form-control" readonly id="exampleFormControlInput1" value="{{$stationOwner->first_name . ' ' . $stationOwner->last_name}}" />
                 </div>
                 <div class="mb-3">
                     <label for="exampleFormControlInput1" class="form-label">Email address</label>
@@ -33,13 +33,18 @@
                     <label for="exampleFormControlInput1" class="form-label">Phone</label>
                     <input type="text" name="phone" class="form-control" readonly id="exampleFormControlInput1" value="{{$stationOwner->phone}}" />
                 </div>
+                @if($stationOwner->status == 2)
+                <input name="status" type="hidden" value="2" />
+                <button type="submit" class="btn btn-primary">Approve</button>
+                <button type="button" id="cancelEditButton" class="btn btn-secondary">Cancel</button>
+                @else
                 <div class="form-check form-switch mb-2">
                     <label class="form-check-label" for="flexSwitchCheckDefault">Status</label>
                     <input class="form-check-input" data-bs-toggle="modal" data-bs-target="#modalStatusConfirm" type="checkbox" name="status" value="1" id="statusCheckBox" @if($stationOwner->status) checked @endif>
                 </div>
-
                 <button type="submit" class="btn btn-primary">Save</button>
                 <button type="button" id="cancelEditButton" class="btn btn-secondary">Cancel</button>
+                @endif
             </div>
         </div>
     </form>
