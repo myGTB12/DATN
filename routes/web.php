@@ -37,7 +37,7 @@ Route::group(["prefix" => "/"], function () {
 
 Route::group([
     "prefix" => "admin",
-    // "middleware" => "auth",
+    "middleware" => "isAdmin",
 ], function () {
     Route::group(["prefix" => "stationOwners"], function () {
         Route::match(['get', 'post'], "/edit/{id}", [AdminController::class, "editStationOwner"])->name("users.edit");
@@ -45,6 +45,10 @@ Route::group([
         Route::post("/{id}", [AdminController::class, "deleteStationOwner"])->name("users.delete");
         Route::match(['get', 'post'], "/request", [AdminController::class, "approveRequest"])->name("users.request");
     });
+});
+Route::group([
+    "prefix" => "admin",
+], function () {
     Route::match(["get", "post"], "/login", [LoginController::class, "login"])
         ->name("login");
     Route::get("/logout", [LoginController::class, "logout"])->name("logout");

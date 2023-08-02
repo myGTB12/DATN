@@ -14,4 +14,5 @@ return [
     "merge_titles" => "Rental Cars - ",
     "slogan" => "Fast Flexible Friendly",
     "create_reservation_failed" => "Create reservation failed! Please try again!",
+    "unauthorized" => "Unauthorized!",
 ];
