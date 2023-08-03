@@ -26,38 +26,18 @@ $cities = __('city');
         <div class="row">
           <div class="col-lg-10 mx-auto">
             <div class="row mb-3">
+              @foreach($vouchers as $voucher)
               <div class="col-md-4 mb-md-0 mb-4">
                 <div class="card border shadow-none">
-                  <div class="card-body text-center">
-                    <img class="mb-3" src="https://demos.themeselection.com/sneat-bootstrap-html-laravel-admin-template/demo/assets/img/icons/unicons/rocket.png" height="60" alt="Help center articles">
-                    <h5>Getting Started</h5>
-                    <p> Whether you're new or you're a power user, this article will… </p>
-                    <a class="btn btn-label-primary" href="https://demos.themeselection.com/sneat-bootstrap-html-laravel-admin-template/demo-1/pages/help-center-article">Read More</a>
+                  <div class="card-body text-center" style="height: 350;">
+                    <img class="mb-3" src="{{asset($voucher->img)}}" height="100">
+                    <h5>{{$voucher->name}}</h5>
+                    <p> {{$voucher->description}} </p>
+                    <a class="btn btn-label-primary">Read More</a>
                   </div>
                 </div>
               </div>
-
-              <div class="col-md-4 mb-md-0 mb-4">
-                <div class="card border shadow-none">
-                  <div class="card-body text-center">
-                    <img class="mb-3" src="https://demos.themeselection.com/sneat-bootstrap-html-laravel-admin-template/demo/assets/img/icons/unicons/cube-secondary.png" height="60" alt="Help center articles">
-                    <h5>First Steps</h5>
-                    <p> Are you a new customer wondering how to get started? </p>
-                    <a class="btn btn-label-primary" href="https://demos.themeselection.com/sneat-bootstrap-html-laravel-admin-template/demo-1/pages/help-center-article">Read More</a>
-                  </div>
-                </div>
-              </div>
-
-              <div class="col-md-4">
-                <div class="card border shadow-none">
-                  <div class="card-body text-center">
-                    <img class="mb-3" src="https://demos.themeselection.com/sneat-bootstrap-html-laravel-admin-template/demo/assets/img/icons/unicons/desktop.png" height="60" alt="Help center articles">
-                    <h5>Add External Content</h5>
-                    <p> This article will show you how to expand the functionality of... </p>
-                    <a class="btn btn-label-primary" href="https://demos.themeselection.com/sneat-bootstrap-html-laravel-admin-template/demo-1/pages/help-center-article">Read More</a>
-                  </div>
-                </div>
-              </div>
+              @endforeach
             </div>
           </div>
         </div>
@@ -245,12 +225,9 @@ $cities = __('city');
                       <h5 class="fw-semibold mt-3 ms-1">Keep mind to book a car</h5>
                     </div>
                     <ul>
-                      <li class="text-primary py-1"><a href="https://demos.themeselection.com/sneat-bootstrap-html-laravel-admin-template/demo-1/pages/help-center-categories">Pricing Wizard</a></li>
-                      <li class="text-primary pb-1"><a href="https://demos.themeselection.com/sneat-bootstrap-html-laravel-admin-template/demo-1/pages/help-center-categories">Square Sync</a></li>
+                      <li class="text-primary py-1"><a href="">No cancellation fee within 1 hour of reservation.</a></li>
+                      <li class="text-primary pb-1"><a href="">100% refund and compensation if the vehicle owner cancels within 7 days of the trip.</a></li>
                     </ul>
-                    <p class="mb-0 fw-semibold">
-                      <a href="javascript:void(0);">56 articles</a>
-                    </p>
                   </div>
                 </div>
               </div>
@@ -262,12 +239,8 @@ $cities = __('city');
                       <h5 class="fw-semibold mt-3 ms-1">Simple procedures</h5>
                     </div>
                     <ul>
-                      <li class="text-primary py-1"><a href="https://demos.themeselection.com/sneat-bootstrap-html-laravel-admin-template/demo-1/pages/help-center-categories">First Steps</a></li>
-                      <li class="text-primary pb-1"><a href="https://demos.themeselection.com/sneat-bootstrap-html-laravel-admin-template/demo-1/pages/help-center-categories">Add Images</a></li>
+                      <li class="text-primary py-1"><a href="">Just have a chip ID (Or Passport) & Driver's License and you are eligible to rent a car</a></li>
                     </ul>
-                    <p class="mb-0 fw-semibold">
-                      <a href="javascript:void(0);">111 articles</a>
-                    </p>
                   </div>
                 </div>
               </div>
@@ -279,14 +252,8 @@ $cities = __('city');
                       <h5 class="fw-semibold mt-3 ms-1">Easy payment</h5>
                     </div>
                     <ul>
-                      <li class="text-primary py-1"><a href="https://demos.themeselection.com/sneat-bootstrap-html-laravel-admin-template/demo-1/pages/help-center-categories">Insights</a></li>
-                      <li class="text-primary pb-1">
-                        <a href="https://demos.themeselection.com/sneat-bootstrap-html-laravel-admin-template/demo-1/pages/help-center-categories">Manage Your Orders</a>
-                      </li>
+                      <li class="text-primary py-1"><a href="">Variety of payment methods</a></li>
                     </ul>
-                    <p class="mb-0 fw-semibold">
-                      <a href="javascript:void(0);">29 articles</a>
-                    </p>
                   </div>
                 </div>
               </div>
@@ -297,16 +264,8 @@ $cities = __('city');
                       <span class="badge bg-label-danger p-2 rounded me-2"><i class="bx bx-world bx-sm"></i></span>
                       <h5 class="fw-semibold mt-3 ms-1">Diversified car</h5>
                     </div>
-                    <ul>
-                      <li class="text-primary py-1">
-                        <a href="https://demos.themeselection.com/sneat-bootstrap-html-laravel-admin-template/demo-1/pages/help-center-categories">Access to Admin Account</a>
-                      </li>
-                      <li class="text-primary pb-1">
-                        <a href="https://demos.themeselection.com/sneat-bootstrap-html-laravel-admin-template/demo-1/pages/help-center-categories">Send Email From an Alias</a>
-                      </li>
-                    </ul>
                     <p class="mb-0 fw-semibold">
-                      <a href="javascript:void(0);">22 articles</a>
+                      <a>More than 100 models for you to choose from: Mini, Sedan, CUV, SUV, MPV, Pickup.</a>
                     </p>
                   </div>
                 </div>
@@ -320,15 +279,9 @@ $cities = __('city');
                     </div>
                     <ul>
                       <li class="text-primary py-1">
-                        <a href="https://demos.themeselection.com/sneat-bootstrap-html-laravel-admin-template/demo-1/pages/help-center-categories">Getting Started with the App</a>
-                      </li>
-                      <li class="text-primary pb-1">
-                        <a href="https://demos.themeselection.com/sneat-bootstrap-html-laravel-admin-template/demo-1/pages/help-center-categories">Getting Started with Android</a>
+                        <a href="">Steady your hand with car rental insurance</a>
                       </li>
                     </ul>
-                    <p class="mb-0 fw-semibold">
-                      <a href="javascript:void(0);">24 articles</a>
-                    </p>
                   </div>
                 </div>
               </div>
@@ -340,14 +293,10 @@ $cities = __('city');
                       <h5 class="fw-semibold mt-3 ms-1">Car delivery</h5>
                     </div>
                     <ul>
-                      <li class="text-primary py-1"><a href="https://demos.themeselection.com/sneat-bootstrap-html-laravel-admin-template/demo-1/pages/help-center-categories">Getting Started</a></li>
                       <li class="text-primary pb-1">
-                        <a href="https://demos.themeselection.com/sneat-bootstrap-html-laravel-admin-template/demo-1/pages/help-center-categories">How does this work?</a>
+                        <a href="">You can choose to have your car delivered to your home/airport...</a>
                       </li>
                     </ul>
-                    <p class="mb-0 fw-semibold">
-                      <a href="javascript:void(0);">27 articles</a>
-                    </p>
                   </div>
                 </div>
               </div>
@@ -357,8 +306,6 @@ $cities = __('city');
       </div>
     </div>
   </div>
-  <!-- /Knowledge Base -->
-  @include('content.form-elements.become-station-owner')
 </div>
 
 @endsection

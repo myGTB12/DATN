@@ -9,6 +9,13 @@
 
 @section('content')
 <div class="container-xxl">
+  @if(session()->has('error'))
+  <div class="alert alert-danger alert-dismissible" role="alert">
+    {{ session('error') }}
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+    </button>
+  </div>
+  @endif
   <div class="authentication-wrapper authentication-basic container-p-y">
     <div class="authentication-inner">
       <!-- Register -->
@@ -65,36 +72,36 @@
 @endsection
 @section('js')
 <script>
-  $(function () {
-      $('#formAuthentication').validate({
-        rules: {
-            email:{
-              required: true,
-            },
-            password: {
-                required: true,
-            }
+  $(function() {
+    $('#formAuthentication').validate({
+      rules: {
+        email: {
+          required: true,
         },
-        messages: {
-            email: {
-                required: "{{ __('messages.user_id_required') }}",
-                email: "{{ __('messages.email_format') }}"
-            },
-            password: {
-              required: "{{ __('messages.password_required') }}",
-            }
-        },
-        errorElement: 'span',
-        errorPlacement: function (error, element) {
-            error.addClass('invalid-feedback');
-            element.closest('.form-group').append(error);
-        },
-        highlight: function (element, errorClass, validClass) {
-            $(element).addClass('is-invalid');
-        },
-        unhighlight: function (element, errorClass, validClass) {
-            $(element).removeClass('is-invalid');
+        password: {
+          required: true,
         }
-      });
+      },
+      messages: {
+        email: {
+          required: "{{ __('messages.user_id_required') }}",
+          email: "{{ __('messages.email_format') }}"
+        },
+        password: {
+          required: "{{ __('messages.password_required') }}",
+        }
+      },
+      errorElement: 'span',
+      errorPlacement: function(error, element) {
+        error.addClass('invalid-feedback');
+        element.closest('.form-group').append(error);
+      },
+      highlight: function(element, errorClass, validClass) {
+        $(element).addClass('is-invalid');
+      },
+      unhighlight: function(element, errorClass, validClass) {
+        $(element).removeClass('is-invalid');
+      }
     });
-  </script>
+  });
+</script>

@@ -12,12 +12,15 @@ class SeedDataVouchers extends Seeder
      */
     public function run(): void
     {
-        for($i = 0; $i < 10; $i++){
+        for ($i = 1; $i <= 3; $i++) {
             Voucher::create([
                 'start_time' => fake()->dateTimeThisYear(),
                 'expire_time' => fake()->dateTimeThisYear(),
                 'percent' => random_int(5, 50),
                 'amount' => random_int(10000, 50000),
+                'img' => env('STORAGE_PATH') . 'voucher' . $i . '.jpg',
+                "name" => "Voucher " . $i,
+                "description" => fake()->sentence(12, true),
             ]);
         }
     }

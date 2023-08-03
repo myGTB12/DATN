@@ -14,6 +14,13 @@ $user = auth()->guard('admin')->user();
 @if(isset($navbarDetached) && $navbarDetached == 'navbar-detached')
 <nav class="layout-navbar {{$containerNav}} navbar navbar-expand-xl {{$navbarDetached}} align-items-center bg-navbar-theme" id="layout-navbar">
   @endif
+  @if(session()->has('error'))
+  <div class="alert alert-danger alert-dismissible" role="alert">
+    {{ session('error') }}
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+    </button>
+  </div>
+  @endif
   @if(isset($navbarDetached) && $navbarDetached == '')
   <nav class="layout-navbar navbar navbar-expand-xl align-items-center bg-navbar-theme" id="layout-navbar">
     <div class="{{$containerNav}}">
