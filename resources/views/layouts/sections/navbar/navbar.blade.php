@@ -21,6 +21,13 @@ $user = auth()->guard('admin')->user();
     </button>
   </div>
   @endif
+  @if(session()->has('message'))
+  <div class="alert alert-sucess alert-dismissible" role="alert">
+    {{ session('success') }}
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+    </button>
+  </div>
+  @endif
   @if(isset($navbarDetached) && $navbarDetached == '')
   <nav class="layout-navbar navbar navbar-expand-xl align-items-center bg-navbar-theme" id="layout-navbar">
     <div class="{{$containerNav}}">

@@ -5,7 +5,7 @@
       © <script>
         document.write(new Date().getFullYear())
       </script>
-      , Rental Cars
+      , Rent a Car
     </div>
   </div>
 </footer>

@@ -60,6 +60,11 @@ class StationService
         return $results;
     }
 
+    public function approveStation($id)
+    {
+        $this->stationRepository->approveStation($id);
+    }
+
     public function searchByStation($request)
     {
         $vehicles = $this->stationRepository->searchByLocation($request);

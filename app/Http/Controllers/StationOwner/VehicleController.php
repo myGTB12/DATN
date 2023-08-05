@@ -50,7 +50,7 @@ class VehicleController extends Controller
         // $this->form->validate($request, "CreateVehicleForm");
         $result = $this->vehicleService->editVehicle($request, $id);
         if ($result) {
-            return redirect()->route('vehicle.index', $station_id);
+            return redirect()->route('vehicle.index', $station_id)->with("message", __('messages.success'));
         }
     }
 
@@ -83,7 +83,7 @@ class VehicleController extends Controller
     {
         $result = $this->vehicleService->deleteVehicle($vehicle_id, $request->vehicleDetail);
         if ($result) {
-            return redirect()->route('vehicle.index', $station_id);
+            return redirect()->route('vehicle.index', $station_id)->with("message", __('messages.success'));
         }
 
         return view('contnent.pages.pages-misc-error');
@@ -93,7 +93,7 @@ class VehicleController extends Controller
     {
         $vehicles = $this->vehicleService->searchByCar($request);
         if ($vehicles->isEmpty()) {
-            return redirect()->route('home');
+            return redirect()->route('home')->with("message", __('messages.no_car_found'));
         }
         $vehicles = $vehicles->chunk(3);
         $vehicles_1 = $vehicles[0];
@@ -111,7 +111,7 @@ class VehicleController extends Controller
     {
         $vehicles = $this->stationService->searchByStation($request);
         if ($vehicles->isEmpty()) {
-            return redirect()->route('home');
+            return redirect()->route('home')->with("message", __('messages.no_car_found'));
         }
         $vehicles = $vehicles->chunk(3);
 

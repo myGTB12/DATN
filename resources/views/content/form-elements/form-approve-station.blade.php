@@ -1,4 +1,4 @@
-@extends('layouts/contentNavbarLayout')
+@extends('layouts/adminNavbarLayout')
 
 @section('title', __('messages.title'))
 
@@ -6,13 +6,17 @@
 <script src="{{asset('assets/js/form-basic-inputs.js')}}"></script>
 @endsection
 
+@php
+$cities = __('city');
+@endphp
+
 @section('content')
 <h4 class="fw-bold py-3 mb-4">
-    <span class="text-muted fw-light">Edit station :</span> {{$station->name}}
+    <span class="text-muted fw-light">Approve station :</span> {{$station->name}}
 </h4>
 
 <div class="row">
-    <form style="width: 100%;" class="mb-3" action="{{route('station.edit', $station->id)}}" method="POST">
+    <form style="width: 100%;" class="mb-3" action="{{route('approve.station', $station->id)}}" method="POST">
         @csrf
         <div class="card mb-4">
             <h5 class="card-header">Station Information</h5>
@@ -27,15 +31,11 @@
                 </div>
                 <div class="mb-3">
                     <label for="exampleFormControlInput1" class="form-label">Address</label>
-                    <input type="text" name="address" class="form-control" value="{{$station->address}}" />
+                    <input type="text" name="address" class="form-control" value="{{$cities[$station->city][array_key_first($cities[$station->city])][$station->district] . ' - ' . array_key_first($cities[$station->city])}}" />
                 </div>
                 <div class="mb-3">
                     <label for="exampleFormControlInput1" class="form-label">Phone</label>
                     <input type="text" name="phone" class="form-control" value="{{$station->phone}}" />
-                </div>
-                <div class="form-check form-switch mb-2">
-                    <label class="form-check-label" for="flexSwitchCheckDefault">Status</label>
-                    <input class="form-check-input" type="checkbox" name="status" value="1" id="statusCheckBox" @if($station->status) checked @endif>
                 </div>
                 <div class="form-check form-switch mb-2">
                     <label class="form-check-label" for="flexSwitchCheckDefault">Always open</label>
@@ -53,7 +53,7 @@
                         <input class="form-control" name="end_business_time" type="time" value="{{$station->end_business_time}}" id="html5-time-input" />
                     </div>
                 </div>
-                <button type="submit" class="btn btn-primary">Save</button>
+                <button type="submit" class="btn btn-primary">Approve</button>
                 <button type="button" id="cancelEditButton" class="btn btn-secondary">Cancel</button>
             </div>
         </div>

@@ -59,7 +59,8 @@ class StationController extends Controller
             $this->form->validate($request, "CreateStationForm");
             $this->stationService->editStation($request);
             $stations = $this->stationService->getListStations();
-            return redirect()->route('stations.index', ['station_owner' => $station_owner, 'stations' => $stations]);
+            return redirect()->route('stations.index', ['station_owner' => $station_owner, 'stations' => $stations])
+                ->with("message", __('messages.success'));
         }
 
         return view("content.form-elements.form-edit-station", compact("station"));

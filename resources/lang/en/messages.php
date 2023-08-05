@@ -16,4 +16,10 @@ return [
     "create_reservation_failed" => "Create reservation failed! Please try again!",
     "unauthorized" => "Unauthorized!",
     "cant_create_station" => "You have a staion in pending status, wait for admin approve it and try again!",
+    "station_approved" => "Station approved",
+    "add_voucher" => "Voucher added",
+    "approve_station_owner" => "Station owner approved",
+    "success" => "Action success!",
+    "reservation_created" => "Reservation created",
+    "no_car_found" => "No car matched with your search"
 ];

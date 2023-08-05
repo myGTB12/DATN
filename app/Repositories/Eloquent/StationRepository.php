@@ -87,7 +87,6 @@ class StationRepository extends BaseRepository
                 "always_open" => $request->always_open,
             ]);
         } catch (Exception $e) {
-            dd($e);
             back()->with(['error' => __('messages.update_data_failed')]);
         }
     }
@@ -131,5 +130,10 @@ class StationRepository extends BaseRepository
             );
 
         return $query->orderByDesc("stations.updated_at")->distinct()->get();
+    }
+
+    public function approveStation($id)
+    {
+        $this->update($id, ["status" => ActivityStatus::ACTIVE->value]);
     }
 }

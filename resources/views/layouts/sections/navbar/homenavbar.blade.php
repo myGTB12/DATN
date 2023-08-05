@@ -13,6 +13,13 @@ $user = auth()->guard('user')->user();
         </button>
     </div>
     @endif
+    @if(session()->has('message'))
+    <div class="alert alert-sucess alert-dismissible" role="alert">
+        {{ session('success') }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+        </button>
+    </div>
+    @endif
     <div class="container-fluid">
         <a class="navbar-brand">Rental Car</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-ex-3">

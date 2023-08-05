@@ -22,15 +22,15 @@ $cities = __('city');
             <div class="card-body">
                 <div class="mb-3">
                     <label for="exampleFormControlInput1" class="form-label">Station's name</label>
-                    <input type="text" name="name" class="form-control" id="exampleFormControlInput1" />
+                    <input type="text" name="name" class="form-control" />
                 </div>
                 <div class="mb-3">
                     <label for="exampleFormControlInput1" class="form-label">Email address</label>
-                    <input type="email" name="mail_address" class="form-control" id="exampleFormControlInput1" />
+                    <input type="email" name="mail_address" class="form-control" />
                 </div>
                 <div class="mb-3">
                     <label for="exampleFormControlInput1" class="form-label">Phone</label>
-                    <input type="text" name="phone" class="form-control" id="exampleFormControlInput1" />
+                    <input type="text" name="phone" class="form-control" />
                 </div>
                 <div class="mb-3">
                     <label for="exampleFormControlSelect1" class="form-label">Select city</label>

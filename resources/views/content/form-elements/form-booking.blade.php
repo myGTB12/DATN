@@ -143,13 +143,13 @@
             <form action="{{route('booking.rent', $data['id'])}}" method="POST">
                 @csrf
                 <div class="mb-3 row">
-                    <label for="html5-datetime-local-input" class="col-md-2 col-form-label">Datetime</label>
+                    <label for="html5-datetime-local-input" class="col-md-2 col-form-label">Start time</label>
                     <div class="col-md-10">
                         <input class="form-control" type="datetime-local" value="2023-06-18T12:30:00" name="start_time">
                     </div>
                 </div>
                 <div class="mb-3 row">
-                    <label for="html5-datetime-local-input" class="col-md-2 col-form-label">Datetime</label>
+                    <label for="html5-datetime-local-input" class="col-md-2 col-form-label">Return time</label>
                     <div class="col-md-10">
                         <input class="form-control" type="datetime-local" value="2023-06-18T12:30:00" name="end_time">
                     </div>

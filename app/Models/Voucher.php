@@ -20,6 +20,9 @@ class Voucher extends Model
         'expire_time',
         'percent',
         'amount',
+        'name',
+        'img',
+        'description',
     ];
 
     public $timestamps = true;

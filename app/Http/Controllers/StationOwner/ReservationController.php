@@ -37,7 +37,7 @@ class ReservationController extends Controller
         $data = $this->reservationService->createReservation($vehicle_detail_id, $request);
 
         if ($data) {
-            return redirect()->route('booking.preview', [$data->id]);
+            return redirect()->route('booking.preview', [$data->id])->with("message", __('messages.reservation_created'));
         }
 
         return view("content.pages.pages-misc-error");
@@ -74,7 +74,7 @@ class ReservationController extends Controller
     public function preview($id)
     {
         $data = $this->reservationService->showReservation($id);
-        // dd($data);
+
         return view("content.form-elements.form-reservation-success", compact('data'));
     }
 }

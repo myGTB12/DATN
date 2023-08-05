@@ -21,10 +21,6 @@ use App\Http\Controllers\User\UserController;
 |
 */
 
-Route::get("/test", function () {
-    return view("content.form-elements.form-reservation-success");
-});
-
 Route::group(["prefix" => "/"], function () {
     Route::get('/', [UserController::class, "home"])->name('home');
     Route::post('/login', [UserLoginController::class, "login"])->name('user.login');
@@ -43,11 +39,12 @@ Route::group([
         Route::match(['get', 'post'], "/edit/{id}", [AdminController::class, "editStationOwner"])->name("users.edit");
         Route::get("/", [AdminController::class, "getListStationOwner"])->name("users.list");
         Route::post("/{id}", [AdminController::class, "deleteStationOwner"])->name("users.delete");
-        Route::get("/request", [AdminController::class, "approveRequest"])->name("station_owner.request");
+        Route::get("/request", [AdminController::class, "approveRequest"])->name("station.request");
     });
+    Route::match(["get", "post"], "/approve/{id}", [AdminController::class, "approveStation"])->name("approve.station");
+    Route::match(["get", "post"], "/addVoucher", [AdminController::class, "addVoucher"])->name("voucher.create");
 });
 
-Route::post("/request", [AdminController::class, "approveRequest"])->name("post_station_owner.request");
 
 Route::group([
     "prefix" => "admin",

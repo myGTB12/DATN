@@ -19,6 +19,13 @@ $admin = auth()->guard('admin')->user();
         </button>
       </div>
       @endif
+      @if(session()->has('message'))
+      <div class="alert alert-sucess alert-dismissible" role="alert">
+        {{ session('success') }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+        </button>
+      </div>
+      @endif
       <!--  Brand demo (display only for navbar-full and hide on below xl) -->
       @if(isset($navbarFull))
       <div class="navbar-brand app-brand demo d-none d-xl-flex py-0 me-4">

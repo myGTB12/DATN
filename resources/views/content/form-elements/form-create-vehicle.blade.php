@@ -95,7 +95,7 @@
                     </div>
                 </div>
                 <div class="mb-3">
-                    <label for="formFile" class="form-label">Default file input example</label>
+                    <label for="formFile" class="form-label">Vehicle Picture</label>
                     <input class="form-control" name="img2" type="file" id="formFile">
                 </div>
                 <!-- <div class="mb-3">

@@ -19,19 +19,19 @@
             <div class="card-body">
                 <div class="mb-3">
                     <label for="exampleFormControlInput1" class="form-label">Station owner's name</label>
-                    <input type="text" name="name" class="form-control" readonly id="exampleFormControlInput1" value="{{$stationOwner->first_name . ' ' . $stationOwner->last_name}}" />
+                    <input type="text" name="name" class="form-control" readonly value="{{$stationOwner->first_name . ' ' . $stationOwner->last_name}}" />
                 </div>
                 <div class="mb-3">
                     <label for="exampleFormControlInput1" class="form-label">Email address</label>
-                    <input type="email" name="email" class="form-control" readonly id="exampleFormControlInput1" value="{{$stationOwner->email}}" />
+                    <input type="email" name="email" class="form-control" readonly value="{{$stationOwner->email}}" />
                 </div>
                 <div class="mb-3">
                     <label for="exampleFormControlInput1" class="form-label">Company name</label>
-                    <input type="text" name="company_name" class="form-control" id="exampleFormControlInput1" value="{{$stationOwner->company_name}}" />
+                    <input type="text" name="company_name" class="form-control" value="{{$stationOwner->company_name}}" />
                 </div>
                 <div class="mb-3">
                     <label for="exampleFormControlInput1" class="form-label">Phone</label>
-                    <input type="text" name="phone" class="form-control" readonly id="exampleFormControlInput1" value="{{$stationOwner->phone}}" />
+                    <input type="text" name="phone" class="form-control" readonly value="{{$stationOwner->phone}}" />
                 </div>
                 @if($stationOwner->status == 2)
                 <input name="status" type="hidden" value="2" />
@@ -61,15 +61,15 @@
             <div class="modal-body">
                 <div class="mb-3">
                     <label for="exampleFormControlInput1" class="form-label">Station owner's name</label>
-                    <input type="text" name="name" class="form-control" readonly id="exampleFormControlInput1" value="{{$stationOwner->name}}" />
+                    <input type="text" name="name" class="form-control" readonly value="{{$stationOwner->name}}" />
                 </div>
                 <div class="mb-3">
                     <label for="exampleFormControlInput1" class="form-label">Email address</label>
-                    <input type="email" name="mail_address" class="form-control" readonly id="exampleFormControlInput1" value="{{$stationOwner->email}}" />
+                    <input type="email" name="mail_address" class="form-control" readonly value="{{$stationOwner->email}}" />
                 </div>
                 <div class="mb-3">
                     <label for="exampleFormControlInput1" class="form-label">Company name</label>
-                    <input type="text" name="company_name" class="form-control" readonly id="exampleFormControlInput1" value="{{$stationOwner->company_name}}" />
+                    <input type="text" name="company_name" class="form-control" readonly value="{{$stationOwner->company_name}}" />
                 </div>
             </div>
             <div class="modal-footer">
