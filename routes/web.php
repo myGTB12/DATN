@@ -59,6 +59,7 @@ Route::group(["prefix" => "station", "middleware" => "isStationOwner"], function
     Route::match(['get', 'post'], "/create", [StationController::class, "create"])->name('station.create')->middleware("canCreateStation");
     Route::match(['get', 'post'], "/edit/{id}", [StationController::class, "edit"])->name('station.edit');
     Route::post("/delete", [StationController::class, "delete"]);
+    Route::get("/billing/{id}", [StationController::class, "billing"])->name("station.billing");
 
     Route::group(["prefix" => "{station_id}/vehicle"], function () {
         Route::get("/index", [VehicleController::class, "index"])->name('vehicle.index');
@@ -82,8 +83,8 @@ Route::group(["prefix" => "booking"], function () {
 Route::group(["prefix" => "/reservation"], function () {
     Route::get("/", [ReservationController::class, "index"])->name('booking.index');
     Route::match(['get', 'post'], "/create", [ReservationController::class, "create"]);
-    Route::post("/edit", [ReservationController::class, "edit"]);
-    Route::post("/show", [ReservationController::class, "show"]);
+    Route::post("/approve/{id}", [ReservationController::class, "approve"])->name('reservation.approve');
+    Route::match(['get', 'post'], "/show/{id}", [ReservationController::class, "show"])->name("reservation.show");
     Route::post("/delete", [ReservationController::class, "delete"]);
-    Route::get("{res_id}/preview", [ReservationController::class, "preview"])->name('booking.preview');
+    Route::get("{res_id}/preview", [ReservationController::class, "preview"])->name('reservation.preview');
 });

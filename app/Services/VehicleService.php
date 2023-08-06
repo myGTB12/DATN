@@ -162,4 +162,11 @@ class VehicleService
 
         return $vehicles;
     }
+
+    public function searchByStation($request)
+    {
+        $vehicles = $this->vehicleDetailRepository->searchByStation($request);
+
+        return $vehicles;
+    }
 }

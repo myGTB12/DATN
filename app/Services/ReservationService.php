@@ -6,6 +6,7 @@ use Carbon\Carbon;
 use App\Helpers\Helper;
 use Illuminate\Http\Request;
 use App\Enums\ActivityStatus;
+use App\Models\User;
 use App\Repositories\Eloquent\UserRepository;
 use App\Repositories\Eloquent\VehicleRepository;
 use App\Repositories\Eloquent\ReservationRepository;
@@ -37,7 +38,13 @@ class ReservationService
     public function getListReservations()
     {
         $stationOwner_id = auth()->guard('station_owner')->user()->id;
-        $this->reservationRepository->getListReservations($stationOwner_id);
+
+        return $this->reservationRepository->getListReservations($stationOwner_id);
+    }
+
+    public function approve($request, $id)
+    {
+        $this->reservationRepository->update($id, ["status" => $request->status]);
     }
 
     public function createReservation($vehicle_detail_id, Request $request)
@@ -55,17 +62,17 @@ class ReservationService
         return redirect()->route('user.login');
     }
 
-    public function editReservation(Request $request)
+    public function showReservation(Request $request, $id)
     {
-        // $reservation = $this->validateStation($request->id);
-        // if ($reservation) {
-        //     $reservation = $this->reservationRepository->createStation($request);
-        //     return $reservation;
-        // }
-        // return;
+        $data = $this->reservationRepository->showReservation($request, $id);
+        $data = $data[0];
+        $data->user_informations = User::find($data->user_id) ?? null;
+        $data->address = Helper::getStationAddress($data->district, $data->city);
+
+        return $data;
     }
 
-    public function showReservation($reservation_id)
+    public function previewReservation($reservation_id)
     {
         $reservation = $this->reservationRepository->find($reservation_id);
         $data = $reservation->toArray();

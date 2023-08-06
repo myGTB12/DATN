@@ -116,19 +116,20 @@ class StationRepository extends BaseRepository
         if ($district) {
             $query = $query->where("stations.district", $district);
         }
-        $query = $query->join(
+        dd($query->get());
+        $query = $query->leftJoin(
             "vehicles",
             "stations.id",
             "=",
             "vehicles.station_id"
         )
-            ->join("vehicle_details", "vehicle_details.vehicle_id", "=", "vehicles.id")
+            ->leftJoin("vehicle_details", "vehicle_details.vehicle_id", "=", "vehicles.id")
             ->where("stations.status", ActivityStatus::ACTIVE->value)
             ->addSelect(
                 "vehicle_details.*",
-                "vehicles.id",
+                "vehicles.id as vehicle_id"
             );
-
+        dd($query->get());
         return $query->orderByDesc("stations.updated_at")->distinct()->get();
     }
 

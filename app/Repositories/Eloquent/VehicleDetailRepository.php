@@ -25,6 +25,36 @@ class VehicleDetailRepository extends BaseRepository
         return $query;
     }
 
+    public function searchByStation(Request $request)
+    {
+        $city = $request->city;
+        $district = $request->district;
+
+        $query = $this->model->select("vehicle_details.*", "stations.city", "stations.district")->whereNull("vehicle_details.deleted_at")
+            ->join(
+                "vehicles",
+                "vehicles.id",
+                "=",
+                "vehicle_details.vehicle_id"
+            )
+            ->join(
+                "stations",
+                "stations.id",
+                "=",
+                "vehicles.station_id"
+            )->where("stations.status", ActivityStatus::ACTIVE->value);
+
+        if ($city) {
+            $query = $query->where("stations.city", $city);
+        }
+
+        if ($district) {
+            $query = $query->where("stations.district", $district);
+        }
+
+        return $query->orderByDesc("vehicle_details.updated_at")->get();
+    }
+
     public function serchByCarDetail(Request $request)
     {
         $brand = $request->brand;
@@ -38,7 +68,7 @@ class VehicleDetailRepository extends BaseRepository
         }
         if ($name) {
             $query = $query->orWhere("vehicle_details.car_name", "like", "%" . $name . "%");
-        };
+        }
         if ($capacity) {
             $query = $query->orWhere("vehicle_details.capacity", $capacity);
         }

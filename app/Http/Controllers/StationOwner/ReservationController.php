@@ -37,29 +37,26 @@ class ReservationController extends Controller
         $data = $this->reservationService->createReservation($vehicle_detail_id, $request);
 
         if ($data) {
-            return redirect()->route('booking.preview', [$data->id])->with("message", __('messages.reservation_created'));
+            return redirect()->route('reservation.preview', [$data->id])->with("message", __('messages.reservation_created'));
         }
 
         return view("content.pages.pages-misc-error");
     }
 
-    public function edit(Request $request)
+    public function approve(Request $request, $id)
     {
-        if (!Helper::validateRole($request->id, 'station_owner')) {
-            back()->with(['error' => __('messages.station_owners_fail')]);
-        }
+        $this->reservationService->approve($request, $id);
 
-        $this->form->validate($request, "CreateReservationForm");
-        $reservation = $this->reservationService->editReservation($request);
+        return redirect()->route('booking.index')->with("message", __('messages.reservation_approved'));
     }
 
-    public function show($reservation_id, $id)
+    public function show(Request $request, $reservation_id)
     {
-        if (!Helper::validateRole($id, 'station_owner')) {
-            back()->with(['error' => __('messages.station_owners_fail')]);
+        $reservation = $this->reservationService->showReservation($request, $reservation_id);
+        if ($request->isMethod("POST")) {
         }
 
-        $reservation = $this->reservationService->showReservation($reservation_id);
+        return view('content.form-elements.form-show-reservation', compact('reservation'));
     }
 
     public function cancel($id, $request)
@@ -73,7 +70,7 @@ class ReservationController extends Controller
 
     public function preview($id)
     {
-        $data = $this->reservationService->showReservation($id);
+        $data = $this->reservationService->previewReservation($id);
 
         return view("content.form-elements.form-reservation-success", compact('data'));
     }

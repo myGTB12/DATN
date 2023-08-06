@@ -65,13 +65,6 @@ class StationService
         $this->stationRepository->approveStation($id);
     }
 
-    public function searchByStation($request)
-    {
-        $vehicles = $this->stationRepository->searchByLocation($request);
-
-        return $vehicles;
-    }
-
     private function validateStation($id)
     {
         $station = Station::findOrFail($id);

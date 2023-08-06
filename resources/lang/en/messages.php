@@ -21,5 +21,8 @@ return [
     "approve_station_owner" => "Station owner approved",
     "success" => "Action success!",
     "reservation_created" => "Reservation created",
-    "no_car_found" => "No car matched with your search"
+    "no_car_found" => "No car matched with your search",
+    "reservation_approved" => "Reservation applyed",
+    "contact_ads_number" => "(+84) 989515569",
+    "app_brand" => "Rental Car"
 ];

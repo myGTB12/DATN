@@ -6,6 +6,7 @@ use App\Enums\ActivityStatus;
 use Exception;
 use App\Models\Reservation;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 
 class ReservationRepository extends BaseRepository
@@ -21,11 +22,29 @@ class ReservationRepository extends BaseRepository
 
     public function getListReservations()
     {
-        $query = $this->model->select("reservations.*")->whereNull("reservations.deleted_at")
-            ->join("stations", "stations.id", "=", "reservations.station_start_id")
-            ->join("station_owners", "stations.owner_id", "=", "station_owners.id");
+        $query = $this->model->select("reservations.*", "vehicle_details.car_name")
+            ->whereNull("reservations.deleted_at")
+            ->join("stations as start_station", "start_station.id", "=", "reservations.station_start_id")
+            ->join("station_owners", "start_station.owner_id", "=", "station_owners.id")
+            ->join("vehicles", "vehicles.id", "=", "reservations.vehicle_id")
+            ->join("vehicle_details", "vehicle_details.vehicle_id", "=", "vehicles.id")
+            ->join("stations as end_station", "end_station.id", "=", "reservations.station_end_id")
+            ->addSelect(DB::raw("start_station.name as station_start_name, end_station.name as station_end_name"));
 
         return $query->orderByDesc("reservations.updated_at")->distinct()->get();
+    }
+
+    public function showReservation($request, $id)
+    {
+        $query = $this->model->select("vehicle_details.*", "start_station.*", "reservations.*")
+            ->join("stations as start_station", "start_station.id", "=", "reservations.station_start_id")
+            ->join("station_owners", "start_station.owner_id", "=", "station_owners.id")
+            ->join("vehicles", "vehicles.id", "=", "reservations.vehicle_id")
+            ->join("vehicle_details", "vehicle_details.vehicle_id", "=", "vehicles.id")
+            ->join("stations as end_station", "end_station.id", "=", "reservations.station_end_id")
+            ->addSelect(DB::raw("start_station.name as station_start_name, end_station.name as station_end_name"));
+
+        return $query->get()->all();
     }
 
     public function createReservation($user_id, $details, Request $request, $station_start_id)
@@ -38,7 +57,7 @@ class ReservationRepository extends BaseRepository
                 "station_end_id" => $request->station_end_id,
                 "start_time" => $request->start_time,
                 "end_time" => $request->end_time,
-                "status" => ActivityStatus::ACTIVE->value,
+                "status" => ActivityStatus::REGISTER->value,
                 "usage_fee" => $details->usage_fee,
                 "insurance_fee" => $details->insurance_fee,
                 "total_amount" => $details->per_night_price + $details->usage_fee + $details->infurance_fee,

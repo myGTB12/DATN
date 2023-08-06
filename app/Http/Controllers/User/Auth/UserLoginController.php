@@ -40,7 +40,7 @@ class UserLoginController extends Controller
                 ->withInput()
                 ->with("error", __('messages.login_fail'));
         }
-        
+
         return view("content.authentications.station-owner-auth-login");
     }
 
@@ -52,9 +52,10 @@ class UserLoginController extends Controller
         return redirect()->route("home");
     }
 
-    public function register(Request $request){
+    public function register(Request $request)
+    {
         $result = $this->userService->createUser($request);
-        if($result) {
+        if ($result) {
             return redirect()->route('home');
         }
 
@@ -64,10 +65,11 @@ class UserLoginController extends Controller
             ->with("error", $result);
     }
 
-    public function profile($id, Request $request){
-        if($request->isMethod('POST')){
+    public function profile($id, Request $request)
+    {
+        if ($request->isMethod('POST')) {
             $result = $this->userService->updateProfile($id, $request);
-            if($result){
+            if ($result) {
                 return redirect()->route('user.profile', ['user_id' => $id]);
             }
 
@@ -77,7 +79,8 @@ class UserLoginController extends Controller
                 ->with("error", $result);
         }
 
-        $user = auth()->guard('user')->user();
+        $user = auth()->guard('user')->user() ?? auth()->guard('station_owner')->user();
+
         return view('content/pages/pages-user-account-settings-account', compact('user'));
     }
 }

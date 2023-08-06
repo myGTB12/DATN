@@ -8,7 +8,7 @@
         </p>
         <a href="{{route('home')}}" class="btn btn-primary">Back to home</a>
         <div class="mt-4">
-            <img src="https://demos.themeselection.com/sneat-bootstrap-html-laravel-admin-template/demo/assets/img/illustrations/girl-doing-yoga-light.png" alt="girl-doing-yoga-light" width="500" class="img-fluid" data-app-dark-img="illustrations/girl-doing-yoga-dark.png" data-app-light-img="illustrations/girl-doing-yoga-light.png">
+            <img src="assets/img/illustrations/girl-doing-yoga-light.png" alt="girl-doing-yoga-light" width="500" class="img-fluid">
         </div>
     </div>
 </div>

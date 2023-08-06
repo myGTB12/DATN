@@ -97,7 +97,7 @@ class VehicleController extends Controller
         }
         $vehicles = $vehicles->chunk(3);
         $vehicles_1 = $vehicles[0];
-        $vehicles_2 = $vehicles[1];
+        $vehicles_2 = $vehicles[1] ?? $vehicles[0];
         $vehicles_3 = $vehicles[2] ?? $vehicles[1];
 
         return view('content.user-interface.ui-home', [
@@ -109,15 +109,15 @@ class VehicleController extends Controller
 
     public function searchByStation(Request $request)
     {
-        $vehicles = $this->stationService->searchByStation($request);
+        $vehicles = $this->vehicleService->searchByStation($request);
         if ($vehicles->isEmpty()) {
             return redirect()->route('home')->with("message", __('messages.no_car_found'));
         }
         $vehicles = $vehicles->chunk(3);
 
         $vehicles_1 = $vehicles[0];
-        $vehicles_2 = $vehicles[1];
-        $vehicles_3 = $vehicles[2];
+        $vehicles_2 = $vehicles[1] ?? $vehicles[0];
+        $vehicles_3 = $vehicles[2] ?? $vehicles[1];
 
         return view('content.user-interface.ui-home', [
             'vehicles_1' => $vehicles_1,

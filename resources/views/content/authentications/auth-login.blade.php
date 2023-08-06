@@ -10,11 +10,11 @@
 @section('content')
 <div class="container-xxl">
   @if(session()->has('error'))
-    <div class="alert alert-danger alert-dismissible" role="alert">
-      {{ session('error') }}
-      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
-      </button>
-    </div>
+  <div class="alert alert-danger alert-dismissible" role="alert">
+    {{ session('error') }}
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+    </button>
+  </div>
   @endif
   <div class="authentication-wrapper authentication-basic container-p-y">
     <div class="authentication-inner">
@@ -24,7 +24,9 @@
           <!-- Logo -->
           <div class="app-brand justify-content-center">
             <a href="{{url('/')}}" class="app-brand-link gap-2">
-              <span class="app-brand-logo demo">@include('_partials.macros',["width"=>25,"withbg"=>'#696cff'])</span>
+              <span class="app-brand-logo demo">
+                <img class="border rounded" src="{{asset('assets/img/favicon/favicon.jpg')}}" width="50" height="42">
+              </span>
               <span class="app-brand-text demo text-body fw-bolder">{{config('variables.templateName')}}</span>
             </a>
           </div>
@@ -41,7 +43,7 @@
             <div class="mb-3 form-password-toggle">
               <div class="d-flex justify-content-between">
                 <label class="form-label" for="password">Password</label>
-                <a href="{{url('auth/forgot-password-basic')}}">
+                <a href="#">
                   <small>Forgot Password?</small>
                 </a>
               </div>
@@ -79,37 +81,37 @@
 @endsection
 @section('js')
 <script>
-  $(function () {
-      $('#formAuthentication').validate({
-        rules: {
-            email:{
-              required: true,
-            },
-            password: {
-                required: true,
-            }
+  $(function() {
+    $('#formAuthentication').validate({
+      rules: {
+        email: {
+          required: true,
         },
-        messages: {
-            email: {
-                required: "{{ __('messages.user_id_required') }}",
-                email: "{{ __('messages.email_format') }}"
-            },
-            password: {
-              required: "{{ __('messages.password_required') }}",
-            }
-        },
-        errorElement: 'span',
-        errorPlacement: function (error, element) {
-            error.addClass('invalid-feedback');
-            element.closest('.form-group').append(error);
-        },
-        highlight: function (element, errorClass, validClass) {
-            $(element).addClass('is-invalid');
-        },
-        unhighlight: function (element, errorClass, validClass) {
-            $(element).removeClass('is-invalid');
+        password: {
+          required: true,
         }
-      });
+      },
+      messages: {
+        email: {
+          required: "{{ __('messages.user_id_required') }}",
+          email: "{{ __('messages.email_format') }}"
+        },
+        password: {
+          required: "{{ __('messages.password_required') }}",
+        }
+      },
+      errorElement: 'span',
+      errorPlacement: function(error, element) {
+        error.addClass('invalid-feedback');
+        element.closest('.form-group').append(error);
+      },
+      highlight: function(element, errorClass, validClass) {
+        $(element).addClass('is-invalid');
+      },
+      unhighlight: function(element, errorClass, validClass) {
+        $(element).removeClass('is-invalid');
+      }
     });
-  </script>
+  });
+</script>
 @endsection

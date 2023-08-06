@@ -20,6 +20,7 @@ $cities = __('city');
     <!-- /Help Center Header -->
 
     <!-- Popular Articles -->
+    @if(@$vouchers)
     <div class="help-center-popular-articles py-5">
       <div class="container-xl">
         <h4 class="text-center mt-2 mb-4">Sales Off & Voucher</h4>
@@ -43,6 +44,7 @@ $cities = __('city');
         </div>
       </div>
     </div>
+    @endif
     <!-- /Popular Articles -->
   </div>
   <!-- Carousel -->
@@ -54,7 +56,7 @@ $cities = __('city');
   <div class="col-md-6 col-lg-4 mb-3" style="background-color: #fcfdfd; border: 1px solid #e0e0e0; border-radius:16px;">
     <div class="card-body">
       <h5 class="card-title">{{$vehicle->car_name}}</h5>
-      <h6 class="card-subtitle text-muted">Color: {{$vehicle->color}}</h6>
+      <h6 class="card-subtitle text-muted">Brand: {{$vehicle->brand}}</h6>
     </div>
     <div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
       <ol class="carousel-indicators">
@@ -84,14 +86,19 @@ $cities = __('city');
     </div>
     @if(!$user)
     <form onsubmit="return false">
-      <p class="card-text" style="padding-top: 10px;"><i class='bx bx-map-pin mb-2'></i> {{$cities[$vehicle->city][array_key_first($cities[$vehicle->city])][$vehicle->district] . " - " . array_key_first($cities[$vehicle->city])}}</p>
+      <p class="card-text" style="padding-top: 10px;"><i class='bx bx-map-pin mb-2'></i> {{$cities[$vehicle->city]
+        [array_key_first($cities[$vehicle->city])]
+        [$vehicle->district - 1] 
+        . " - " . 
+        array_key_first($cities[$vehicle->city])}}
+      </p>
       <p class="card-text" style="padding-top: 10px; color: #5fcf86"><i class='bx bx-dollar-circle mb-2' style="padding-top: 3px;"></i> {{$vehicle->per_night_price}}</p>
       <div style="margin: auto 0 12px; border-bottom: 1px solid #e0e0e0;"></div>
       <button class="btn btn-outline-primary" type="button" data-bs-toggle="modal" data-bs-target="#modalSignin">Rent Now</button>
     </form>
     @else
     <div class="card-body">
-      <p class="card-text" style="padding-top: 10px;"><i class='bx bx-map-pin mb-2'></i> {{$cities[$vehicle->city][array_key_first($cities[$vehicle->city])][$vehicle->district] . " - " . array_key_first($cities[$vehicle->city])}}</p>
+      <p class="card-text" style="padding-top: 10px;"><i class='bx bx-map-pin mb-2'></i> {{$cities[$vehicle->city][array_key_first($cities[$vehicle->city])][$vehicle->district - 1] . " - " . array_key_first($cities[$vehicle->city])}}</p>
       <p class="card-text" style="padding-top: 10px; color: #5fcf86"><i class='bx bx-dollar-circle mb-2' style="padding-top: 3px;"></i> {{$vehicle->per_night_price}}</p>
       <div style="margin: auto 0 12px; border-bottom: 1px solid #e0e0e0;"></div>
       <a href="{{route('booking.show', ['station_id' => '', 'id' => $vehicle->id])}}" class="btn btn-outline-primary">Rent Now</a>
@@ -107,7 +114,7 @@ $cities = __('city');
   <div class="col-md-6 col-lg-4 mb-3" style="background-color: #fcfdfd; border: 1px solid #e0e0e0; border-radius:16px;">
     <div class="card-body">
       <h5 class="card-title">{{$vehicle->car_name}}</h5>
-      <h6 class="card-subtitle text-muted">Color: {{$vehicle->color}}</h6>
+      <h6 class="card-subtitle text-muted">Brand: {{$vehicle->brand}}</h6>
     </div>
     <div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
       <ol class="carousel-indicators">
@@ -137,14 +144,14 @@ $cities = __('city');
     </div>
     @if(!$user)
     <form onsubmit="return false">
-      <p class="card-text" style="padding-top: 10px;"><i class='bx bx-map-pin mb-2'></i> {{$cities[$vehicle->city][array_key_first($cities[$vehicle->city])][$vehicle->district] . " - " . array_key_first($cities[$vehicle->city])}}</p>
+      <p class="card-text" style="padding-top: 10px;"><i class='bx bx-map-pin mb-2'></i> {{$cities[$vehicle->city][array_key_first($cities[$vehicle->city])][$vehicle->district - 1] . " - " . array_key_first($cities[$vehicle->city])}}</p>
       <p class="card-text" style="padding-top: 10px; color: #5fcf86"><i class='bx bx-dollar-circle mb-2' style="padding-top: 3px;"></i> {{$vehicle->per_night_price}}</p>
       <div style="margin: auto 0 12px; border-bottom: 1px solid #e0e0e0;"></div>
       <button class="btn btn-outline-primary" type="button" data-bs-toggle="modal" data-bs-target="#modalSignin">Rent Now</button>
     </form>
     @else
     <div class="card-body">
-      <p class="card-text" style="padding-top: 10px;"><i class='bx bx-map-pin mb-2'></i> {{$cities[$vehicle->city][array_key_first($cities[$vehicle->city])][$vehicle->district] . " - " . array_key_first($cities[$vehicle->city])}}</p>
+      <p class="card-text" style="padding-top: 10px;"><i class='bx bx-map-pin mb-2'></i> {{$cities[$vehicle->city][array_key_first($cities[$vehicle->city])][$vehicle->district - 1] . " - " . array_key_first($cities[$vehicle->city])}}</p>
       <p class="card-text" style="padding-top: 10px; color: #5fcf86"><i class='bx bx-dollar-circle mb-2' style="padding-top: 3px;"></i> {{$vehicle->per_night_price}}</p>
       <div style="margin: auto 0 12px; border-bottom: 1px solid #e0e0e0;"></div>
       <a href="{{route('booking.show', ['station_id' => '', 'id' => $vehicle->id])}}" class="card-link">Rent Now</a>
@@ -160,7 +167,7 @@ $cities = __('city');
   <div class="col-md-6 col-lg-4 mb-3" style="background-color: #fcfdfd; border: 1px solid #e0e0e0; border-radius:16px;">
     <div class="card-body">
       <h5 class="card-title">{{$vehicle->car_name}}</h5>
-      <h6 class="card-subtitle text-muted">Color: {{$vehicle->color}}</h6>
+      <h6 class="card-subtitle text-muted">Brand: {{$vehicle->brand}}</h6>
     </div>
     <div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
       <ol class="carousel-indicators">
@@ -190,14 +197,14 @@ $cities = __('city');
     </div>
     @if(!$user)
     <form onsubmit="return false">
-      <p class="card-text" style="padding-top: 10px;"><i class='bx bx-map-pin mb-2'></i> {{$cities[$vehicle->city][array_key_first($cities[$vehicle->city])][$vehicle->district] . " - " . array_key_first($cities[$vehicle->city])}}</p>
+      <p class="card-text" style="padding-top: 10px;"><i class='bx bx-map-pin mb-2'></i> {{$cities[$vehicle->city][array_key_first($cities[$vehicle->city])][$vehicle->district - 1] . " - " . array_key_first($cities[$vehicle->city])}}</p>
       <p class="card-text" style="padding-top: 10px; color: #5fcf86"><i class='bx bx-dollar-circle mb-2' style="padding-top: 3px;"></i> {{$vehicle->per_night_price}}</p>
       <div style="margin: auto 0 12px; border-bottom: 1px solid #e0e0e0;"></div>
       <button class="btn btn-outline-primary" type="button" data-bs-toggle="modal" data-bs-target="#modalSignin">Rent Now</button>
     </form>
     @else
     <div class="card-body">
-      <p class="card-text" style="padding-top: 10px;"><i class='bx bx-map-pin mb-2'></i> {{$cities[$vehicle->city][array_key_first($cities[$vehicle->city])][$vehicle->district] . " - " . array_key_first($cities[$vehicle->city])}}</p>
+      <p class="card-text" style="padding-top: 10px;"><i class='bx bx-map-pin mb-2'></i> {{$cities[$vehicle->city][array_key_first($cities[$vehicle->city])][$vehicle->district - 1] . " - " . array_key_first($cities[$vehicle->city])}}</p>
       <p class="card-text" style="padding-top: 10px; color: #5fcf86"><i class='bx bx-dollar-circle mb-2' style="padding-top: 3px;"></i> {{$vehicle->per_night_price}}</p>
       <div style="margin: auto 0 12px; border-bottom: 1px solid #e0e0e0;"></div>
       <a href="{{route('booking.show', ['station_id' => '', 'id' => $vehicle->id])}}" class="card-link">Rent Now</a>

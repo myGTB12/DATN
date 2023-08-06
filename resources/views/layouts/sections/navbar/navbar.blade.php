@@ -23,7 +23,7 @@ $user = auth()->guard('admin')->user();
   @endif
   @if(session()->has('message'))
   <div class="alert alert-sucess alert-dismissible" role="alert">
-    {{ session('success') }}
+    {{ session('message') }}
     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
     </button>
   </div>
@@ -38,9 +38,9 @@ $user = auth()->guard('admin')->user();
       <div class="navbar-brand app-brand demo d-none d-xl-flex py-0 me-4">
         <a href="{{url('/')}}" class="app-brand-link gap-2">
           <span class="app-brand-logo demo">
-            @include('_partials.macros',["width"=>25,"withbg"=>'#696cff'])
+            <img class="border rounded" src="{{asset('assets/img/favicon/favicon.ico')}}" width="50" height="42">
           </span>
-          <span class="app-brand-text demo menu-text fw-bolder">{{config('variables.templateName')}}</span>
+          <span class="app-brand-text demo menu-text fw-bolder">{{__('messages.app_brand')}}</span>
         </a>
       </div>
       @endif

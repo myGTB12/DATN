@@ -47,6 +47,9 @@ class Reservation extends Model
         "over_time_price",
         "updated_by",
     ];
+
+    protected $hidden = ["user_id"];
+
     public $timestamps = true;
 
     public function station(): BelongsTo

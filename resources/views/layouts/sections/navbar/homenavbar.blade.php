@@ -15,7 +15,7 @@ $user = auth()->guard('user')->user();
     @endif
     @if(session()->has('message'))
     <div class="alert alert-sucess alert-dismissible" role="alert">
-        {{ session('success') }}
+        {{ session('message') }}
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
         </button>
     </div>
