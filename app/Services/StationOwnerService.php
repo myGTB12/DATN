@@ -40,7 +40,7 @@ class StationOwnerService
         // Check info login
         $admin = $this->stationOwnerRepository->checkOwner($request);
         if (!$admin) {
-            return __("messages.login_fail");
+            return __("messages.station_owner_login_fail");
         }
 
         Auth::guard('station_owner')->attempt([

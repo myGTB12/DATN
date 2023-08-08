@@ -25,7 +25,7 @@
           <div class="app-brand justify-content-center">
             <a href="{{url('/')}}" class="app-brand-link gap-2">
               <span class="app-brand-logo demo">
-                <img class="border rounded" src="{{asset('assets/img/favicon/favicon.jpg')}}" width="50" height="42">
+                <img class="border rounded" src="{{asset('assets/img/favicon/favicon.ico')}}" width="50" height="42">
               </span>
               <span class="app-brand-text demo text-body fw-bolder">{{config('variables.templateName')}}</span>
             </a>

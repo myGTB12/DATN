@@ -21,6 +21,7 @@ class SeedDataVouchers extends Seeder
                 'img' => env('STORAGE_PATH') . 'voucher' . $i . '.jpg',
                 "name" => "Voucher " . $i,
                 "description" => fake()->sentence(12, true),
+                "code" => "VC_" . random_int(1000, 9999),
             ]);
         }
     }

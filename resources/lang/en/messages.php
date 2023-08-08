@@ -2,6 +2,7 @@
 
 return [
     "login_fail" => "LOGIN FAILED!!! PLEASE TRY AGAIN!",
+    "station_owner_login_fail" => "WRONG EMAIL OR PASSWORD OR YOUR ACCOUNT NOT ACTIVE YET",
     "station_owners_fail" => "You dont have permission to access this!",
     "not_admin" => "Only admin can access!",
     "create_data_failed" => "Create data failed! Please try again!",

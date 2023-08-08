@@ -28,7 +28,9 @@
           <td>{{$stationOwner->email}}</td>
           <td>{{$stationOwner->phone}}</td>
           @if($stationOwner->status == 1)
-          <td><span class="badge bg-label-primary me-1">Active</span></td>
+          <td><span class="badge bg-label-success me-1">Active</span></td>
+          @elseif($stationOwner->status == 2)
+          <td><span class="badge bg-label-primary me-1">Register</span></td>
           @else
           <td><span class="badge bg-label-secondary me-1">Inactive</span></td>
           @endif

@@ -45,10 +45,7 @@ class Reservation extends Model
         "count_day",
         "unit_over_time",
         "over_time_price",
-        "updated_by",
     ];
-
-    protected $hidden = ["user_id"];
 
     public $timestamps = true;
 
