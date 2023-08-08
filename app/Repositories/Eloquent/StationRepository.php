@@ -7,10 +7,11 @@ use App\Models\Station;
 use App\Enums\StationStatus;
 use Illuminate\Http\Request;
 use App\Enums\ActivityStatus;
+use App\Repositories\Interfaces\StationRepositoryInterface;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 
-class StationRepository extends BaseRepository
+class StationRepository extends BaseRepository implements StationRepositoryInterface
 {
     /**
      * getModel
@@ -44,7 +45,7 @@ class StationRepository extends BaseRepository
         return $stations;
     }
 
-    public function createStation($request)
+    public function createStation(Request $request)
     {
         try {
             $station = $this->model->create([
@@ -102,7 +103,7 @@ class StationRepository extends BaseRepository
         $station->delete();
     }
 
-    public function searchByLocation($request)
+    public function searchByLocation(Request $request)
     {
         $city = $request->city;
         $district = $request->district;

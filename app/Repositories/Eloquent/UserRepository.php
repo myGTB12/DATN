@@ -4,8 +4,9 @@ namespace App\Repositories\Eloquent;
 
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
+use App\Repositories\Interfaces\UserRepositoryInterface;
 
-class UserRepository extends BaseRepository
+class UserRepository extends BaseRepository implements UserRepositoryInterface
 {
     /**
      * getModel

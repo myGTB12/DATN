@@ -4,12 +4,13 @@ namespace App\Repositories\Eloquent;
 
 use App\Enums\ActivityStatus;
 use App\Models\StationOwner;
+use App\Repositories\Interfaces\StationOwnerRepositoryInterface;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 use Exception;
 use Illuminate\Support\Facades\Log;
 
-class StationOwnerRepository extends BaseRepository
+class StationOwnerRepository extends BaseRepository implements StationOwnerRepositoryInterface
 {
     /**
      * getModel
@@ -66,7 +67,7 @@ class StationOwnerRepository extends BaseRepository
         }
     }
 
-    public function registerAccount($request)
+    public function registerAccount(Request $request)
     {
         try {
             $stationOwner = $this->model->create([

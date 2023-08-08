@@ -3,12 +3,14 @@
 namespace App\Repositories\Eloquent;
 
 use App\Models\Voucher;
+use App\Repositories\Interfaces\VoucherRepositoryInterface;
 use Carbon\Carbon;
 use Exception;
 use Illuminate\Support\Facades\Storage;
 use Log;
+use Illuminate\Http\Request;
 
-class VoucherRepository extends BaseRepository
+class VoucherRepository extends BaseRepository implements VoucherRepositoryInterface
 {
     /**
      * getModel
@@ -26,7 +28,7 @@ class VoucherRepository extends BaseRepository
         )->where("vouchers.expire_time", ">", Carbon::now())->get();
     }
 
-    public function addVoucher($request)
+    public function addVoucher(Request $request)
     {
         if ($request->file('img')) {
             $file = $request->file('img');

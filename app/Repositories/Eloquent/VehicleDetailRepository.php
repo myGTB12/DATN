@@ -6,8 +6,9 @@ use Exception;
 use App\Models\VehicleDetail;
 use Illuminate\Http\Request;
 use App\Enums\ActivityStatus;
+use App\Repositories\Interfaces\VehicleDetailRepositoryInterface;
 
-class VehicleDetailRepository extends BaseRepository
+class VehicleDetailRepository extends BaseRepository implements VehicleDetailRepositoryInterface
 {
     /**
      * getModel

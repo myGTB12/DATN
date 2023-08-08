@@ -8,8 +8,9 @@ use App\Models\Reservation;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use App\Repositories\Interfaces\ReservationRepositoryInterface;
 
-class ReservationRepository extends BaseRepository
+class ReservationRepository extends BaseRepository implements ReservationRepositoryInterface
 {
     /**
      * getModel

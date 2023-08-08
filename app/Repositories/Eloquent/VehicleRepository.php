@@ -5,9 +5,10 @@ namespace App\Repositories\Eloquent;
 use App\Enums\ActivityStatus;
 use Exception;
 use App\Models\Vehicle;
+use App\Repositories\Interfaces\VehicleRepositoryInterface;
 use Illuminate\Http\Request;
 
-class VehicleRepository extends BaseRepository
+class VehicleRepository extends BaseRepository implements VehicleRepositoryInterface
 {
     /**
      * getModel
@@ -40,7 +41,7 @@ class VehicleRepository extends BaseRepository
             ->distinct()->get();
     }
 
-    public function createVehicle($request)
+    public function createVehicle(Request $request)
     {
         dd($request->all());
         try {
