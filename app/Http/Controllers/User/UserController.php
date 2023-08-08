@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Form\CustomValidator;
 use App\Services\VehicleService;
 use App\Http\Controllers\Controller;
+use App\Services\ReservationService;
 use App\Services\VoucherService;
 use Illuminate\Support\Facades\Cache;
 
@@ -13,15 +14,18 @@ class UserController extends Controller
 {
     protected $vehicleService;
     protected $voucherService;
+    protected $reservationService;
     protected $form;
 
     public function __construct(
         VehicleService $vehicleService,
         VoucherService $voucherService,
+        ReservationService $reservationService,
         CustomValidator $form,
     ) {
         $this->vehicleService = $vehicleService;
         $this->voucherService = $voucherService;
+        $this->reservationService = $reservationService;
         $this->form = $form;
     }
 
@@ -44,5 +48,19 @@ class UserController extends Controller
             'vehicles_3' => $vehicles_3,
             'vouchers' => $vouchers
         ]);
+    }
+
+    public function reservations($id)
+    {
+        $reservations = $this->reservationService->userReservations($id);
+
+        return view('content.form-elements.form-user-reservations', compact('reservations'));
+    }
+
+    public function myReservation(Request $request, $id, $res_id)
+    {
+        $reservation = $this->reservationService->show($res_id);
+
+        return view('content.form-elements.form-user-show-reservation', compact('reservation'));
     }
 }

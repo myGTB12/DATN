@@ -72,4 +72,27 @@ class ReservationRepository extends BaseRepository implements ReservationReposit
             return back()->with('error', __('messages.create_data_failed'));
         }
     }
+
+    public function getUserReservations($id)
+    {
+        return $this->model->select("vehicle_details.*", "reservations.*")->where("user_id", $id)
+            ->join("vehicles", "vehicles.id", "=", "reservations.vehicle_id")
+            ->join("vehicle_details", "vehicles.id", "=", "reservations.vehicle_id")
+            ->limit(20)
+            ->get();
+    }
+
+    public function getReservation($id)
+    {
+        $query = $this->model->select("vehicle_details.*", "start_station.*", "reservations.*")
+            ->join("stations as start_station", "start_station.id", "=", "reservations.station_start_id")
+            ->join("station_owners", "start_station.owner_id", "=", "station_owners.id")
+            ->join("vehicles", "vehicles.id", "=", "reservations.vehicle_id")
+            ->join("vehicle_details", "vehicle_details.vehicle_id", "=", "vehicles.id")
+            ->join("stations as end_station", "end_station.id", "=", "reservations.station_end_id")
+            ->addSelect(DB::raw("start_station.name as station_start_name, end_station.name as station_end_name"))
+            ->where("reservations.id", $id);
+
+        return $query->first();
+    }
 }

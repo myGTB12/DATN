@@ -88,3 +88,8 @@ Route::group(["prefix" => "/reservation"], function () {
     Route::post("/delete", [ReservationController::class, "delete"]);
     Route::get("{res_id}/preview", [ReservationController::class, "preview"])->name('reservation.preview');
 });
+
+Route::group(["prefix" => "user/{id}"], function () {
+    Route::get("reservations", [UserController::class, "reservations"])->name("user.reservations");
+    Route::match(["get", "post"], "/myReservation/{res_id}", [UserController::class, "myReservation"])->name("user.myReservation");
+});

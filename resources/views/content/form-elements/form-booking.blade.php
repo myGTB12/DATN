@@ -49,13 +49,13 @@
             <button type="button" class="btn-close btn-pinned" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
 
-        <!-- Shopping bag -->
+        <!-- Booking bag -->
         <h5>Booking details</h5>
         <ul class="list-group mb-3">
             <li class="list-group-item p-4">
                 <div class="d-flex gap-3">
                     <div class="flex-shrink-0">
-                        <img src="{{asset($data['img'])}}" alt="google home" class="w-px-100">
+                        <img src="{{asset($data['img'])}}" class="w-px-100">
                     </div>
                     <div class="flex-grow-1">
                         <div class="row">

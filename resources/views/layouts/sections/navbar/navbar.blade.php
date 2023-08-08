@@ -97,6 +97,16 @@ $user = auth()->guard('admin')->user();
                   <span class="align-middle">My Profile</span>
                 </a>
               </li>
+              @if(auth()->guard('user')->user())
+              <li>
+                <a class="dropdown-item" href="{{route('user.reservations', $user->id)}}">
+                  <span class="d-flex align-items-center align-middle">
+                    <i class="flex-shrink-0 bx bx-credit-card me-2 pe-1"></i>
+                    <span class="flex-grow-1 align-middle">My Reservations</span>
+                  </span>
+                </a>
+              </li>
+              @else
               <li>
                 <a class="dropdown-item" href="javascript:void(0);">
                   <span class="d-flex align-items-center align-middle">
@@ -105,6 +115,7 @@ $user = auth()->guard('admin')->user();
                   </span>
                 </a>
               </li>
+              @endif
               <li>
                 <div class="dropdown-divider"></div>
               </li>

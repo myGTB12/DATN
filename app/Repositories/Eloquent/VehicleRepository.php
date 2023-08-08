@@ -35,7 +35,8 @@ class VehicleRepository extends BaseRepository implements VehicleRepositoryInter
             )
             ->join("stations", "stations.id", "=", "vehicles.station_id")
             ->where("vehicles.status", ActivityStatus::ACTIVE->value)
-            ->where("vehicles.status", ActivityStatus::ACTIVE->value);
+            ->where("vehicles.status", ActivityStatus::ACTIVE->value)
+            ->limit(20);
 
         return $vehicles->whereNull("vehicles.deleted_at")
             ->distinct()->get();
