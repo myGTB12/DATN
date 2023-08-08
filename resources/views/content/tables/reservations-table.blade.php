@@ -26,8 +26,8 @@
                     <th>Action</th>
                 </tr>
             </thead>
-            @foreach($reservations as $reservation)
             <tbody class="table-border-bottom-0">
+                @foreach($reservations as $reservation)
                 <tr>
                     <td><i class="fab fa-angular fa-lg text-danger me-3"></i> <strong>{{$reservation->car_name}}</strong></td>
                     <td><a href="{{route('station.edit', $reservation->station_start_id)}}">{{$reservation->station_start_name}}</a></td>
@@ -52,6 +52,15 @@
                     </td>
                 </tr>
                 @endforeach
+                <tr style="height: 100px;">
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
             </tbody>
         </table>
     </div>

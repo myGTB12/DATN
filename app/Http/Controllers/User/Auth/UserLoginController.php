@@ -46,10 +46,22 @@ class UserLoginController extends Controller
 
     public function logout(Request $request)
     {
-        auth()->logout();
+        if (auth()->guard('user')->user()) {
+            auth()->logout();
+            $request->session()->flush();
+
+            return redirect()->route("home");
+        }
+        if (auth()->guard('station_owner')->user()) {
+            auth()->logout();
+            $request->session()->flush();
+
+            return redirect()->route("station.login");
+        }
+        auth()->logout('admin');
         $request->session()->flush();
 
-        return redirect()->route("home");
+        return redirect()->route("login");
     }
 
     public function register(Request $request)

@@ -43,7 +43,6 @@ class VehicleRepository extends BaseRepository implements VehicleRepositoryInter
 
     public function createVehicle(Request $request)
     {
-        dd($request->all());
         try {
             $vehicle = $this->model->create([
                 "name" => $request->name,

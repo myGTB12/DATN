@@ -21,7 +21,7 @@ class ReservationRepository extends BaseRepository implements ReservationReposit
         return Reservation::class;
     }
 
-    public function getListReservations()
+    public function getListReservations($stationOwner_id)
     {
         $query = $this->model->select("reservations.*", "vehicle_details.car_name")
             ->whereNull("reservations.deleted_at")
@@ -30,7 +30,8 @@ class ReservationRepository extends BaseRepository implements ReservationReposit
             ->join("vehicles", "vehicles.id", "=", "reservations.vehicle_id")
             ->join("vehicle_details", "vehicle_details.vehicle_id", "=", "vehicles.id")
             ->join("stations as end_station", "end_station.id", "=", "reservations.station_end_id")
-            ->addSelect(DB::raw("start_station.name as station_start_name, end_station.name as station_end_name"));
+            ->addSelect(DB::raw("start_station.name as station_start_name, end_station.name as station_end_name"))
+            ->where("station_owners.id", $stationOwner_id);
 
         return $query->orderByDesc("reservations.updated_at")->distinct()->get();
     }

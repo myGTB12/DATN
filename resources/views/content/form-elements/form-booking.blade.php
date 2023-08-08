@@ -40,8 +40,9 @@
                 <div class="flex-grow-1">
                     <div class="fw-bold">Available Offers</div>
                     <ul class="list-unstyled mb-0">
-                        <li> - 10% Instant Discount on Bank of America Corp Bank Debit and Credit cards</li>
-                        <li> - 25% Cashback Voucher of up to $60 on first ever PayPal transaction. TCA</li>
+                        @foreach($vouchers as $voucher)
+                        <li>{{$voucher->description}}, collect now {{$voucher->code}}</li>
+                        @endforeach
                     </ul>
                 </div>
             </div>

@@ -40,6 +40,7 @@ class VoucherRepository extends BaseRepository implements VoucherRepositoryInter
                 $this->model->create([
                     "name" => $request->name,
                     "description" => $request->description,
+                    "code" => $request->code,
                     "amount" => $request->amount,
                     "img" => $file_path . $file_name,
                     "start_time" => $request->start_time,

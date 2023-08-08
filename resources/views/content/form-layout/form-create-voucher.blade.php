@@ -21,6 +21,10 @@
                     <textarea class="form-control" name="description"></textarea>
                 </div>
                 <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">Code</label>
+                    <input type="text" name="code" class="form-control" />
+                </div>
+                <div class="mb-3">
                     <label for="exampleFormControlInput1" class="form-label">Amount</label>
                     <input type="text" name="amount" class="form-control" />
                 </div>

@@ -313,6 +313,38 @@ $cities = __('city');
       </div>
     </div>
   </div>
+  <div class="divider">
+    <div class="divider-text" style="margin-bottom: 15px;">Rental Cars</div>
+  </div>
+  <!-- Question -->
+  <div class="card overflow-hidden">
+    <div class="col-12 text-center mb-4" style="padding-top: 50px;">
+      <div class="badge bg-label-primary">Question?</div>
+      <h4 class="my-2">You still have a question?</h4>
+      <p>If you can't find question in our FAQ, you can contact us. We'll answer you shortly!</p>
+    </div>
+    <div class="row text-center justify-content-center gap-sm-0 gap-3">
+      <div class="col-sm-6">
+        <div class=" py-3 rounded bg-faq-section text-center">
+          <span class="badge bg-label-primary rounded-2 my-3">
+            <i class="bx bx-phone bx-sm"></i>
+          </span>
+          <h4 class="mb-2"><a class="h4">{{__('messages.contact_ads_number')}}</a></h4>
+          <p>We are always happy to help</p>
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div class=" py-3 rounded bg-faq-section text-center">
+          <span class="badge bg-label-primary rounded-2 my-3">
+            <i class="bx bx-envelope bx-sm"></i>
+          </span>
+          <h4 class="mb-2"><a class="h4">{{__('messages.contact_email')}}</a></h4>
+          <p>Best way to get a quick answer</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- End Question -->
 </div>
 
 @endsection

@@ -11,6 +11,7 @@ use App\Services\StationService;
 use Illuminate\Support\Arr;
 
 use function PHPUnit\Framework\isEmpty;
+use Illuminate\Support\Facades\Cache;
 
 class VehicleController extends Controller
 {
@@ -75,8 +76,9 @@ class VehicleController extends Controller
         $vehicleDetail = $this->vehicleService->getDetail($id)[0];
         $data = array_merge($station_owner->toArray(), $vehicleDetail);
         $data['address'] = $address;
+        $vouchers = Cache::get("vouchers");
 
-        return view('content.form-elements.form-booking', compact('data', 'vehicle'));
+        return view('content.form-elements.form-booking', compact('data', 'vehicle', 'vouchers'));
     }
 
     public function delete($station_id, $vehicle_id, Request $request)

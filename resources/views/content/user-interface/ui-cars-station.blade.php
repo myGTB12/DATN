@@ -7,8 +7,8 @@
 @php
 $stationId = request()->route('station_id');
 @endphp
-<a class="btn btn-success me-1" href="{{route('vehicle.create', $stationId)}}" role="button" aria-expanded="false" aria-controls="collapseExample">
-  Add new car
+<a class="btn btn-success me-1" href="{{route('vehicle.create', $stationId)}}" role="button" aria-expanded="false">
+  <span><i class="bx bx-plus me-0 me-sm-2"></i><span class="d-none d-sm-inline-block">Add New Car</span></span>
 </a>
 <hr class="dropdown-divider">
 <div class="divider text-start-center">

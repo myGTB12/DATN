@@ -23,6 +23,7 @@ class Voucher extends Model
         'name',
         'img',
         'description',
+        'code',
     ];
 
     public $timestamps = true;

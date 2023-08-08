@@ -24,5 +24,6 @@ return [
     "no_car_found" => "No car matched with your search",
     "reservation_approved" => "Reservation applyed",
     "contact_ads_number" => "(+84) 989515569",
-    "app_brand" => "Rental Car"
+    "app_brand" => "Rental Car",
+    "contact_email" => "contact@contact.com",
 ];

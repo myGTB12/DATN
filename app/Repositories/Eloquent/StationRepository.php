@@ -117,7 +117,6 @@ class StationRepository extends BaseRepository implements StationRepositoryInter
         if ($district) {
             $query = $query->where("stations.district", $district);
         }
-        dd($query->get());
         $query = $query->leftJoin(
             "vehicles",
             "stations.id",
@@ -130,7 +129,7 @@ class StationRepository extends BaseRepository implements StationRepositoryInter
                 "vehicle_details.*",
                 "vehicles.id as vehicle_id"
             );
-        dd($query->get());
+
         return $query->orderByDesc("stations.updated_at")->distinct()->get();
     }
 

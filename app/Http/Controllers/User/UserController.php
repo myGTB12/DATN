@@ -7,6 +7,7 @@ use App\Form\CustomValidator;
 use App\Services\VehicleService;
 use App\Http\Controllers\Controller;
 use App\Services\VoucherService;
+use Illuminate\Support\Facades\Cache;
 
 class UserController extends Controller
 {
@@ -27,7 +28,12 @@ class UserController extends Controller
     public function home()
     {
         $vehicles = $this->vehicleService->getAvailableVehicle()->chunk(3);
-        $vouchers = $this->voucherService->getAvailablevouchers();
+        if (Cache::get('vouchers')) {
+            $vouchers = Cache::get('vouchers');
+        } else {
+            $vouchers = $this->voucherService->getAvailablevouchers();
+            Cache::put('vouchers', $vouchers);
+        }
         $vehicles_1 = $vehicles[0];
         $vehicles_2 = $vehicles[1];
         $vehicles_3 = $vehicles[2];
