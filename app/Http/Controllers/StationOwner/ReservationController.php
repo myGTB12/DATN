@@ -72,6 +72,6 @@ class ReservationController extends Controller
     {
         $data = $this->reservationService->previewReservation($id);
 
-        return view("content.form-elements.form-reservation-success", compact('data'));
+        return view("content.form-elements.form-user-show-reservation", compact('data'));
     }
 }

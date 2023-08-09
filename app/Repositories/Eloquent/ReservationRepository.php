@@ -78,7 +78,7 @@ class ReservationRepository extends BaseRepository implements ReservationReposit
         return $this->model->select("vehicle_details.*", "reservations.*")->where("user_id", $id)
             ->join("vehicles", "vehicles.id", "=", "reservations.vehicle_id")
             ->join("vehicle_details", "vehicles.id", "=", "reservations.vehicle_id")
-            ->limit(20)
+            ->limit(20)->orderByDesc("reservations.created_at")
             ->get();
     }
 

@@ -54,13 +54,13 @@ class UserController extends Controller
     {
         $reservations = $this->reservationService->userReservations($id);
 
-        return view('content.form-elements.form-user-reservations', compact('reservations'));
+        return view('content.form-elements.form-user-show-reservations', compact('reservations'));
     }
 
     public function myReservation(Request $request, $id, $res_id)
     {
-        $reservation = $this->reservationService->show($res_id);
+        $data = $this->reservationService->previewReservation($res_id);
 
-        return view('content.form-elements.form-user-show-reservation', compact('reservation'));
+        return view('content.form-elements.form-user-show-reservation', compact('data'));
     }
 }

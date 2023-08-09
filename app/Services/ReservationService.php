@@ -104,13 +104,6 @@ class ReservationService
         // $reservation = $this->reservationRepository->deleteStation($reservation_id);
     }
 
-    public function show($id)
-    {
-        $reservation = $this->reservationRepository->getReservation($id);
-
-        return $reservation;
-    }
-
     public function userReservations($id)
     {
         $reservations = $this->reservationRepository->getUserReservations($id);

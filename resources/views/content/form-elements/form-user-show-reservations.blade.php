@@ -75,10 +75,12 @@
                             <p class="mb-1">From date:{{$reservation->start_time}} ,</p>
                             <p class="mb-1">To date: {{$reservation->end_time}} ,</p>
                             <p class="mb-0">Price: {{$reservation->total_amount}} </p>
-                            <form style="padding-top: 20px; padding-left: 250px;" action="{{route('user.myReservation', (['id' => $reservation->user_id, 'res_id' => $reservation->id]))}}">
-                                @csrf
-                                <button type="submit" class="btn btn-info">Info</button>
-                            </form>
+                            <div class="divider text-start-center">
+                                <div class="divider-text"></div>
+                            </div>
+                            <div class="d-flex justify-content-center">
+                                <a class="btn btn-info" href="{{ route('user.myReservation', ['id' => $reservation->user_id, 'res_id' => $reservation->id]) }}">Info</a>
+                            </div>
                         </div>
                     </div>
                 </div>
