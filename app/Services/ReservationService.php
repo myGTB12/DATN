@@ -66,6 +66,7 @@ class ReservationService
                     Log::error("MAIL-ERROR:" . $e->getMessage());
                 }
             }
+
             return $reservation;
         }
 

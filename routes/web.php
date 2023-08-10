@@ -93,5 +93,3 @@ Route::group(["prefix" => "user/{id}"], function () {
     Route::get("reservations", [UserController::class, "reservations"])->name("user.reservations");
     Route::match(["get", "post"], "/myReservation/{res_id}", [UserController::class, "myReservation"])->name("user.myReservation");
 });
-
-Route::get('/send-email', [ReservationController::class, 'test']);

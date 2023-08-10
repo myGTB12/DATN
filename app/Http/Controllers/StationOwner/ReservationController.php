@@ -29,17 +29,6 @@ class ReservationController extends Controller
         $this->vehicleService = $vehicleService;
     }
 
-    public function test()
-    {
-        try {
-            Mail::to("pzoxomljeu1999@gmail.com")->send(new BookingMail(['test']));
-            dd("send");
-        } catch (Exception $e) {
-            dd($e);
-            Log::error("MAIL-ERROR:" . $e->getMessage());
-        }
-    }
-
     public function index()
     {
         $reservations = $this->reservationService->getListReservations();
