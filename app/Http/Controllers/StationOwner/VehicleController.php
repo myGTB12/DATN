@@ -43,7 +43,7 @@ class VehicleController extends Controller
 
             return $this->index($station_id);
         }
-        return view('content.form-elements.form-create-vehicle', compact('station_id'));
+        return view('content.forms.form-create-vehicle', compact('station_id'));
     }
 
     public function edit(Request $request, $station_id, $id)
@@ -60,7 +60,7 @@ class VehicleController extends Controller
         $vehicleDetail = $this->vehicleService->getVehicleDetail($id);
         $vehicle = $this->vehicleService->getVehicleByDetail($id);
 
-        return view('content.form-elements.form-edit-vehicle', compact('vehicleDetail', 'vehicle', 'station_id'));
+        return view('content.forms.form-edit-vehicle', compact('vehicleDetail', 'vehicle', 'station_id'));
     }
 
     public function bookingShow($id)
@@ -78,7 +78,7 @@ class VehicleController extends Controller
         $data['address'] = $address;
         $vouchers = Cache::get("vouchers");
 
-        return view('content.form-elements.form-booking', compact('data', 'vehicle', 'vouchers'));
+        return view('content.forms.form-booking', compact('data', 'vehicle', 'vouchers'));
     }
 
     public function delete($station_id, $vehicle_id, Request $request)

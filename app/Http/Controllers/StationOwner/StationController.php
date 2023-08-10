@@ -30,7 +30,7 @@ class StationController extends Controller
         $station_owner = auth()->guard('station_owner')->user();
         $stations = $this->stationService->getListStations();
 
-        return view('content.dashboard.dashboards-analytics', compact('station_owner', 'stations'));
+        return view('content.dashboard.dashboards-station-owner', compact('station_owner', 'stations'));
     }
 
     public function create(Request $request)
@@ -45,7 +45,7 @@ class StationController extends Controller
             return view("content.pages.pages-create-success");
         }
 
-        return view("content.form-layout.form-create-station");
+        return view("content.forms.form-create-station");
     }
 
     public function edit(Request $request, $id)
@@ -63,7 +63,7 @@ class StationController extends Controller
                 ->with("message", __('messages.success'));
         }
 
-        return view("content.form-elements.form-edit-station", compact("station"));
+        return view("content.forms.form-edit-station", compact("station"));
     }
 
     public function show($station_id, $id)

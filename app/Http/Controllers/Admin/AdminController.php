@@ -72,7 +72,7 @@ class AdminController extends Controller
             'number_vehicles' => count($vehicles),
         ];
 
-        return view('content.form-elements.form-edit-station-owner', compact('stationOwner'));
+        return view('content.forms.form-edit-station-owner', compact('stationOwner'));
     }
 
     public function approveRequest(Request $request)
@@ -98,7 +98,7 @@ class AdminController extends Controller
         }
         $station = Station::find($id);
 
-        return view("content.form-elements.form-approve-station", compact("station"));
+        return view("content.forms.form-approve-station", compact("station"));
     }
 
     public function addVoucher(Request $request)
@@ -109,6 +109,6 @@ class AdminController extends Controller
             return redirect()->route("users.list")->with("message", __("messages.add_voucher"));
         }
 
-        return view('content.form-layout.form-create-voucher');
+        return view('content.forms.form-create-voucher');
     }
 }

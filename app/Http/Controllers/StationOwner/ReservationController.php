@@ -56,7 +56,7 @@ class ReservationController extends Controller
         if ($request->isMethod("POST")) {
         }
 
-        return view('content.form-elements.form-show-reservation', compact('reservation'));
+        return view('content.forms.form-show-reservation', compact('reservation'));
     }
 
     public function cancel($id, $request)
@@ -72,6 +72,6 @@ class ReservationController extends Controller
     {
         $data = $this->reservationService->previewReservation($id);
 
-        return view("content.form-elements.form-user-show-reservation", compact('data'));
+        return view("content.forms.form-user-show-reservation", compact('data'));
     }
 }
