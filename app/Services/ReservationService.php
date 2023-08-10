@@ -12,6 +12,10 @@ use App\Repositories\Eloquent\VehicleRepository;
 use App\Repositories\Eloquent\ReservationRepository;
 use App\Repositories\Eloquent\StationOwnerRepository;
 use App\Repositories\Eloquent\VehicleDetailRepository;
+use Illuminate\Support\Facades\Mail;
+use Exception;
+use Illuminate\Support\Facades\Log;
+use App\Mail\BookingMail;
 
 class ReservationService
 {
@@ -49,13 +53,19 @@ class ReservationService
 
     public function createReservation($vehicle_detail_id, Request $request)
     {
-        $user_id = auth()->guard('user')->user()->id;
-        if ($user_id) {
+        $user = auth()->guard('user')->user();
+        if ($user) {
             $details = $this->vehicleDetailRepository->find($vehicle_detail_id);
             $this->vehicleRepository->update($details->vehicle_id, ['status' => ActivityStatus::INACTIVE->value]);
             $station_start_id = $details->vehicle->stations->id;
-            $reservation = $this->reservationRepository->createReservation($user_id, $details, $request, $station_start_id);
-
+            $reservation = $this->reservationRepository->createReservation($user->id, $details, $request, $station_start_id);
+            if ($reservation) {
+                try {
+                    Mail::to($user->email)->send(new BookingMail($reservation));
+                } catch (Exception $e) {
+                    Log::error("MAIL-ERROR:" . $e->getMessage());
+                }
+            }
             return $reservation;
         }
 

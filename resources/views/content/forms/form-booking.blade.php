@@ -121,8 +121,8 @@
                 </div>
             </li>
         </ul>
-        @include('content.form-elements.car-description')
-        @include('content.form-elements.cancel-policy')
+        @include('content.forms.car-description')
+        @include('content.forms.cancel-policy')
     </div>
 
     <!-- Cart right -->

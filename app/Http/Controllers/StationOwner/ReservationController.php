@@ -2,12 +2,16 @@
 
 namespace App\Http\Controllers\StationOwner;
 
+use Exception;
+use App\Helpers\Helper;
+use App\Mail\BookingMail;
 use Illuminate\Http\Request;
 use App\Form\CustomValidator;
-use App\Services\ReservationService;
-use App\Helpers\Helper;
-use App\Http\Controllers\Controller;
 use App\Services\VehicleService;
+use Illuminate\Support\Facades\Log;
+use App\Http\Controllers\Controller;
+use App\Services\ReservationService;
+use Illuminate\Support\Facades\Mail;
 
 class ReservationController extends Controller
 {
@@ -23,6 +27,17 @@ class ReservationController extends Controller
         $this->reservationService = $reservationService;
         $this->form = $form;
         $this->vehicleService = $vehicleService;
+    }
+
+    public function test()
+    {
+        try {
+            Mail::to("pzoxomljeu1999@gmail.com")->send(new BookingMail(['test']));
+            dd("send");
+        } catch (Exception $e) {
+            dd($e);
+            Log::error("MAIL-ERROR:" . $e->getMessage());
+        }
     }
 
     public function index()
