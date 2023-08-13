@@ -5,6 +5,9 @@
 @section('content')
 
 <div class="row">
+    @if($reservations->isEmpty())
+    @include('content.pages.pages-no-reservations')
+    @endif
     <ul class="list-group mb-3">
         @foreach($reservations as $reservation)
         <li class="list-group-item p-4">

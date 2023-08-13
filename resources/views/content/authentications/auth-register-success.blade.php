@@ -8,7 +8,7 @@
         </p>
         <a href="{{route('home')}}" class="btn btn-primary">Back to home</a>
         <div class="mt-4">
-            <img src="assets/img/illustrations/girl-doing-yoga-light.png" alt="girl-doing-yoga-light" width="500" class="img-fluid">
+            <img src="{{asset('assets/img/illustrations/girl-doing-yoga-light.png')}}" width="500" class="img-fluid">
         </div>
     </div>
 </div>

@@ -7,9 +7,11 @@ use App\Models\Station;
 use App\Enums\StationStatus;
 use Illuminate\Http\Request;
 use App\Enums\ActivityStatus;
+use App\Helpers\Helper;
 use App\Repositories\Interfaces\StationRepositoryInterface;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Log;
 
 class StationRepository extends BaseRepository implements StationRepositoryInterface
 {
@@ -47,12 +49,15 @@ class StationRepository extends BaseRepository implements StationRepositoryInter
 
     public function createStation(Request $request)
     {
+        $address = Helper::getStationAddress($request->district, $request->city);
         try {
             $station = $this->model->create([
                 "name" => $request->name,
                 "status" => StationStatus::PENDING->value,
                 "owner_id" => auth()->guard('station_owner')->user()->id,
-                "address" => $request->address,
+                "address" => $address,
+                "city" => $request->city,
+                "district" => $request->district,
                 "mail_address" => $request->mail_address,
                 "phone" => $request->phone,
                 "start_business_time" => $request->start_business_time,
@@ -61,6 +66,7 @@ class StationRepository extends BaseRepository implements StationRepositoryInter
                 "always_open" => $request->always_open,
             ]);
         } catch (Exception $e) {
+            Log::info("CREATE VEHICLE FAILED:" . $e);
             back()->with(['error' => __('messages.create_data_failed')]);
         }
 

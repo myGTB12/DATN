@@ -66,7 +66,7 @@ Route::group(["prefix" => "station", "middleware" => "isStationOwner"], function
         Route::match(['get', 'post'], "/create", [VehicleController::class, "create"])->name('vehicle.create');
         Route::post("/edit/{id}", [VehicleController::class, "edit"])->name('vehicle.edit');
         Route::get("/show/{id}", [VehicleController::class, "show"])->name('vehicle.show');
-        Route::post("/delete/{id}", [VehicleController::class, "delete"])->name('vehicle.delete');
+        Route::get("/delete/{id}", [VehicleController::class, "delete"])->name('vehicle.delete');
     });
 });
 

@@ -110,6 +110,11 @@
             <a class="card-header" href="{{route('vehicle.index', ['station_id' => $station->id])}}">{{$station->name}}</a>
             <div class="card-body">
               <div class="mb-3">
+                <a type="button" href="{{route('station.edit', $station->id)}}" class="btn btn-primary">
+                  More information
+                </a>
+              </div>
+              <div class="mb-3">
                 <label for="exampleFormControlReadOnlyInput1" class="form-label">Address</label>
                 <input class="form-control" type="text" id="exampleFormControlReadOnlyInput1" placeholder="{{$station->address}}" readonly />
               </div>

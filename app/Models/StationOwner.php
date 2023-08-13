@@ -31,6 +31,8 @@ class StationOwner extends Authenticatable
         "phone",
         "password",
         "email_verified_at",
+        "first_name",
+        "last_name",
     ];
 
     /** The attributes that should be hidden for arrays.

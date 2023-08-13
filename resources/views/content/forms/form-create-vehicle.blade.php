@@ -65,6 +65,15 @@
                     </div>
                 </div>
                 <div class="row mb-3">
+                    <label for="exampleFormControlSelect1" class="col-sm-2 col-form-label">Select name</label>
+                    <div class="col-sm-10">
+                        <select class="form-select" name="fuel">
+                            <option value="0">Gasoline</option>
+                            <option value="1">Diesel</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row mb-3">
                     <label class="col-sm-2 col-form-label" for="basic-default-phone">Color</label>
                     <div class="col-sm-10">
                         <input type="text" name="color" class="form-control phone-mask" />
@@ -96,12 +105,8 @@
                 </div>
                 <div class="mb-3">
                     <label for="formFile" class="form-label">Vehicle Picture</label>
-                    <input class="form-control" name="img2" type="file" id="formFile">
+                    <input class="form-control" name="img" type="file" id="formFile">
                 </div>
-                <!-- <div class="mb-3">
-                    <label for="formFileMultiple" class="form-label">Multiple files input example</label>
-                    <input class="form-control" type="file" id="formFileMultiple" multiple>
-                </div> -->
                 <div class="row mb-3">
                     <label class="col-sm-2 col-form-label" for="basic-default-message">Per night price</label>
                     <div class="col-sm-10">

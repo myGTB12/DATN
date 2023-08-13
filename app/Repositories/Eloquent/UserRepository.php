@@ -21,7 +21,9 @@ class UserRepository extends BaseRepository implements UserRepositoryInterface
     {
         $model = $this->model
             ->where("email", ($request->email))
+            ->orWhere("user_name", ($request->email))
             ->first();
+
         if ($model && Hash::check($request->password, $model->password)) {
             return $model;
         }

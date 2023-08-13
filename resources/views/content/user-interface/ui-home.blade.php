@@ -66,13 +66,13 @@ $cities = __('city');
       </ol>
       <div class="carousel-inner">
         <div class="carousel-item active">
-          <img class="d-block w-100" src="{{asset($vehicle->img)}}" alt="First slide" />
+          <img class="d-block w-100" src="{{asset($vehicle->img)}}" alt="First picture" />
         </div>
         <div class="carousel-item">
-          <img class="d-block w-100" src="{{asset($vehicle->img2)}}" alt="Second slide" />
+          <img class="d-block w-100" src="{{asset($vehicle->img2)}}" alt="Second picture" />
         </div>
         <div class="carousel-item">
-          <img class="d-block w-100" src="{{asset($vehicle->img3)}}" alt="Third slide" />
+          <img class="d-block w-100" src="{{asset($vehicle->img3)}}" alt="Third picture" />
         </div>
       </div>
       <a class="carousel-control-prev" href="#carouselExample" role="button" data-bs-slide="prev">
@@ -124,13 +124,13 @@ $cities = __('city');
       </ol>
       <div class="carousel-inner">
         <div class="carousel-item active">
-          <img class="d-block w-100" src="{{asset($vehicle->img)}}" alt="First slide" />
+          <img class="d-block w-100" src="{{asset($vehicle->img)}}" alt="First picture" />
         </div>
         <div class="carousel-item">
-          <img class="d-block w-100" src="{{asset($vehicle->img2)}}" alt="Second slide" />
+          <img class="d-block w-100" src="{{asset($vehicle->img2)}}" alt="Second picture" />
         </div>
         <div class="carousel-item">
-          <img class="d-block w-100" src="{{asset($vehicle->img3)}}" alt="Third slide" />
+          <img class="d-block w-100" src="{{asset($vehicle->img3)}}" alt="Third picture" />
         </div>
       </div>
       <a class="carousel-control-prev" href="#carouselExample" role="button" data-bs-slide="prev">
@@ -177,13 +177,13 @@ $cities = __('city');
       </ol>
       <div class="carousel-inner">
         <div class="carousel-item active">
-          <img class="d-block w-100" src="{{asset($vehicle->img)}}" alt="First slide" />
+          <img class="d-block w-100" src="{{asset($vehicle->img)}}" alt="First picture" />
         </div>
         <div class="carousel-item">
-          <img class="d-block w-100" src="{{asset($vehicle->img2)}}" alt="Second slide" />
+          <img class="d-block w-100" src="{{asset($vehicle->img2)}}" alt="Second picture" />
         </div>
         <div class="carousel-item">
-          <img class="d-block w-100" src="{{asset($vehicle->img3)}}" alt="Third slide" />
+          <img class="d-block w-100" src="{{asset($vehicle->img3)}}" alt="Third picture" />
         </div>
       </div>
       <a class="carousel-control-prev" href="#carouselExample" role="button" data-bs-slide="prev">

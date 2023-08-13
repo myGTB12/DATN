@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Enums\InsuranceFee;
 use Exception;
 use App\Models\Vehicle;
 use Illuminate\Http\Request;
@@ -34,8 +35,11 @@ class VehicleService
     public function getListVehicles($id)
     {
         $station = $this->stationRepository->find($id);
-        $vehicleDetails = $station->vehicles->pluck('vehicleDetail')->all();
-        // $vehicleDetails = $this->getVehicleDetails($vehicles);
+        $vehicleDetails = collect($station->vehicles->pluck('vehicleDetail')->all())
+            ->filter(function ($vehicleDetail) {
+                return !is_null($vehicleDetail);
+            })
+            ->all();
 
         return $vehicleDetails;
     }
@@ -58,8 +62,8 @@ class VehicleService
                 "vehicle_inspection_exp_date" => $request->vehicle_inspection_exp_date,
             ]);
             if ($vehicle) {
-                if ($request->file('img2')) {
-                    $file = $request->file('img2');
+                if ($request->file('img')) {
+                    $file = $request->file('img');
                     $file_path = env('STORAGE_PATH');
                     $file_name = $vehicle->id . '.' . $file->getClientOriginalExtension();
                     Storage::disk('public')->putFileAs("img", $file, $file_name);
@@ -67,14 +71,19 @@ class VehicleService
 
                 $vehicleDetail = $this->vehicleDetailRepository->create([
                     "vehicle_id" => $vehicle->id,
-                    "img" => $request->img,
+                    "img" => $file_path . $file_name,
                     "img2" => $file_path . $file_name,
-                    "img3" => $request->img3,
-                    "img4" => $request->img4,
+                    "img3" => $file_path . $file_name,
+                    "img4" => $file_path . $file_name,
                     "fuel" => $request->fuel,
                     "vehicle_number" => $request->vehicle_number,
                     "per_night_price" => $request->per_night_price,
                     "over_time_price" => $request->over_time_price,
+                    "insurance_fee" => InsuranceFee::AMOUNT->value,
+                    "usage_fee" => InsuranceFee::AMOUNT->value,
+                    "height" => $request->height,
+                    "width" => $request->width,
+                    "length" => $request->length,
                     "color" => $request->color,
                     "brand" => $request->brand,
                     "car_name" => $request->car_name,
@@ -84,6 +93,7 @@ class VehicleService
 
             return ['vehicle' => $vehicle, 'vehicle_details' => $vehicleDetail];
         } catch (Exception $e) {
+            dd($e);
             back()->with(['error' => __('messages.create_data_failed')]);
         }
     }

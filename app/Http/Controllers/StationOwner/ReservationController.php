@@ -44,7 +44,7 @@ class ReservationController extends Controller
             return redirect()->route('reservation.preview', [$data->id])->with("message", __('messages.reservation_created'));
         }
 
-        return view("content.pages.pages-misc-error");
+        return view("content.pages.pages-not-found-error");
     }
 
     public function approve(Request $request, $id)

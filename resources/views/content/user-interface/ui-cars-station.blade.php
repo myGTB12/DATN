@@ -14,7 +14,7 @@ $stationId = request()->route('station_id');
 <div class="divider text-start-center">
 </div>
 <div class="card">
-  <div class="table-responsive text-nowrap">
+  <div class="table-responsive">
     <table class="table">
       <thead>
         <tr>
@@ -37,7 +37,7 @@ $stationId = request()->route('station_id');
               <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown"><i class="bx bx-dots-vertical-rounded"></i></button>
               <div class="dropdown-menu">
                 <a class="dropdown-item" href="{{route('vehicle.show', [$stationId, $detail->id])}}"><i class="bx bx-edit-alt me-1"></i> More details</a>
-                <a class="dropdown-item" href=""><i class="bx bx-trash me-1"></i> Delete</a>
+                <a class="dropdown-item" href="{{route('vehicle.delete', [$stationId, $detail->id])}}"><i class="bx bx-trash me-1"></i> Delete</a>
               </div>
             </div>
           </td>

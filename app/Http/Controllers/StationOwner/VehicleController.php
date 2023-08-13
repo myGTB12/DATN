@@ -41,7 +41,7 @@ class VehicleController extends Controller
         if ($request->isMethod("post")) {
             $vehicle = $this->vehicleService->createVehicle($station_id, $request);
 
-            return $this->index($station_id);
+            return redirect()->route('vehicle.index', $station_id);
         }
         return view('content.forms.form-create-vehicle', compact('station_id'));
     }
@@ -81,14 +81,16 @@ class VehicleController extends Controller
         return view('content.forms.form-booking', compact('data', 'vehicle', 'vouchers'));
     }
 
-    public function delete($station_id, $vehicle_id, Request $request)
+    public function delete($station_id, $vehicle_detail_id)
     {
-        $result = $this->vehicleService->deleteVehicle($vehicle_id, $request->vehicleDetail);
+        $vehicle = $this->vehicleService->getVehicleByDetail($vehicle_detail_id);
+        $result = $this->vehicleService->deleteVehicle($vehicle->id, $vehicle_detail_id);
+
         if ($result) {
             return redirect()->route('vehicle.index', $station_id)->with("message", __('messages.success'));
         }
 
-        return view('contnent.pages.pages-misc-error');
+        return view('contnent.pages.pages-not-found-error');
     }
 
     public function searchByCar(Request $request)

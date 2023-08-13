@@ -70,6 +70,9 @@ class SeedDataVehicleDetail extends Seeder
                 "engine" => random_int(0, 1),
                 "vehicle_number" => random_int(10000, 99999),
                 "color" => fake()->colorName(),
+                "width" => fake()->randomFloat(2, 0, 2),
+                "height" => fake()->randomFloat(2, 0, 2),
+                "length" => fake()->randomFloat(2, 0, 4),
             ]);
         }
     }

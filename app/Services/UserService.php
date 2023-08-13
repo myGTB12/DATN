@@ -26,14 +26,15 @@ class UserService
         }
 
         Auth::guard('user')->attempt([
-            'email' => $request->email,
+            'email' => $user->email,
             'password' => $request->password,
         ]);
 
         return true;
     }
 
-    public function createUser($request){
+    public function createUser($request)
+    {
         return $this->userRepository->create([
             'email' => $request->email,
             'password' => Hash::make($request->password),
@@ -44,7 +45,8 @@ class UserService
         ]);
     }
 
-    public function updateProfile($id, $request){
+    public function updateProfile($id, $request)
+    {
         return $this->userRepository->update($id, [
             "first_name" => $request->first_name,
             "last_name" => $request->last_name,
